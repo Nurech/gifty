@@ -3,6 +3,24 @@
 ## Users can setup birthday events and invite users to organize (choose) gifts.
 ## Users can access events via unique url ID to edit or via login.
 
+## TODO's
+```
+Joosep
+1. database liquibase
+2. backend entity
+3. gifts list 
+
+Merlyn
+1. Vue Homepage, 
+2. About page, 
+3. Contacts page (router index.js)
+
+Toomas
+1. Vue event page (router index.js)
+2. Event body component
+```
+
+
 ###
 https://gifter-b50fc.web.app/
 
