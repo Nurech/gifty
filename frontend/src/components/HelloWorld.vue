@@ -18,7 +18,7 @@
   </div>
 
 </template>
-
+aita veaga
 <script>
 
 import {post} from 'axios';
