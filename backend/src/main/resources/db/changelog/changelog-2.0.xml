@@ -1,0 +1,44 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="01-05-2021 create initial tables" author="Joosep">
+        <createTable tableName="users">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="text"/>
+            <column name="password" type="text"/>
+            <column name="first_name" type="text"/>
+            <column name="last_name" type="text"/>
+        </createTable>
+        <createTable tableName="events">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="event_name" type="text"/>
+            <column name="event_description" type="text"/>
+            <column name="event_date" type="text"/>
+            <column name="event_author" type="text"/>
+        </createTable>
+        <createTable tableName="lists">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="list_author" type="text"/>
+            <column name="list_description" type="text"/>
+            <column name="gift" type="text"/>
+        </createTable>
+        <createTable tableName="gifts">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="gift_author" type="text"/>
+            <column name="gift_title" type="text"/>
+            <column name="gift_description" type="text"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
