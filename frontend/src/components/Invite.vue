@@ -1,11 +1,19 @@
 <template>
-  <div class="user">
+  <div class="invite">
 
-    <h1>Invite</h1>
-    <h3>invite</h3>
+    <table>
+      <tr>
+        <th>Sample Table</th>
+      </tr>
+      <tr v-for="(content, index) in tableRows">
+        <td>{{ content }}</td>
+      </tr>
+    </table>
+    <br>
+    <button @click='addTableRow()'>Add New Row</button>
+
   </div>
 </template>
-aita veaga
 <script>
 
 import {post} from 'axios';
@@ -14,28 +22,17 @@ export default {
   name: 'Invite',
 
   data: function () {
-    return {
-      errors: [],
-      showResponse: false,
-      showRetrievedUser: false,
-
-      user: {
-        id: 0,
-        firstName: '',
-        lastName: ''
-      },
-
-      retrievedUser: {
-        id: 0,
-        firstName: '',
-        lastName: ''
-      }
-    }
+    return {}
   },
 
   methods: {
-}
+    addTableRow: function () {
+      this.counter++;
+      this.tableRows.push("Table Row " + this.counter);
+    }
+  }
 };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
