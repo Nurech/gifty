@@ -5,7 +5,6 @@
     <h3>invite</h3>
   </div>
 </template>
-aita veaga
 <script>
 
 import {post} from 'axios';
