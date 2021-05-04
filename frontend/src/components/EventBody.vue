@@ -12,19 +12,18 @@
 </template>
 
 <script>
+
+import {post} from "axios";
+
 export default {
   name: "EventBody",
 
   data: function () {
-    return {
-      // 'eventName': '',
-      // 'eventDescription': '',
-      // 'eventDate': '',
-      // 'eventAuthor': '',
 
+    return {
       showResponse: false,
       event: {
-        id: (Math.random() * 10000000),
+        id: '',
         eventName: '',
         eventDescription: '',
         eventDate: '',
@@ -33,16 +32,15 @@ export default {
     }
   },
 
-
   methods: {
 
-
     'createEvent': function () {
-      this.$http.post('/api/event', {
-        eventName: this.eventName, //button activate
-        eventDescription: this.eventDescription,
-        eventDate: this.eventDate,
-        eventAuthor: this.eventAuthor,
+      post('/api/event/', {
+        id: getRandom(6),
+        eventName: this.event.eventName, //button activate
+        eventDescription: this.event.eventDescription,
+        eventDate: this.event.eventDate,
+        eventAuthor: this.event.eventAuthor,
       })
           .then((response) => {
             this.event = response.data;
@@ -55,8 +53,15 @@ export default {
   }
 }
 
+function getRandom(length) {
+  var random = '0123456789';
+  var result = "";
+  for (var i = 0; i < length; i++) {
+    result += random.charAt(Math.floor(Math.random() * random.length));
+  }
+  return result;
+}
 </script>
 
 <style scoped>
-
 </style>
