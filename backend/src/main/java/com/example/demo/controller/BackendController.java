@@ -1,10 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.GiftObject;
-import com.example.demo.model.Gifts;
-import com.example.demo.model.Users;
-import com.example.demo.model.UserObject;
+import com.example.demo.model.*;
+import com.example.demo.repository.EventsRepository;
 import com.example.demo.repository.GiftsRepository;
+import com.example.demo.repository.RolesRepository;
 import com.example.demo.repository.UsersRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +21,10 @@ public class BackendController {
     private UsersRepository usersRepository;
     @Autowired
     private GiftsRepository giftsRepository;
+    @Autowired
+    private EventsRepository eventsRepository;
+    @Autowired
+    private RolesRepository rolesRepository;
 
     @ResponseBody
     @RequestMapping(path = "api/user/", method = RequestMethod.POST)
@@ -48,5 +51,18 @@ public class BackendController {
         return savedGift.getId();
     }
 
+    @ResponseBody
+    @RequestMapping(path = "api/event/", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public long addNewEvent(@RequestBody EventObject request) {
+        return 0;
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "api/role/", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public long addNewRole(@RequestBody RolesObject request) {
+        return 0;
+    }
 
 }

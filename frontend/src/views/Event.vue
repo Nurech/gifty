@@ -3,10 +3,15 @@
     <h1>This is an Event page</h1>
 
     <EventBody/>
+
     <br><br><br>
-        <GiftList/>
+
+    <GiftList/>
+
     <br><br><br>
-        <Invite/>
+
+    <Invite/>
+
     <br><br><br>
 
   </div>

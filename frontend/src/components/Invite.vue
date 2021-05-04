@@ -42,6 +42,7 @@ export default {
     }
   },
   methods: {
+
     addTableRow: function () {
       let my_objects = {
         guestName: this.guestName,
@@ -50,6 +51,7 @@ export default {
         generateLink: this.generateLink,
         deleteButton: this.deleteButton
       };
+
       this.tableRows.push(my_objects);
       this.guestName = "Guest " + this.tableRows.length;
       this.role = "";
