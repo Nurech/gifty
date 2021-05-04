@@ -20,7 +20,7 @@
         </td>
       </tr>
       </tbody>
-    </table border="1">
+    </table>
     <br>
     <button @click='addTableRow()'>Add New Row</button>
 
