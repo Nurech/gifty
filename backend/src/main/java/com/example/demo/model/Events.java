@@ -79,7 +79,7 @@ public class Events {
         this.giftId = giftId;
     }
 
-    public Events(long id, String eventName, String eventDescription, String eventDate, String eventAuthor, String giftId) {
+    public Events() {
         this.id = id;
         this.eventName = eventName;
         this.eventDescription = eventDescription;
