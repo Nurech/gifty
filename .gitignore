@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-
+gifty.iml
 
 # local env files
 .env.local
