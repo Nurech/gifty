@@ -6,7 +6,7 @@
     <input v-model="eventAuthor" placeholder="Event author"/>
 
     <button v-on:click="createEvent()">Create Event</button>
-    <div v-if="showResponse"><h6>You created new event with Id: {{ // eventName.id }}</h6></div>
+    <div v-if="showResponse"><h6>You created new event with Id: {{eventName.id }}</h6></div>
 
   </div>
 </template>
