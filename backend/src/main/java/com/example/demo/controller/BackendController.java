@@ -58,8 +58,15 @@ public class BackendController {
     @ResponseBody
     @RequestMapping(path = "api/event/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public long addNewEvent(@RequestBody EventObject request) {
-        return 0;
+    public String addNewEvent(@RequestBody EventObject request) {
+        Events savedEvent = new Events();
+        savedEvent.setEventName(request.getEventName());
+        savedEvent.setEventDescription(request.getEventDescription());
+        savedEvent.setEventDate(request.getEventDate());
+        savedEvent.setEventAuthor(request.getEventAuthor());
+        eventsRepository.save(savedEvent);
+        LOG.info(savedEvent + "successfully saved event into DB");
+        return "Event created successfully";
     }
 
     @ResponseBody
