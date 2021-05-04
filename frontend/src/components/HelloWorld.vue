@@ -3,7 +3,7 @@
     <h1>{{ msg }}</h1>
     <h1>Create User</h1>
 
-    <h3>Just some database interaction...test  deploy</h3>
+    <h3>Just some database interaction...test 1 deploy</h3>
 
     <input type="text" v-model="user.firstName" placeholder="first name">
     <input type="text" v-model="user.lastName" placeholder="last name">
