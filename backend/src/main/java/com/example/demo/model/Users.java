@@ -13,23 +13,56 @@ public class Users {
    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
+    private String guestName;
+    private String username;
+    private String password;
     private String firstName;
-    private String lastName;
-
-    public Users(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public Users() {
-
-    }
+    private String lastname;
+    private String email;
 
     @Override
     public String toString() {
-        return String.format(
-                "Users[id=%d, firstName='%s', lastName='%s']",
-                id, firstName, lastName);
+        return "Users{" +
+                "id=" + id +
+                ", guestName='" + guestName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getGuestName() {
+        return guestName;
+    }
+
+    public void setGuestName(String guestName) {
+        this.guestName = guestName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -40,19 +73,29 @@ public class Users {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public long getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(long id) {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Users() {
         this.id = id;
+        this.guestName = guestName;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastname = lastname;
+        this.email = email;
     }
 }

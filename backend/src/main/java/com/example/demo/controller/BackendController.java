@@ -31,8 +31,12 @@ public class BackendController {
     @ResponseStatus(HttpStatus.CREATED)
     public long addNewUser(@RequestBody UserObject request) {
         Users savedUsers = new Users();
+        savedUsers.setGuestName(request.getGuestName());
+        savedUsers.setUsername(request.getUsername());
+        savedUsers.setPassword(request.getPassword());
         savedUsers.setFirstName(request.getFirstName());
-        savedUsers.setLastName(request.getLastName());
+        savedUsers.setLastname(request.getLastname());
+        savedUsers.setEmail(request.getEmail());
         usersRepository.save(savedUsers);
         LOG.info(savedUsers + " successfully saved user into DB");
         return savedUsers.getId();
