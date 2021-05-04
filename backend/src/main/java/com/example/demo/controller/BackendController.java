@@ -60,6 +60,7 @@ public class BackendController {
     @ResponseStatus(HttpStatus.CREATED)
     public String addNewEvent(@RequestBody EventObject request) {
         Events savedEvent = new Events();
+        savedEvent.setId(request.getId());
         savedEvent.setEventName(request.getEventName());
         savedEvent.setEventDescription(request.getEventDescription());
         savedEvent.setEventDate(request.getEventDate());

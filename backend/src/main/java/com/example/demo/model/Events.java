@@ -9,7 +9,6 @@ public class Events {
 
     // PrimaryKey
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
