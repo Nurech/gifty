@@ -7,8 +7,32 @@
     <input type="text" v-model="gift.giftAmount" placeholder="Gift amount">
 
     <br>
-    <button @click="addGift()">Add gift</button>
-    <br>
+    <button @click="saveDB()">Save giftlist to DB</button>
+    <br><br>
+
+    <table border="1">
+
+      <thead>
+      <th>Nr</th>
+      <th>Gift title</th>
+      <th>Gift amount</th>
+      <th></th>
+      </thead>
+
+      <tbody>
+      <tr v-for="(item, index) in tableRows" :item="item">
+        <td>{{ item.guestName }}</td>
+        <td>{{ item.role }}</td>
+        <td>{{ item.email }}</td>
+        <td>
+          <button @click='delTableRow(index)'>Remove</button>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+    <button @click='addTableRow()'>Add another gift</button>
+
 
   </div>
 </template>
@@ -25,7 +49,9 @@ export default {
       errors: [],
       showResponse: false,
 
+
       gift: {
+        number: "",
         id: 0,
         giftTitle: '',
         giftAmount: 0,
@@ -35,15 +61,34 @@ export default {
   },
 
   methods: {
-    "addGift": function () {
+    addTableRow: function () {
+      let my_objects = {
+        guestName: this.guestName,
+        role: this.role,
+        email: this.email,
+        generateLink: this.generateLink,
+        deleteButton: this.deleteButton
+      };
+      this.tableRows.push(my_objects);
+      this.guestName = "Guest " + this.tableRows.length;
+      this.role = "";
+      this.email = "";
+      this.generateLink = "";
+      this.deleteButton = "";
+    },
+    delTableRow: function (id) {
+      this.tableRows.splice(id, 1);
+    },
+
+    "saveDB": function () {
       post('/api/gift/', {
         giftTitle: this.gift.giftTitle,
-        giftAmount: this.user.giftAmount,
+        giftAmount: this.gift.giftAmount,
         eventId: "123-123-123"
       })
           .then((response) => {
             this.gift = response.data;
-            console.log('Created new User with Id ' + response.data);
+            console.log('Added gift ' + response.data);
             this.showResponse = true
           }).catch((error) => {
         this.errors = error.response.data.message;

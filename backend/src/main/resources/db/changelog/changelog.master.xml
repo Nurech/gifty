@@ -36,7 +36,7 @@
             <column name="username" type="text"/>
             <column name="event_id" type="text"/>
             <column name="owner" type="boolean"/>
-            <column name="uer" type="boolean"/>
+            <column name="user" type="boolean"/>
         </createTable>
         <createTable tableName="gifts">
             <column name="id" type="int" autoIncrement="true">
