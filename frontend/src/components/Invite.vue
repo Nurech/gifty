@@ -1,13 +1,25 @@
 <template>
   <div class="invite">
 
-    <table>
-      <tr>
-        <th>Sample Table</th>
+    <table border="1">
+      <thead>
+      <th>Guest name</th>
+      <th>Role</th>
+      <th>E-mail</th>
+      <th>Link</th>
+      <th></th>
+      </thead>
+      <tbody>
+      <tr v-for="(item, index) in tableRows" :item="item">
+        <td>{{ item.guestName }}</td>
+        <td>{{ item.role }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.generateLink }}</td>
+        <td>
+          <button @click='delTableRow(index)'>Remove</button>
+        </td>
       </tr>
-      <tr v-for="(content, index) in tableRows">
-        <td>{{ content }}</td>
-      </tr>
+      </tbody>
     </table>
     <br>
 
@@ -15,21 +27,38 @@
 
   </div>
 </template>
-<script>
+<script type="text/javascript">
 
-import {post} from 'axios';
 
 export default {
-  name: 'Invite',
-
   data: function () {
-    return {}
+    return {
+      'guestName': "Guest Name",
+      'role': "Owner",
+      'email': "owner@owner.ee",
+      'generateLink': "some URL",
+      'deleteButton': "",
+      'tableRows': []
+    }
   },
-
   methods: {
     addTableRow: function () {
-      this.counter++;
-      this.tableRows.push("Table Row " + this.counter);
+      let my_objects = {
+        guestName: this.guestName,
+        role: this.role,
+        email: this.email,
+        generateLink: this.generateLink,
+        deleteButton: this.deleteButton
+      };
+      this.tableRows.push(my_objects);
+      this.guestName = "Guest " + this.tableRows.length;
+      this.role = "";
+      this.email = "";
+      this.generateLink = "";
+      this.deleteButton = "";
+    },
+    delTableRow: function (id) {
+         this.tableRows.splice(id, 1);
     }
   }
 };
