@@ -47,14 +47,14 @@ export default {
   methods: {
     "dbGuestId": function () {
       post('/api/user/', {
-        guestId: this.guestId
+        guestName: this.guestId
       })
           .then((response) => {
             this.guestId = response.data
           })
     },
     addTableRow: function () {
-      this.guestId = getRandom(15);
+      this.guestId = getRandom(6);
       this.guestName = "";
       this.role = "user";
       this.email = "";
