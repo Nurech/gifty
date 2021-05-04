@@ -5,5 +5,47 @@
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <include file="/db/changelog/changelog-2.0.xml"/>
+
+    <changeSet id="01-05-2021 create initial tables" author="Joosep">
+        <createTable tableName="users">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="guest_name" type="text"/>
+            <column name="username" type="text"/>
+            <column name="password" type="text"/>
+            <column name="first_name" type="text"/>
+            <column name="last_name" type="text"/>
+            <column name="email" type="text"/>
+        </createTable>
+        <createTable tableName="events">
+            <column name="id" type="int">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="event_name" type="text"/>
+            <column name="event_description" type="text"/>
+            <column name="event_date" type="text"/>
+            <column name="event_author" type="text"/>
+            <column name="gift_id" type="text"/>
+        </createTable>
+        <createTable tableName="roles">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="guest_name" type="text"/>
+            <column name="username" type="text"/>
+            <column name="event_id" type="text"/>
+            <column name="owner" type="boolean"/>
+            <column name="uer" type="boolean"/>
+        </createTable>
+        <createTable tableName="gifts">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="gift_title" type="text"/>
+            <column name="gift_amount" type="text"/>
+            <column name="event_id" type="text"/>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>
