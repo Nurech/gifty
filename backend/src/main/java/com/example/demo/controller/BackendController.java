@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.User;
+import com.example.demo.model.GiftObject;
+import com.example.demo.model.Gifts;
+import com.example.demo.model.Users;
 import com.example.demo.model.UserObject;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.GiftsRepository;
+import com.example.demo.repository.UsersRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +19,33 @@ public class BackendController {
     private static final Logger LOG = LoggerFactory.getLogger(BackendController.class);
 
     @Autowired
-    private UserRepository userRepository;
+    private UsersRepository usersRepository;
+    @Autowired
+    private GiftsRepository giftsRepository;
 
     @ResponseBody
     @RequestMapping(path = "api/user/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public long addNewUser(@RequestBody UserObject request) {
-        User savedUser = new User();
-        savedUser.setFirstName(request.getFirstName());
-        savedUser.setLastName(request.getLastName());
-        userRepository.save(savedUser);
-        LOG.info(savedUser.toString() + " successfully saved into DB");
-        return savedUser.getId();
+        Users savedUsers = new Users();
+        savedUsers.setFirstName(request.getFirstName());
+        savedUsers.setLastName(request.getLastName());
+        usersRepository.save(savedUsers);
+        LOG.info(savedUsers + " successfully saved user into DB");
+        return savedUsers.getId();
+    }
+
+    @ResponseBody
+    @RequestMapping(path = "api/gift/", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public long addNewGift(@RequestBody GiftObject request) {
+        Gifts savedGift = new Gifts();
+        savedGift.setGiftTitle(request.getGiftTitle());
+        savedGift.setGiftAmount(request.getGiftAmount());
+        savedGift.setEventId(request.getEventId());
+        giftsRepository.save(savedGift);
+        LOG.info(savedGift + " successfully saved gift into DB");
+        return savedGift.getId();
     }
 
 

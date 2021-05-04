@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="users")
-public class User {
+public class Users {
 
     // PrimaryKey
     @Id
@@ -16,19 +16,19 @@ public class User {
     private String firstName;
     private String lastName;
 
-    public User(String firstName, String lastName) {
+    public Users(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public User() {
+    public Users() {
 
     }
 
     @Override
     public String toString() {
         return String.format(
-                "User[id=%d, firstName='%s', lastName='%s']",
+                "Users[id=%d, firstName='%s', lastName='%s']",
                 id, firstName, lastName);
     }
 

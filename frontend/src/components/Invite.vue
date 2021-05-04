@@ -10,6 +10,7 @@
       </tr>
     </table>
     <br>
+
     <button @click='addTableRow()'>Add New Row</button>
 
   </div>

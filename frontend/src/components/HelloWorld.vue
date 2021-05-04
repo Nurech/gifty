@@ -12,13 +12,9 @@
 
     <div v-if="showResponse"><h6>User created with Id: {{ user.id }}</h6></div>
 
-    <button v-if="showResponse" @click="retrieveUser()">Retrieve user {{ user.id }} data from database</button>
-
-    <h4 v-if="showRetrievedUser">Retrieved User {{ retrievedUser.firstName }} {{ retrievedUser.lastName }}</h4>
   </div>
-
 </template>
-aita veaga
+
 <script>
 
 import {post} from 'axios';
@@ -30,15 +26,8 @@ export default {
     return {
       errors: [],
       showResponse: false,
-      showRetrievedUser: false,
 
       user: {
-        id: 0,
-        firstName: '',
-        lastName: ''
-      },
-
-      retrievedUser: {
         id: 0,
         firstName: '',
         lastName: ''
@@ -61,9 +50,8 @@ export default {
         this.errors = error.response.data.message;
       });
     },
-}
-}
-;
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
