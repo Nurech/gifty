@@ -8,7 +8,7 @@
 
     <changeSet id="01-05-2021 create initial tables" author="Joosep">
         <createTable tableName="users">
-            <column name="id" type="int">
+            <column name="user_id" type="int">
                 <constraints primaryKey="true"/>
             </column>
             <column name="guest_name" type="text"/>
@@ -20,7 +20,7 @@
         </createTable>
 
         <createTable tableName="events">
-            <column name="id" type="int">
+            <column name="event_id" type="int">
                 <constraints primaryKey="true"/>
             </column>
             <column name="event_name" type="text"/>
@@ -31,17 +31,16 @@
         </createTable>
 
         <createTable tableName="roles">
-            <column name="id" type="int" autoIncrement="true">
+            <column name="role_id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
             <column name="user_id" type="text"/>
-            <column name="username" type="text"/>
             <column name="event_id" type="text"/>
             <column name="role" type="text"/>
         </createTable>
 
         <createTable tableName="gifts">
-            <column name="id" type="int" autoIncrement="true">
+            <column name="gift_id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
             <column name="gift_title" type="text"/>

@@ -2,7 +2,7 @@ package com.example.demo.model;
 
 public class UserObject {
 
-    private long id;
+    private long userId;
     private String guestName;
     private String username;
     private String password;
@@ -10,12 +10,12 @@ public class UserObject {
     private String lastName;
     private String email;
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getGuestName() {

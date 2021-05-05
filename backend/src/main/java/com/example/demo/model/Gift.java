@@ -11,19 +11,29 @@ public class Gift {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
-
+    private long giftId;
     private String giftTitle;
     private String giftAmount;
     private String giftDescription;
     private String eventId;
 
-    public long getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Gift{" +
+                "giftId=" + giftId +
+                ", giftTitle='" + giftTitle + '\'' +
+                ", giftAmount='" + giftAmount + '\'' +
+                ", giftDescription='" + giftDescription + '\'' +
+                ", eventId='" + eventId + '\'' +
+                '}';
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getGiftId() {
+        return giftId;
+    }
+
+    public void setGiftId(long giftId) {
+        this.giftId = giftId;
     }
 
     public String getGiftTitle() {
@@ -59,21 +69,7 @@ public class Gift {
     }
 
     public Gift() {
-    }
-
-    @Override
-    public String toString() {
-        return "Gift{" +
-                "id=" + id +
-                ", giftTitle='" + giftTitle + '\'' +
-                ", giftAmount='" + giftAmount + '\'' +
-                ", giftDescription='" + giftDescription + '\'' +
-                ", eventId='" + eventId + '\'' +
-                '}';
-    }
-
-    public Gift(long id, String giftTitle, String giftAmount, String giftDescription, String eventId) {
-        this.id = id;
+        this.giftId = giftId;
         this.giftTitle = giftTitle;
         this.giftAmount = giftAmount;
         this.giftDescription = giftDescription;

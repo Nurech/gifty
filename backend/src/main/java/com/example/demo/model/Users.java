@@ -11,8 +11,7 @@ public class Users {
    @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
-
+    private long userId;
     private String guestName;
     private String username;
     private String password;
@@ -20,25 +19,29 @@ public class Users {
     private String lastName;
     private String email;
 
+    public Users() {
+
+    }
+
     @Override
     public String toString() {
         return "Users{" +
-                "id=" + id +
+                "userId=" + userId +
                 ", guestName='" + guestName + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", lastname='" + lastName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getGuestName() {
@@ -77,8 +80,8 @@ public class Users {
         return lastName;
     }
 
-    public void setLastName(String lastname) {
-        this.lastName = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -89,8 +92,8 @@ public class Users {
         this.email = email;
     }
 
-    public Users() {
-        this.id = id;
+    public Users(long userId, String guestName, String username, String password, String firstName, String lastName, String email) {
+        this.userId = userId;
         this.guestName = guestName;
         this.username = username;
         this.password = password;

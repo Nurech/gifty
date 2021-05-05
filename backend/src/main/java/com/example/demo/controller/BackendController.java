@@ -37,6 +37,14 @@ public class BackendController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "api/eventinfo/", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public EventInfoObject addNewEvent(@RequestBody EventInfoObject request) {
+//        return giftService.addNewEvent(request);
+        return request;
+    }
+
+    @ResponseBody
     @RequestMapping(path = "api/role/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public List<RolesObject> addNewRole(@RequestBody List<RolesObject> request) {
@@ -44,12 +52,11 @@ public class BackendController {
     }
 
 
-    @RequestMapping(path = "api/event/{eventId}/user/{userId}", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    public List<EventObject> addNewRole(@RequestParam("eventId") String eventId, @RequestParam("userId") String userId) {
-//        return giftService.addNewRoles(request);
-        return null;
-    }
+//    @RequestMapping(path = "api/event/{eventId}/user/{userId}", method = RequestMethod.POST)
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public  pullEventInfo(@RequestParam("eventId") String eventId, @RequestParam("userId") String userId) {
+//        return null;
+//    }
 
 
 }

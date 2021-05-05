@@ -32,7 +32,7 @@ public class GiftService {
     public List<UserObject> addNewUser(List<UserObject> request) {
         for (int i = 0; i < request.size(); i++) {
             Users savedUsers = new Users();
-            savedUsers.setId(request.get(i).getId());
+            savedUsers.setUserId(request.get(i).getUserId());
             savedUsers.setGuestName(request.get(i).getGuestName());
             savedUsers.setUsername(request.get(i).getUsername());
             savedUsers.setPassword(request.get(i).getPassword());
@@ -59,7 +59,7 @@ public class GiftService {
 
     public EventObject addNewEvent(EventObject request) {
         Events savedEvent = new Events();
-        savedEvent.setId(request.getId());
+        savedEvent.setEventId(request.getEventId());
         savedEvent.setEventName(request.getEventName());
         savedEvent.setEventDescription(request.getEventDescription());
         savedEvent.setEventDate(request.getEventDate());

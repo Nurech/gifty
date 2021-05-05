@@ -11,8 +11,7 @@ public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
-
+    private long roleId;
     private String guestName;
     private String username;
     private long eventId;
@@ -25,7 +24,7 @@ public class Roles {
     @Override
     public String toString() {
         return "Roles{" +
-                "id=" + id +
+                "roleId=" + roleId +
                 ", guestName='" + guestName + '\'' +
                 ", username='" + username + '\'' +
                 ", eventId=" + eventId +
@@ -33,12 +32,12 @@ public class Roles {
                 '}';
     }
 
-    public long getId() {
-        return id;
+    public long getRoleId() {
+        return roleId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
     }
 
     public String getGuestName() {
@@ -73,8 +72,8 @@ public class Roles {
         this.role = role;
     }
 
-    public Roles(long id, String guestName, String username, long eventId, String role) {
-        this.id = id;
+    public Roles(long roleId, String guestName, String username, long eventId, String role) {
+        this.roleId = roleId;
         this.guestName = guestName;
         this.username = username;
         this.eventId = eventId;

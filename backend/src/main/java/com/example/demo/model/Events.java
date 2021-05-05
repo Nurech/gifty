@@ -10,18 +10,21 @@ public class Events {
     // PrimaryKey
     @Id
    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
-
+    private long eventId;
     private String eventName;
     private String eventDescription;
     private String eventDate;
     private String eventAuthor;
     private String giftId;
 
+    public Events() {
+
+    }
+
     @Override
     public String toString() {
         return "Events{" +
-                "id=" + id +
+                "eventId=" + eventId +
                 ", eventName='" + eventName + '\'' +
                 ", eventDescription='" + eventDescription + '\'' +
                 ", eventDate='" + eventDate + '\'' +
@@ -30,12 +33,12 @@ public class Events {
                 '}';
     }
 
-    public long getId() {
-        return id;
+    public long getEventId() {
+        return eventId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setEventId(long eventId) {
+        this.eventId = eventId;
     }
 
     public String getEventName() {
@@ -78,8 +81,8 @@ public class Events {
         this.giftId = giftId;
     }
 
-    public Events() {
-        this.id = id;
+    public Events(long eventId, String eventName, String eventDescription, String eventDate, String eventAuthor, String giftId) {
+        this.eventId = eventId;
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.eventDate = eventDate;

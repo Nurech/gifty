@@ -2,18 +2,18 @@ package com.example.demo.model;
 
 public class GiftObject {
 
-    private long id;
+    private long giftId;
     private String giftTitle;
     private String giftAmount;
     private String giftDescription;
     private String eventId;
 
-    public long getId() {
-        return id;
+    public long getGiftId() {
+        return giftId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setGiftId(long giftId) {
+        this.giftId = giftId;
     }
 
     public String getGiftTitle() {
