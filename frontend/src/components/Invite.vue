@@ -16,7 +16,7 @@
       </thead>
       <tbody>
       <tr v-for="(item, index) in tableRows" :item="item">
-        <td>{{ item.UserId }}</td>
+        <td>{{ item.userId }}</td>
         <td><input v-model="item.guestName" placeholder="Guest name"/></td>
         <td>{{ item.role }}</td>
         <td><input v-model="item.email" placeholder="E-mail"/></td>
@@ -40,14 +40,14 @@ import {post} from "axios";
 export default {
   data: function () {
     return {
-      'UserId': "",
+      'userId': "",
       'guestName': "",
       'role': "",
       'email': "",
       'generateLink': "",
       'deleteButton': "",
       'randomNumber': "",
-      'tableRows': [{UserId: getRandom(6), role: "owner"}],
+      'tableRows': [{userId: getRandom(6), role: "owner"}],
       'infoks': "Infopunkt"
     }
   },
@@ -58,14 +58,14 @@ export default {
           this.infoks = this.tableRows;
     },
     addTableRow: function () {
-      this.UserId = getRandom(6);
+      this.userId = getRandom(6);
       this.guestName = "";
       this.role = "user";
       this.email = "";
       this.generateLink = "";
       this.deleteButton = "";
       let my_objects = {
-        UserId: this.UserId,
+        userId: this.userId,
         guestName: this.guestName,
         role: this.role,
         email: this.email,
