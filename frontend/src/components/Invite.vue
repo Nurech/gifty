@@ -52,7 +52,7 @@ export default {
   methods: {
     'testButton': function () {
       post('/api/user/', this.tableRows
-        ),
+        )
       this.infoks = this.tableRows;
     },
     addTableRow: function () {
