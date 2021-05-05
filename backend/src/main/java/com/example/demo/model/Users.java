@@ -9,7 +9,7 @@ public class Users {
 
     // PrimaryKey
     @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
@@ -73,12 +73,12 @@ public class Users {
         this.firstName = firstName;
     }
 
-    public String getLastname() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastname(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String lastname) {
+        this.lastName = lastname;
     }
 
     public String getEmail() {

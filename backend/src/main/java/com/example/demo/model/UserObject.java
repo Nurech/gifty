@@ -6,7 +6,7 @@ public class UserObject {
     private String username;
     private String password;
     private String firstName;
-    private String lastname;
+    private String lastName;
     private String email;
 
     public String getGuestName() {
@@ -41,12 +41,12 @@ public class UserObject {
         this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {

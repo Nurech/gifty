@@ -35,7 +35,7 @@ public class BackendController {
         savedUsers.setUsername(request.getUsername());
         savedUsers.setPassword(request.getPassword());
         savedUsers.setFirstName(request.getFirstName());
-        savedUsers.setLastname(request.getLastname());
+        savedUsers.setLastName(request.getLastName());
         savedUsers.setEmail(request.getEmail());
         usersRepository.save(savedUsers);
         LOG.info(savedUsers + " successfully saved user into DB");
