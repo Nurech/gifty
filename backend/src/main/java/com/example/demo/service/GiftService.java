@@ -68,4 +68,10 @@ public class GiftService {
         return request;
     }
 
+    public List<RolesObject> addNewRoles(List<RolesObject> request) {
+        for (RolesObject userObject : request) {
+
+        }
+        return request;
+    }
 }

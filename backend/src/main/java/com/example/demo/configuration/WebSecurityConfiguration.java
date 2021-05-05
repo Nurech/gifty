@@ -19,7 +19,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             .httpBasic()
         .and()
             .authorizeRequests()
-                .antMatchers("/api/event").permitAll()
+                .antMatchers("/api/event/**").permitAll()
                 .antMatchers("/api/gift").permitAll()
                 .antMatchers("/api/role").permitAll()
                 .antMatchers("/api/user/**").permitAll() // allow every URI, that begins with '/api/user/'
