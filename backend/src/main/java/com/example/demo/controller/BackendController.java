@@ -31,16 +31,18 @@ public class BackendController {
     @ResponseBody
     @RequestMapping(path = "api/user/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public String addNewUser(@RequestBody UserObject request) {
-        Users savedUsers = new Users();
-        savedUsers.setGuestName(request.getGuestName());
-        savedUsers.setUsername(request.getUsername());
-        savedUsers.setPassword(request.getPassword());
-        savedUsers.setFirstName(request.getFirstName());
-        savedUsers.setLastName(request.getLastName());
-        savedUsers.setEmail(request.getEmail());
-        usersRepository.save(savedUsers);
-        LOG.info(savedUsers + " successfully saved user into DB");
+    public String addNewUser(@RequestBody List<UserObject> request) {
+        for(int i = 0; i < request.size(); i++) {
+            Users savedUsers = new Users();
+            savedUsers.setGuestName(request.get(i).getGuestName());
+            savedUsers.setUsername(request.get(i).getUsername());
+            savedUsers.setPassword(request.get(i).getPassword());
+            savedUsers.setFirstName(request.get(i).getFirstName());
+            savedUsers.setLastName(request.get(i).getLastName());
+            savedUsers.setEmail(request.get(i).getEmail());
+            usersRepository.save(savedUsers);
+            LOG.info(savedUsers + " successfully saved user into DB");
+        }
         return "Created user";
     }
 
