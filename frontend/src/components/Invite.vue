@@ -51,7 +51,8 @@ export default {
   },
   methods: {
     'testButton': function () {
-      post('/api/user/', tableRows),
+      post('/api/user/', this.tableRows
+        ),
       this.infoks = this.tableRows;
     },
     addTableRow: function () {
