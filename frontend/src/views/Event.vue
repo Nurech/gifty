@@ -14,6 +14,8 @@
 
     <br><br><br>
 
+    <CreateEvent/>
+
   </div>
 </template>
 
@@ -22,12 +24,15 @@
 import Invite from "@/components/Invite";
 import GiftList from "@/components/GiftList";
 import EventBody from "@/components/EventBody";
+import CreateEvent from "@/components/CreateEvent";
 
 export default {
   components: {
+    CreateEvent,
     EventBody,
     Invite,
-    GiftList
+    GiftList,
+
   }
 }
 </script>
