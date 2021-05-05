@@ -136,6 +136,14 @@ export default {
 
   methods: {
 
+    'eventCreator': function () {
+      post('/api/creator/', {
+
+    })
+    },
+
+
+
     'createEvent': function () {
       post('/api/event/', {
         id: getRandom(6),
