@@ -19,41 +19,26 @@
         <th>Gift name</th>
         <th>Gift amount</th>
         <th>Gift description</th>
-
         </thead>
 
         <tbody>
-        <tr v-for="row in table.tbody">
+        <tr v-for="row in table.tbody" >
           <td v-for="(value, index) in row">
             <input type="text" v-model="row[index]" />
           </td>
-          <td>&nbsp;</td>
         </tr>
-
         <tr>
           <td  v-bind:colspan="table.thead.length + 1">
-            <button class="btn btn-primary" type="button" v-on:click="addRow()" title="Add Row">+</button>
+            <button class="btn btn-primary" type="button" v-on:click="addRow()" title="Add Row">+ Add row</button>
           </td>
         </tr>
         </tbody>
-
-        <tfoot v-if="table.tfoot.length">
-        <tr>
-          <td v-for="(foot, index) in table.tfoot">
-            <input type="text" v-model="table.tfoot[index]" />
-          </td>
-          <td>&nbsp;</td>
-        </tr>
-        </tfoot>
       </table>
 
       <pre class="output">
     {{tableJSON}}
   </pre>
     </div>
-
-    <button @click='addTableRow()'>Add another gift</button>
-
 
   </div>
 </template>
@@ -70,25 +55,20 @@ export default {
       tableJSON: '',
       table: {
         thead: [
-          'Heading 1',
-          'Heading 2',
-          'Heading 3'
+          'id',
+          'giftName',
+          'giftAmount',
+          'description'
         ],
         tbody: [
-          ['R:1 V:1', 'R:1 V:2', 'R:1 V:3'],
-          ['R:2 V:1', 'R:2 V:2', 'R:2 V:3'],
-          ['R:3 V:1', 'R:3 V:2', 'R:3 V:3']
-        ],
-        tfoot: [
-          'Footer 1',
-          'Footer 2',
-          'Footer 3'
+          ['1', 'Book', '3', 'I used to read a lot of crime/mystery books'],
+          ['2', 'Gift Card', '2', 'I really enjoy The Mall, so would be nice to get some gift cards'],
+
         ],
       },
 
       errors: [],
       showResponse: false,
-
 
       gift: {
         number: "",
@@ -126,7 +106,6 @@ export default {
       });
     },
 
-
     updateTableJSON: function() {
       this.tableJSON = JSON.stringify(this.table);
     },
@@ -140,12 +119,10 @@ export default {
       this.table.tbody.push(newRow);
       this.updateTableJSON();
     }
-
   }
 };
 
 </script>
-
 <style scoped>
 h3 {
   margin: 40px 0 0;

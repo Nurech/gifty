@@ -17,7 +17,7 @@ public class Users {
     private String username;
     private String password;
     private String firstName;
-    private String lastname;
+    private String lastName;
     private String email;
 
     @Override
@@ -28,7 +28,7 @@ public class Users {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", lastname='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
@@ -73,12 +73,12 @@ public class Users {
         this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastname) {
+        this.lastName = lastname;
     }
 
     public String getEmail() {
@@ -95,7 +95,7 @@ public class Users {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
-        this.lastname = lastname;
+        this.lastName = lastName;
         this.email = email;
     }
 }
