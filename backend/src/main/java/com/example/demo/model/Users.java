@@ -9,7 +9,7 @@ public class Users {
 
     // PrimaryKey
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
@@ -17,7 +17,7 @@ public class Users {
     private String username;
     private String password;
     private String firstName;
-    private String lastname;
+    private String lastName;
     private String email;
 
     @Override
@@ -28,7 +28,7 @@ public class Users {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", lastname='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
@@ -74,11 +74,11 @@ public class Users {
     }
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastname(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -95,7 +95,7 @@ public class Users {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
-        this.lastname = lastname;
+        this.lastName = lastName;
         this.email = email;
     }
 }

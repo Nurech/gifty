@@ -1,6 +1,8 @@
 <template>
   <div class="invite">
-    <h3>Add your participants</h3>
+    <br>
+    <h3>Add your participants</h3><button v-on:click="testButton()">TEST</button>
+    <br>
     <br>
     <table border="1">
       <thead>
@@ -25,12 +27,14 @@
       </tbody>
     </table>
     <br>
-
+    {{ infoks }}
+    <br>
     <button @click='addTableRow()'>Add New Row</button>
 
   </div>
 </template>
 <script type="text/javascript">
+import {post} from "axios";
 export default {
   data: function () {
     return {
@@ -41,17 +45,28 @@ export default {
       'generateLink': "",
       'deleteButton': "",
       'randomNumber': "",
-      'tableRows': [{}]
+      'tableRows': [{guestId: getRandom(6), role: "owner"}],
+      'infoks' : "Infopunkt"
     }
   },
   methods: {
-    "dbGuestId": function () {
+    'testButton': function () {
       post('/api/user/', {
-        guestName: this.guestId
-      })
-          .then((response) => {
-            this.guestId = response.data
-          })
+        guestName: this.tableRows[0].guestId,
+        username: this.tableRows[0].guestName,
+        password: "parool",
+        firstName: "esinimi",
+        lastname: "viimanenimi",
+        email: this.tableRows[0].email
+        }),
+      this.infoks = {
+        guestName: this.tableRows[0].guestId,
+        username: this.tableRows[0].guestName,
+        password: "parool",
+        firstName: "esinimi",
+        lastname: "viimanenimi",
+        email: this.tableRows[0].email
+      };
     },
     addTableRow: function () {
       this.guestId = getRandom(6);

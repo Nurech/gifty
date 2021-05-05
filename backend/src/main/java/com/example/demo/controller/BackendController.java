@@ -29,7 +29,7 @@ public class BackendController {
     @ResponseBody
     @RequestMapping(path = "api/user/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public long addNewUser(@RequestBody UserObject request) {
+    public String addNewUser(@RequestBody UserObject request) {
         Users savedUsers = new Users();
         savedUsers.setGuestName(request.getGuestName());
         savedUsers.setUsername(request.getUsername());
@@ -39,7 +39,7 @@ public class BackendController {
         savedUsers.setEmail(request.getEmail());
         usersRepository.save(savedUsers);
         LOG.info(savedUsers + " successfully saved user into DB");
-        return savedUsers.getId();
+        return "Created user";
     }
 
     @ResponseBody
