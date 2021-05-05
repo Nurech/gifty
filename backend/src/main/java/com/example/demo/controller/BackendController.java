@@ -5,8 +5,6 @@ import com.example.demo.repository.EventsRepository;
 import com.example.demo.repository.GiftsRepository;
 import com.example.demo.repository.RolesRepository;
 import com.example.demo.repository.UsersRepository;
-import org.h2.util.json.JSONArray;
-import org.h2.util.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.util.List;
 
 @Controller
@@ -36,32 +31,33 @@ public class BackendController {
     @ResponseBody
     @RequestMapping(path = "api/user/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public String addNewUser(@RequestBody List<UserObject> request) {
-        for (int i = 0; i < request.size(); i++) {
-            Users savedUsers = new Users();
-            savedUsers.setGuestName(request.get(i).getGuestName());
-            savedUsers.setUsername(request.get(i).getUsername());
-            savedUsers.setPassword("");
-            savedUsers.setFirstName("");
-            savedUsers.setLastName("");
-            savedUsers.setEmail(request.get(i).getEmail());
-            usersRepository.save(savedUsers);
-            LOG.info(savedUsers + " successfully saved user into DB");
-        }
+    public String addNewUser(@RequestBody UserObject request) {
+        Users savedUsers = new Users();
+        savedUsers.setGuestName(request.getGuestName());
+        savedUsers.setUsername(request.getUsername());
+        savedUsers.setPassword(request.getPassword());
+        savedUsers.setFirstName(request.getFirstName());
+        savedUsers.setLastName(request.getLastName());
+        savedUsers.setEmail(request.getEmail());
+        usersRepository.save(savedUsers);
+        LOG.info(savedUsers + " successfully saved user into DB");
         return "Created user";
     }
 
     @ResponseBody
     @RequestMapping(path = "api/gift/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public long addNewGift(@RequestBody GiftObject request) {
-        Gifts savedGift = new Gifts();
-        savedGift.setGiftTitle(request.getGiftTitle());
-        savedGift.setGiftAmount(request.getGiftAmount());
-        savedGift.setEventId(request.getEventId());
-        giftsRepository.save(savedGift);
-        LOG.info(savedGift + " successfully saved gift into DB");
-        return savedGift.getId();
+    public String addNewGift(@RequestBody List<GiftObject> request) {
+
+        for(int i = 0; i < request.size(); i++){
+            Gift savedGift = new Gift();
+            savedGift.setGiftTitle(request.get(i).getGiftTitle());
+            savedGift.setGiftAmount(request.get(i).getGiftAmount());
+            savedGift.setGiftDescription(request.get(i).getGiftDescription());
+            giftsRepository.save(savedGift);
+            LOG.info(savedGift + " successfully saved gift into DB");
+        }
+        return "Added all gifts!";
     }
 
     @ResponseBody

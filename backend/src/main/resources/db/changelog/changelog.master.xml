@@ -44,6 +44,7 @@
             </column>
             <column name="gift_title" type="text"/>
             <column name="gift_amount" type="text"/>
+            <column name="gift_description" type="text"/>
             <column name="event_id" type="text"/>
         </createTable>
     </changeSet>

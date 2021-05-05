@@ -5,6 +5,7 @@ public class GiftObject {
     private long id;
     private String giftTitle;
     private String giftAmount;
+    private String giftDescription;
     private String eventId;
 
     public long getId() {
@@ -29,6 +30,14 @@ public class GiftObject {
 
     public void setGiftAmount(String giftAmount) {
         this.giftAmount = giftAmount;
+    }
+
+    public String getGiftDescription() {
+        return giftDescription;
+    }
+
+    public void setGiftDescription(String giftDescription) {
+        this.giftDescription = giftDescription;
     }
 
     public String getEventId() {
