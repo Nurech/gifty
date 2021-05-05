@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class BackendController {
 
@@ -45,14 +47,17 @@ public class BackendController {
     @ResponseBody
     @RequestMapping(path = "api/gift/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public long addNewGift(@RequestBody GiftObject request) {
-        Gifts savedGift = new Gifts();
-        savedGift.setGiftTitle(request.getGiftTitle());
-        savedGift.setGiftAmount(request.getGiftAmount());
-        savedGift.setEventId(request.getEventId());
-        giftsRepository.save(savedGift);
-        LOG.info(savedGift + " successfully saved gift into DB");
-        return savedGift.getId();
+    public String addNewGift(@RequestBody List<GiftObject> request) {
+
+        for(int i = 0; i < request.size(); i++){
+            Gift savedGift = new Gift();
+            savedGift.setGiftTitle(request.get(i).getGiftTitle());
+            savedGift.setGiftAmount(request.get(i).getGiftAmount());
+            savedGift.setGiftDescription(request.get(i).getGiftDescription());
+            giftsRepository.save(savedGift);
+            LOG.info(savedGift + " successfully saved gift into DB");
+        }
+        return "Added all gifts!";
     }
 
     @ResponseBody

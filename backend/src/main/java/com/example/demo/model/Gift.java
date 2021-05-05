@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="gifts")
-public class Gifts {
+public class Gift {
 
     // PrimaryKey
     @Id
@@ -15,28 +15,8 @@ public class Gifts {
 
     private String giftTitle;
     private String giftAmount;
+    private String giftDescription;
     private String eventId;
-
-    public Gifts(long id, String giftTitle, String giftAmount, String eventId) {
-        this.id = id;
-        this.giftTitle = giftTitle;
-        this.giftAmount = giftAmount;
-        this.eventId = eventId;
-    }
-
-    public Gifts() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Gifts{" +
-                "id=" + id +
-                ", giftTitle='" + giftTitle + '\'' +
-                ", giftAmount='" + giftAmount + '\'' +
-                ", eventId='" + eventId + '\'' +
-                '}';
-    }
 
     public long getId() {
         return id;
@@ -62,11 +42,41 @@ public class Gifts {
         this.giftAmount = giftAmount;
     }
 
+    public String getGiftDescription() {
+        return giftDescription;
+    }
+
+    public void setGiftDescription(String giftDescription) {
+        this.giftDescription = giftDescription;
+    }
+
     public String getEventId() {
         return eventId;
     }
 
     public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
+    public Gift() {
+    }
+
+    @Override
+    public String toString() {
+        return "Gift{" +
+                "id=" + id +
+                ", giftTitle='" + giftTitle + '\'' +
+                ", giftAmount='" + giftAmount + '\'' +
+                ", giftDescription='" + giftDescription + '\'' +
+                ", eventId='" + eventId + '\'' +
+                '}';
+    }
+
+    public Gift(long id, String giftTitle, String giftAmount, String giftDescription, String eventId) {
+        this.id = id;
+        this.giftTitle = giftTitle;
+        this.giftAmount = giftAmount;
+        this.giftDescription = giftDescription;
         this.eventId = eventId;
     }
 }
