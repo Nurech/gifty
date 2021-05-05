@@ -2,19 +2,19 @@ package com.example.demo.model;
 
 public class EventObject {
 
-    private long id;
+    private long eventId;
     private String eventName;
     private String eventDescription;
     private String eventDate;
     private String eventAuthor;
     private String giftId;
 
-    public long getId() {
-        return id;
+    public long getEventId() {
+        return eventId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setEventId(long eventId) {
+        this.eventId = eventId;
     }
 
     public String getEventName() {

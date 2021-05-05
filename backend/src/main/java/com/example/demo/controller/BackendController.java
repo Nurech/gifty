@@ -2,8 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.model.*;
 import com.example.demo.service.GiftService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -39,10 +37,26 @@ public class BackendController {
     }
 
     @ResponseBody
+    @RequestMapping(path = "api/eventinfo/", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public EventInfoObject addNewEvent(@RequestBody EventInfoObject request) {
+//        return giftService.addNewEvent(request);
+        return request;
+    }
+
+    @ResponseBody
     @RequestMapping(path = "api/role/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public long addNewRole(@RequestBody RolesObject request) {
-        return 0;
+    public List<RolesObject> addNewRole(@RequestBody List<RolesObject> request) {
+        return giftService.addNewRoles(request);
     }
+
+
+//    @RequestMapping(path = "api/event/{eventId}/user/{userId}", method = RequestMethod.POST)
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public  pullEventInfo(@RequestParam("eventId") String eventId, @RequestParam("userId") String userId) {
+//        return null;
+//    }
+
 
 }

@@ -11,41 +11,33 @@ public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
-
+    private long roleId;
     private String guestName;
     private String username;
-    private String eventId;
-    private Boolean owner;
-    private Boolean user;
+    private long eventId;
+    private String role;
 
-    public Roles(long id, String guestName, String username, String eventId, Boolean owner, Boolean user) {
-        this.id = id;
-        this.guestName = guestName;
-        this.username = username;
-        this.eventId = eventId;
-        this.owner = owner;
-        this.user = user;
+    public Roles() {
+
     }
 
     @Override
     public String toString() {
         return "Roles{" +
-                "id=" + id +
+                "roleId=" + roleId +
                 ", guestName='" + guestName + '\'' +
                 ", username='" + username + '\'' +
-                ", eventId='" + eventId + '\'' +
-                ", owner=" + owner +
-                ", user=" + user +
+                ", eventId=" + eventId +
+                ", role='" + role + '\'' +
                 '}';
     }
 
-    public long getId() {
-        return id;
+    public long getRoleId() {
+        return roleId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
     }
 
     public String getGuestName() {
@@ -64,27 +56,27 @@ public class Roles {
         this.username = username;
     }
 
-    public String getEventId() {
+    public long getEventId() {
         return eventId;
     }
 
-    public void setEventId(String eventId) {
+    public void setEventId(long eventId) {
         this.eventId = eventId;
     }
 
-    public Boolean getOwner() {
-        return owner;
+    public String getRole() {
+        return role;
     }
 
-    public void setOwner(Boolean owner) {
-        this.owner = owner;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public Boolean getUser() {
-        return user;
-    }
-
-    public void setUser(Boolean user) {
-        this.user = user;
+    public Roles(long roleId, String guestName, String username, long eventId, String role) {
+        this.roleId = roleId;
+        this.guestName = guestName;
+        this.username = username;
+        this.eventId = eventId;
+        this.role = role;
     }
 }

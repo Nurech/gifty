@@ -50,6 +50,8 @@ export default {
         this.errors = error.response.data.message;
       });
     },
+
+
   }
 };
 </script>
