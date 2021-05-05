@@ -1,7 +1,8 @@
 <template>
   <div class="invite">
     <br>
-    <h3>Add your participants</h3><button v-on:click="testButton()">TEST</button>
+    <h3>Add your participants</h3>
+    <button v-on:click="testButton()">TEST</button>
     <br>
     <br>
     <table border="1">
@@ -15,7 +16,7 @@
       </thead>
       <tbody>
       <tr v-for="(item, index) in tableRows" :item="item">
-        <td>{{ item.guestId }}</td>
+        <td>{{ item.id }}</td>
         <td><input v-model="item.guestName" placeholder="Guest name"/></td>
         <td>{{ item.role }}</td>
         <td><input v-model="item.email" placeholder="E-mail"/></td>
@@ -35,35 +36,36 @@
 </template>
 <script type="text/javascript">
 import {post} from "axios";
+
 export default {
   data: function () {
     return {
-      'guestId': "",
+      'id': "",
       'guestName': "",
       'role': "",
       'email': "",
       'generateLink': "",
       'deleteButton': "",
       'randomNumber': "",
-      'tableRows': [{guestId: getRandom(6), role: "owner"}],
-      'infoks' : "Infopunkt"
+      'tableRows': [{id: getRandom(6), role: "owner"}],
+      'infoks': "Infopunkt"
     }
   },
   methods: {
     'testButton': function () {
       post('/api/user/', this.tableRows
-        ),
-      this.infoks = this.tableRows;
+      ),
+          this.infoks = this.tableRows;
     },
     addTableRow: function () {
-      this.guestId = getRandom(6);
+      this.id = getRandom(6);
       this.guestName = "";
       this.role = "user";
       this.email = "";
       this.generateLink = "";
       this.deleteButton = "";
       let my_objects = {
-        guestId: this.guestId,
+        id: this.id,
         guestName: this.guestName,
         role: this.role,
         email: this.email,
@@ -77,6 +79,7 @@ export default {
     }
   }
 };
+
 function getRandom(length) {
   var random = '0123456789';
   var result = "";
@@ -92,14 +95,17 @@ function getRandom(length) {
 h3 {
   margin: 40px 0 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }
