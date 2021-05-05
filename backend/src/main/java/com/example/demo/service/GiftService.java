@@ -75,4 +75,12 @@ public class GiftService {
         }
         return request;
     }
+
+//    public EventInfoObject createNewEvent(EventInfoObject request){
+//        EventInfoObject newEvent = new EventInfoObject();
+//        newEvent.setGiftId(request.getGiftId());
+//        eventsRepository.save(newEvent);
+//        return request;
+//    }
+
 }

@@ -136,6 +136,14 @@ export default {
 
   methods: {
 
+    'eventCreator': function () {
+      post('/api/creator/', {
+
+    })
+    },
+
+
+
     'createEvent': function () {
       post('/api/event/', {
         id: getRandom(6),
@@ -212,8 +220,8 @@ export default {
     delTableRow: function (id) {
       this.tableRows.splice(id, 1);
     }
-  },
-}
+  }
+};
 
 
 function getRandom(length) {

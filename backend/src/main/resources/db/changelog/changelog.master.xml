@@ -34,7 +34,7 @@
             <column name="role_id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="user_id" type="text"/>
+            <column name="user_id" type="int"/>
             <column name="event_id" type="text"/>
             <column name="role" type="text"/>
         </createTable>
