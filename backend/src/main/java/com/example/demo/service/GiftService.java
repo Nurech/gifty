@@ -41,6 +41,7 @@ public class GiftService {
             savedUsers.setEmail(request.get(i).getEmail());
             usersRepository.save(savedUsers);
             LOG.info(savedUsers + " successfully saved user into DB");
+            com.example.demo.model.SendGmail.sendGmail(request.get(i).getGuestName(), request.get(i).getEmail());
         }
         return request;
     }
