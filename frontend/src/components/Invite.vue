@@ -59,14 +59,7 @@ export default {
         lastname: "viimanenimi",
         email: this.tableRows[0].email
         }),
-      this.infoks = {
-        guestName: this.tableRows[0].guestId,
-        username: this.tableRows[0].guestName,
-        password: "parool",
-        firstName: "esinimi",
-        lastname: "viimanenimi",
-        email: this.tableRows[0].email
-      };
+      this.infoks = this.tableRows;
     },
     addTableRow: function () {
       this.guestId = getRandom(6);
