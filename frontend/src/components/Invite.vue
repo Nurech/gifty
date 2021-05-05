@@ -51,14 +51,8 @@ export default {
   },
   methods: {
     'testButton': function () {
-      post('/api/user/', {
-        guestName: this.tableRows[0].guestId,
-        username: this.tableRows[0].guestName,
-        password: "parool",
-        firstName: "esinimi",
-        lastName: "viimanenimi",
-        email: this.tableRows[0].email
-        }),
+      post('/api/user/', this.tableRows
+        ),
       this.infoks = this.tableRows;
     },
     addTableRow: function () {
