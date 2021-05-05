@@ -65,6 +65,7 @@ public class GiftService {
         savedEvent.setEventDate(request.getEventDate());
         savedEvent.setEventAuthor(request.getEventAuthor());
         eventsRepository.save(savedEvent);
+//        usersRepository.save()
         LOG.info(savedEvent + "successfully saved event into DB");
         return request;
     }
