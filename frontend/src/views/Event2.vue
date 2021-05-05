@@ -212,8 +212,8 @@ export default {
     delTableRow: function (id) {
       this.tableRows.splice(id, 1);
     }
-  },
-}
+  }
+};
 
 
 function getRandom(length) {
