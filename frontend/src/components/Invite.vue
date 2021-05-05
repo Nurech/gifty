@@ -56,7 +56,7 @@ export default {
         username: this.tableRows[0].guestName,
         password: "parool",
         firstName: "esinimi",
-        lastname: "viimanenimi",
+        lastName: "viimanenimi",
         email: this.tableRows[0].email
         }),
       this.infoks = this.tableRows;
