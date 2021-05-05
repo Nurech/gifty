@@ -12,18 +12,14 @@
 
 
     <div id="content-editable-table" class="container">
-      <h1>Editable Table to JSON with Vue.js</h1>
+      <h1>Event owner gift wishlist</h1>
       <table class="table table-striped editable-table">
-        <thead v-if="table.thead.length">
-        <tr>
-          <th v-for="(heading, index) in table.thead">
-            <input type="text" v-model="table.thead[index]" />
-          </th>
+        <thead>
+        <th>Id</th>
+        <th>Gift name</th>
+        <th>Gift amount</th>
+        <th>Gift description</th>
 
-          <th>
-            <button class="btn btn-primary" type="button" v-on:click="addColumn()" title="Add Column">+</button>
-          </th>
-        </tr>
         </thead>
 
         <tbody>
@@ -133,16 +129,6 @@ export default {
 
     updateTableJSON: function() {
       this.tableJSON = JSON.stringify(this.table);
-    },
-
-    addColumn: function() {
-      this.table.thead.push('Heading ' + (this.table.thead.length + 1));
-      let i = 0, length = this.table.tbody.length;
-      for(; i < length; i++) {
-        this.table.tbody[i].push('R:' + (i + 1) + ' V:' + this.table.thead.length);
-      }
-      this.table.tfoot.push('Footer ' + this.table.thead.length);
-      this.updateTableJSON();
     },
 
     addRow: function() {
