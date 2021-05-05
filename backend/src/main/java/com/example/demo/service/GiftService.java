@@ -32,6 +32,7 @@ public class GiftService {
     public List<UserObject> addNewUser(List<UserObject> request) {
         for (int i = 0; i < request.size(); i++) {
             Users savedUsers = new Users();
+            savedUsers.setId(request.get(i).getId());
             savedUsers.setGuestName(request.get(i).getGuestName());
             savedUsers.setUsername(request.get(i).getUsername());
             savedUsers.setPassword(request.get(i).getPassword());

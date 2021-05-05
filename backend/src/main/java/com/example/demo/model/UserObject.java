@@ -2,12 +2,21 @@ package com.example.demo.model;
 
 public class UserObject {
 
+    private long id;
     private String guestName;
     private String username;
     private String password;
     private String firstName;
     private String lastName;
     private String email;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getGuestName() {
         return guestName;
