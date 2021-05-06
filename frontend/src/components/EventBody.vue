@@ -64,4 +64,17 @@ function getRandom(length) {
 </script>
 
 <style scoped>
+button {
+  width: 150px;
+  padding: 10px 0;
+  text-align: center;
+  margin: 20px 10px;
+  border-radius: 25px;
+  font-weight: bold;
+  border: 2px solid #213b38;
+  background: transparent;
+  color: #009;
+  cursor: pointer;
+  position: relative;
+}
 </style>
