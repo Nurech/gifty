@@ -22,6 +22,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/event/**").permitAll()
                 .antMatchers("/api/gift").permitAll()
                 .antMatchers("/api/role").permitAll()
+                .antMatchers("/api/creator").permitAll()
+                .antMatchers("/api/creator/").permitAll()
                 .antMatchers("/api/user/**").permitAll() // allow every URI, that begins with '/api/user/'
                 .antMatchers("/api/secured").authenticated()
                 //.anyRequest().authenticated() // protect all other requests

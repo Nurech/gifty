@@ -18,7 +18,6 @@ public class Events {
     private String giftId;
 
     public Events() {
-
     }
 
     @Override

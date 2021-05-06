@@ -1,9 +1,5 @@
 // vue.config.js
 module.exports = {
-  // proxy all webpack dev-server requests starting with /api
-  // to our Spring Boot backend (localhost:5000) using http-proxy-middleware
-  // use 5000 for AWS
-  // see https://cli.vuejs.org/config/#devserver-proxy
   devServer: {
     proxy: {
       '/api': {

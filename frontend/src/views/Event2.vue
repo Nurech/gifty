@@ -9,8 +9,7 @@
     <input v-model="event.eventDescription" placeholder="Description">
     <input v-model="event.eventDate" placeholder="Event date"/>
     <input v-model="event.eventAuthor" placeholder="Event author"/>
-
-    <button v-on:click="createEvent()">Create Event old</button>
+    <br>
     <button v-on:click="eventCreator()">Create Event</button>
     <div v-if="showResponse"><h6>You created new event with Id: {{ event.id }}</h6></div>
 
@@ -18,7 +17,6 @@
     <!--//giftList-->
     <br>
     <h3>Add your gifts</h3>
-    <button v-on:click="postGiftList()">TEST</button>
     <br>
     <br>
     <table border="1" align="centre">
@@ -50,7 +48,6 @@
     <!--    //Invite-->
     <br>
     <h3>Add your participants</h3>
-    <button v-on:click="postUserList()">TEST</button>
     <br>
     <br>
     <table border="1">
@@ -64,7 +61,7 @@
       </thead>
       <tbody>
       <tr v-for="(item, index1) in tableRows1" :item="item">
-        <td>{{ item.guestId }}</td>
+        <td>{{ item.userId }}</td>
         <td><input v-model="item.guestName" placeholder="Guest name"/></td>
         <td>{{ item.role1 }}</td>
         <td><input v-model="item.email1" placeholder="E-mail"/></td>
@@ -95,10 +92,8 @@ export default {
 
     return {
       showResponse: false,
-
-      aadTableRows:{
-
-      },
+      'tableRows1': [{userId: getRandom(6), role1: "owner"}],
+      'tableRows': [{nr: getOne(1)}],
 
       CreateEvent: {
         eventId: '',
@@ -129,25 +124,7 @@ export default {
         eventDate: '',
         eventAuthor: '',
       },
-// user
-      'guestId': "",
-      'guestName': "",
-      'email1': "",
-      'generateLink1': "",
-      'deleteButton1': "",
-      'randomNumber1': "",
-      'tableRows1': [{guestId: getRandom(6), role1: "owner"}],
-      'infoks1': "Infopunkt1",
-// gift
-      'nr': "",
-      'giftTitle': "",
-      'giftAmount': "",
-      'email': "",
-      'giftDescription': "",
-      'deleteButton': "",
-      'randomNumber': "",
-      'tableRows': [{nr: getOne(1)}],
-      'infoks': ""
+
     }
   },
 
@@ -156,62 +133,26 @@ export default {
 
     'eventCreator': function () {
       post('/api/creator/', {
+        data: {
+          event: {
+            eventId: getRandom(6),
+            eventName: this.event.eventName,
+            eventDescription: this.event.eventDescription,
+            eventDate: this.event.eventDate,
+            eventAuthor: this.event.eventAuthor
+          },
+          roles: {
+            userId: this.userId,
+            eventId: this.eventId,
+            role: this.role
+          },
+          gifts: this.tableRows,
 
-        eventId: getRandom(6),
-        eventName: this.event.eventName,
-        eventDescription: this.event.eventDescription,
-        eventDate: this.event.eventDate,
-        eventAuthor: this.event.eventAuthor,
+          users: this.tableRows1,
 
-        giftId: getOne(1),
-        giftTitle: this.giftTitle,
-        giftAmount: this.giftAmount,
-        giftDescription: this.giftDescription,
-
-        userId: getRandom(6),
-        guestName: this.guestName,
-        username:  this.role1 = "user",
-        password: this.password,
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email1,
-
-
+          }
       })
     },
-
-
-    // EVENT
-    'createEvent': function () {
-      post('/api/event/', {
-        eventId: getRandom(6),
-        eventName: this.event.eventName, //button activate
-        eventDescription: this.event.eventDescription,
-        eventDate: this.event.eventDate,
-        eventAuthor: this.event.eventAuthor,
-      })
-          .then((response) => {
-            this.event = response.data;
-            console.log('Created new event with Id ' + response.data);
-            this.showResponse = true
-          }).catch((error) => {
-        this.errors = error.response.data.message;
-      })
-    },
-
-
-    // GIFT
-    postGiftList: function () {
-      post('/api/gift/', this.tableRows
-      )
-          .then((response) => {
-            this.showResponse = true
-          }).catch((error) => {
-        this.errors = error.response.data.message;
-      });
-      this.infoks = this.tableRows;
-    },
-
 
     // GIFT
     addTableRow: function () {
@@ -231,24 +172,16 @@ export default {
       this.tableRows.splice(id, 1);
     },
 
-
-    // USER
-    postUserList: function () {
-      post('/api/user/', this.tableRows1
-      ),
-          this.infoks1 = this.tableRows1;
-    },
-
     // USER
     addUserTableRow: function () {
-      this.guestId = getRandom(6);
+      this.userId = getRandom(6);
       this.guestName = "";
       this.role1 = "user";
       this.email1 = "";
       this.generateLink1 = "";
       this.deleteButton1 = "";
       let my_objects1 = {
-        guestId: this.guestId,
+        userId: this.userId,
         guestName: this.guestName,
         role1: this.role1,
         email1: this.email1,
@@ -274,13 +207,11 @@ function getRandom(length) {
 }
 
 let i = 0;
-
 function getOne(number) {
   let result = i + number;
   i++;
   return result;
 }
-
 
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

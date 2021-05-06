@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-public class EventInfoObject {
+public class CreatorObject {
 
     private long eventId;
     private String eventName;

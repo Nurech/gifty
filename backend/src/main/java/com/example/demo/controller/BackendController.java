@@ -37,11 +37,10 @@ public class BackendController {
     }
 
     @ResponseBody
-    @RequestMapping(path = "api/eventinfo/", method = RequestMethod.POST)
+    @RequestMapping(path = "api/creator/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public EventInfoObject addNewEvent(@RequestBody EventInfoObject request) {
-//        giftService.createNewEvent(request);
-        return request;
+    public List<CreatorObject> addNewEvent(@RequestBody List<CreatorObject> request) {
+       return giftService.createNewEvent(request);
     }
 
     @ResponseBody

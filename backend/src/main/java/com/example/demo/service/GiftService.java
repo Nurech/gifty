@@ -78,11 +78,23 @@ public class GiftService {
         return request;
     }
 
-//    public EventInfoObject createNewEvent(EventInfoObject request){
-//        EventInfoObject newEvent = new EventInfoObject();
-//        newEvent.setGiftId(request.getGiftId());
-//        eventsRepository.save(newEvent);
-//        return request;
-//    }
+    public List<CreatorObject> createNewEvent(List<CreatorObject> request){
+        for (int i = 0; i < request.size(); i++) {
+            //EVENT
+            Events event = new Events();
+            event.setEventAuthor(request.get(i).getEventAuthor());
+            event.setEventDate(request.get(i).getEventDate());
+            event.setEventName(request.get(i).getEventName());
+            eventsRepository.save(event);
+            //GIFT
+            Gift gift = new Gift();
+            gift.setEventId(request.get(i).getEventId());
+            giftsRepository.save(gift);
+            //USERS
+
+            //ROLES
+        }
+        return request;
+    }
 
 }

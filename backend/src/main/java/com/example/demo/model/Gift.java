@@ -15,7 +15,7 @@ public class Gift {
     private String giftTitle;
     private String giftAmount;
     private String giftDescription;
-    private String eventId;
+    private long eventId;
 
     @Override
     public String toString() {
@@ -60,11 +60,11 @@ public class Gift {
         this.giftDescription = giftDescription;
     }
 
-    public String getEventId() {
+    public long getEventId() {
         return eventId;
     }
 
-    public void setEventId(String eventId) {
+    public void setEventId(long eventId) {
         this.eventId = eventId;
     }
 
