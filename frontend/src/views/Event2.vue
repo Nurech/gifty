@@ -1,6 +1,7 @@
 <template>
   <div class="event" align="center">
 
+
     <!--    //Event-->
     <h1>Create event page</h1>
 
@@ -9,7 +10,8 @@
     <input v-model="event.eventDate" placeholder="Event date"/>
     <input v-model="event.eventAuthor" placeholder="Event author"/>
 
-    <button v-on:click="createEvent()">Create Event</button>
+    <button v-on:click="createEvent()">Create Event old</button>
+    <button v-on:click="eventCreator()">Create Event</button>
     <div v-if="showResponse"><h6>You created new event with Id: {{ event.id }}</h6></div>
 
 
@@ -62,9 +64,9 @@
       </thead>
       <tbody>
       <tr v-for="(item, index1) in tableRows1" :item="item">
-        <td>{{ item.guestId1 }}</td>
-        <td><input v-model="item.guestName1" placeholder="Guest name"/></td>
-        <td>{{ item.role }}</td>
+        <td>{{ item.guestId }}</td>
+        <td><input v-model="item.guestName" placeholder="Guest name"/></td>
+        <td>{{ item.role1 }}</td>
         <td><input v-model="item.email1" placeholder="E-mail"/></td>
         <td>{{ item.generateLink1 }}</td>
         <td>
@@ -94,6 +96,32 @@ export default {
     return {
       showResponse: false,
 
+      aadTableRows:{
+
+      },
+
+      CreateEvent: {
+        eventId: '',
+        eventName: '',
+        eventDescription: '',
+        eventDate: '',
+        eventAuthor: '',
+
+        giftId: '',
+        giftTitle: '',
+        giftAmount: '',
+        giftDescription: '',
+
+        userId: '',
+        guestName: '',
+        username: '',
+        password: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+
+      },
+
       event: {
         id: '',
         eventName: '',
@@ -101,15 +129,16 @@ export default {
         eventDate: '',
         eventAuthor: '',
       },
-
-      'guestName1': "",
+// user
+      'guestId': "",
+      'guestName': "",
       'email1': "",
       'generateLink1': "",
       'deleteButton1': "",
       'randomNumber1': "",
-      'tableRows1': [{guestId1: getRandom(6), role: "owner1"}],
+      'tableRows1': [{guestId: getRandom(6), role1: "owner"}],
       'infoks1': "Infopunkt1",
-
+// gift
       'nr': "",
       'giftTitle': "",
       'giftAmount': "",
@@ -122,11 +151,35 @@ export default {
     }
   },
 
+
   methods: {
 
     'eventCreator': function () {
-      post('/api/creator/', {})
+      post('/api/creator/', {
+
+        eventId: getRandom(6),
+        eventName: this.event.eventName,
+        eventDescription: this.event.eventDescription,
+        eventDate: this.event.eventDate,
+        eventAuthor: this.event.eventAuthor,
+
+        giftId: getOne(1),
+        giftTitle: this.giftTitle,
+        giftAmount: this.giftAmount,
+        giftDescription: this.giftDescription,
+
+        userId: getRandom(6),
+        guestName: this.guestName,
+        username:  this.role1 = "user",
+        password: this.password,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email1,
+
+
+      })
     },
+
 
     // EVENT
     'createEvent': function () {
@@ -176,40 +229,40 @@ export default {
     },
     delTableRow: function (id) {
       this.tableRows.splice(id, 1);
+    },
+
+
+    // USER
+    postUserList: function () {
+      post('/api/user/', this.tableRows1
+      ),
+          this.infoks1 = this.tableRows1;
+    },
+
+    // USER
+    addUserTableRow: function () {
+      this.guestId = getRandom(6);
+      this.guestName = "";
+      this.role1 = "user";
+      this.email1 = "";
+      this.generateLink1 = "";
+      this.deleteButton1 = "";
+      let my_objects1 = {
+        guestId: this.guestId,
+        guestName: this.guestName,
+        role1: this.role1,
+        email1: this.email1,
+        generateLink1: this.generateLink1,
+        deleteButton1: this.deleteButton1
+      };
+      this.tableRows1.push(my_objects1);
+    },
+
+    delUserTableRow: function (id) {
+      this.tableRows1.splice(id, 1);
     }
-  },
-
-
-  // USER
-  postUserList: function () {
-    post('/api/user/', this.tableRows1
-    )
-        this.infoks = this.tableRows1;
-  },
-
-  // USER
-  addUserTableRow: function () {
-    this.UserId = getRandom(6);
-    this.guestName = "";
-    this.role = "user";
-    this.email = "";
-    this.generateLink = "";
-    this.deleteButton = "";
-    let my_objects = {
-      UserId: this.UserId,
-      guestName: this.guestName,
-      role: this.role,
-      email: this.email,
-      generateLink: this.generateLink,
-      deleteButton: this.deleteButton
-    };
-    this.tableRows1.push(my_objects);
-  },
-
-  delUserTableRow: function (id) {
-    this.tableRows1.splice(id, 1);
   }
-};
+}
 
 function getRandom(length) {
   var random = '0123456789';
@@ -221,6 +274,7 @@ function getRandom(length) {
 }
 
 let i = 0;
+
 function getOne(number) {
   let result = i + number;
   i++;
@@ -231,6 +285,27 @@ function getOne(number) {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+/*// button design muutke kui tahate*/
+/*button {*/
+/*  width: 200px;*/
+/*  height: 50px;*/
+/*  padding: 10px 0;*/
+/*  text-align: center;*/
+/*  margin: 10px 20px;*/
+/*  border-radius: 50px;*/
+/*  font-weight: bold;*/
+/*  border: 3px solid #113270;*/
+/*  background: #5fcabf;*/
+/*  color: #000099;*/
+/*  cursor: pointer;*/
+/*  position: relative;*/
+/*}*/
+
+/*button:hover {*/
+/*  color: #ffffff;*/
+/*}*/
+
+
 h3 {
   margin: 40px 0 0;
 }
