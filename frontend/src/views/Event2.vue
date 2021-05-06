@@ -122,13 +122,11 @@ export default {
     }
   },
 
-
   methods: {
 
     'eventCreator': function () {
       post('/api/creator/', {})
     },
-
 
     // EVENT
     'createEvent': function () {
@@ -181,10 +179,11 @@ export default {
     }
   },
 
+
   // USER
   postUserList: function () {
     post('/api/user/', this.tableRows1
-    ),
+    )
         this.infoks = this.tableRows1;
   },
 
