@@ -28,16 +28,32 @@
       </tbody>
     </table>
     <br>
-    {{ infoks }}
-    <br>
     <button @click='addTableRow()'>Add New Row</button>
-
+    <br>
+    {{ infovali }}
+    <div class="wrapper">
+      <h3>Message to be sent by e-mail:</h3>
+      <ResizeAuto>
+        <template v-slot:default="{resize}">
+        <textarea
+            class="textarea"
+            @input="resize"
+            placeholder="Please insert Your message to the gift choosers"
+            v-model="messageEmail"
+        ></textarea>
+        </template>
+      </ResizeAuto>
+    </div>
   </div>
 </template>
 <script type="text/javascript">
 import {post} from "axios";
+import ResizeAuto from "./ResizeAuto";
 
 export default {
+  name: "App",
+  components: {ResizeAuto},
+
   data: function () {
     return {
       'userId': "",
@@ -47,15 +63,21 @@ export default {
       'generateLink': "",
       'deleteButton': "",
       'randomNumber': "",
-      'tableRows': [{userId: getRandom(6), role: "owner"}],
-      'infoks': "Infopunkt"
+      'messageEmail': "",
+      'infovali': "",
+      'tableRows': [{userId: getRandom(6), role: "owner"}]
     }
   },
   methods: {
     'testButton': function () {
-      post('/api/user/', this.tableRows
-      ),
-          this.infoks = this.tableRows;
+      let result = {
+        'message': this.messageEmail,
+        'guests': this.tableRows
+      }
+      this.infovali = result;
+
+      post('/api/user/', result
+      )
     },
     addTableRow: function () {
       this.userId = getRandom(6);
@@ -79,18 +101,16 @@ export default {
     }
   }
 };
-
 function getRandom(length) {
-  var random = '0123456789';
-  var result = "";
-  for (var i = 0; i < length; i++) {
+  let random = '0123456789';
+  let result = "";
+  for (let i = 0; i < length; i++) {
     result += random.charAt(Math.floor(Math.random() * random.length));
   }
   return result;
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 h3 {
   margin: 40px 0 0;
@@ -108,5 +128,23 @@ li {
 
 a {
   color: #42b983;
+}
+
+wrapper {
+  padding: 15px;
+}
+
+textarea {
+  overflow-y: hidden;
+  resize: both;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-color: #edf2f7;
+  background-color: #edf2f7;
+  border-width: 0.25rem;
+  border-radius: 0.2rem;
+  max-height: 18rem;
+  min-width: 15rem;
+  appearance: none;
 }
 </style>
