@@ -216,7 +216,7 @@ function getOne(number) {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-/*// button design muutke kui tahate*/
+/*// button design proovisin kujundust muutke kui tahate*/
 /*button {*/
 /*  width: 200px;*/
 /*  height: 50px;*/
@@ -226,16 +226,32 @@ function getOne(number) {
 /*  border-radius: 50px;*/
 /*  font-weight: bold;*/
 /*  border: 3px solid #113270;*/
-/*  background: #5fcabf;*/
+/*  background: #eea15e;*/
 /*  color: #000099;*/
 /*  cursor: pointer;*/
 /*  position: relative;*/
 /*}*/
-
 /*button:hover {*/
 /*  color: #ffffff;*/
 /*}*/
 
+/*table{*/
+/*  font-family: 'Times New Roman'*/
+/*  , Times*/
+/*  , serif;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*  color: #0d0b0c;*/
+/*  margin: 25px auto 0;*/
+/*  width: 500px;*/
+/*  background-color: #5490d1*/
+/*}*/
+
+/*body {*/
+/*  background: #dd3a12; !* fallback for old browsers *!*/
+/*  background: -webkit-linear-gradient(to right, #44f81c, #b53030); !* Chrome 10-25, Safari 5.1-6 *!*/
+/*  background: linear-gradient(to right, #47f805, #a02318); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+/*}*/
 
 h3 {
   margin: 40px 0 0;
