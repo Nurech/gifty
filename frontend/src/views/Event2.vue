@@ -1,56 +1,37 @@
 <template>
+
   <div class="event" align="center">
 
+    <div class="shadow p-3 mb-5 bg-white rounded"><h1>Create event</h1></div>
+    <!--    design test end -->
 
-    <!--    //Event-->
-    <h1>Create event page</h1>
+    <divtable class="table table-bordered table-dark" >
 
-    <input v-model="event.eventName" placeholder="Event name"/>
-    <input v-model="event.eventDescription" placeholder="Description">
-    <input v-model="event.eventDate" placeholder="Event date"/>
-    <input v-model="event.eventAuthor" placeholder="Event author"/>
-    <br>
-    <button v-on:click="eventCreator()">Create Event</button>
-    <div v-if="showResponse"><h6>You created new event with Id: {{ event.id }}</h6></div>
-
-
-    <!--//giftList-->
-    <br>
-    <h3>Add your gifts</h3>
-    <br>
-    <br>
-    <table border="1" align="centre">
       <thead>
-      <th>#</th>
-      <th>Gift title</th>
-      <th>How many</th>
+      <th>Event name</th>
       <th>Description</th>
+      <th>Event date</th>
+      <th>Event author</th>
       <th></th>
       </thead>
       <tbody>
-      <tr v-for="(item, gift_index) in giftRows" :item="item">
-        <td>{{ item.nr }}</td>
-        <td><input v-model="item.giftTitle" placeholder="Gift Title"/></td>
-        <td><input v-model="item.giftAmount" placeholder="Amount"/></td>
-        <td><input v-model="item.giftDescription" placeholder="Gift Description"/></td>
-        <td>
-          <button @click='delTableRow(gift_index)'>Remove</button>
-        </td>
+
+      <tr>
+        <td><input v-model="event.eventName" placeholder="Event name"class="font-weight-bold"/></td>
+        <td> <input v-model="event.eventDescription" placeholder="Description"/></td>
+        <td><input v-model="event.eventDate" placeholder="Event date"/></td>
+        <td><input v-model="event.eventAuthor" placeholder="Event author"/></td>
+
       </tr>
       </tbody>
-    </table>
+    </divtable>
     <br>
-    <!--    {{ infoks }}-->
-    <br>
-    <button @click='addTableRow()'>Add New Row</button>
 
-
-    <!--    //Invite-->
     <br>
     <h3>Add your participants</h3>
     <br>
     <br>
-    <table border="1">
+    <divtable class="table table-bordered table-dark">
       <thead>
       <th>Guest id</th>
       <th>Guest name</th>
@@ -67,18 +48,53 @@
         <td><input v-model="item.email" placeholder="E-mail"/></td>
         <td>{{ item.generateLink }}</td>
         <td>
-          <button @click='delUserTableRow(user_index)'>Remove</button>
+          <button @click='delUserTableRow(user_index)' class="btn btn-danger">Remove</button>
         </td>
       </tr>
       </tbody>
-    </table>
+    </divtable>
     <br>
     <!--    {{ infoks1 }}-->
+
+    <button @click='addUserTableRow()' class="btn btn-success">Add guest</button>
+
+    <!--//giftList-->
     <br>
-    <button @click='addUserTableRow()'>Add New Row</button>
+    <h3>Add your gifts</h3>
+    <br>
+    <br>
+    <divtable class="table table-bordered table-dark">
+
+      <thead>
+      <th>#</th>
+      <th>Gift title</th>
+      <th>How many</th>
+      <th>Description</th>
+      <th></th>
+      </thead>
+      <tbody>
+
+      <tr v-for="(item, gift_index) in giftRows" :item="item">
+        <td>{{ item.nr }}</td>
+        <td><input v-model="item.giftTitle" placeholder="Gift Title"/></td>
+        <td><input v-model="item.giftAmount" placeholder="Amount"/></td>
+        <td><input v-model="item.giftDescription" placeholder="Gift Description"/></td>
+        <td>
+          <button @click='delTableRow(gift_index)' class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+      </tbody>
+    </divtable>
+    <br>
+    <!--    {{ infoks }}-->
+
+    <button @click='addTableRow()' class="btn btn-success">Add gift</button>
+
+
 
     <div class="wrapper">
       <h3>Message to be sent by e-mail:</h3>
+      <br>
       <ResizeAuto>
         <template v-slot:default="{resize}">
         <textarea
@@ -90,6 +106,23 @@
         </template>
       </ResizeAuto>
     </div>
+<!--    <input v-model="event.eventName" placeholder="Event name"/>-->
+<!--    <input v-model="event.eventDescription" placeholder="Description"/>-->
+<!--    <input v-model="event.eventDate" placeholder="Event date"/>-->
+<!--    <input v-model="event.eventAuthor" placeholder="Event author"/>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    <br>-->
+    <br>
+    <br>
+    <button v-on:click="eventCreator()" class="btn btn-primary">Create Event</button>
+    <div v-if="showResponse"><h6>You created new event with Id: {{ event.id }}</h6></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
 
   </div>
 </template>
@@ -188,7 +221,7 @@ export default {
       this.giftRows.splice(id, 1);
     },
 
-    
+
     // USER
     addUserTableRow: function () {
       this.userId = getRandom(6);
@@ -265,11 +298,11 @@ function getOne(number) {
 /*  background-color: #5490d1*/
 /*}*/
 
-/*body {*/
-/*  background: #dd3a12; !* fallback for old browsers *!*/
-/*  background: -webkit-linear-gradient(to right, #44f81c, #b53030); !* Chrome 10-25, Safari 5.1-6 *!*/
-/*  background: linear-gradient(to right, #47f805, #a02318); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
-/*}*/
+body {
+  background: #cd7557; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #77b4ea, #e27e47); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #76b1e7, #e2794d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
 h3 {
   margin: 40px 0 0;
