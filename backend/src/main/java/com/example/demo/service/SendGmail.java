@@ -22,6 +22,7 @@ public class SendGmail {
         props.put("mail.smtp.port", "587"); //TLS Port
         props.put("mail.smtp.auth", "true"); //enable authentication
         props.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
 
         //create Authenticator object to pass in Session.getInstance argument
         Authenticator auth = new Authenticator() {
@@ -32,12 +33,10 @@ public class SendGmail {
         };
 
         //TODO generatedlink
-
         //static info
         String subject = "Kiri Gifter´ilt! Tere, see on e-mail Gifter´ilt!";
         String message = "Hello +" + guestName+userId + " you have been invited to "+ eventName+eventId + " your personal link is = " + "\n" +
                 messageEmail;
-
 
         Session session = Session.getInstance(props, auth);
         com.example.demo.model.EmailUtil.sendEmail(session, email, subject, message);
