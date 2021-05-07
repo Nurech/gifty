@@ -29,21 +29,21 @@ public class GiftService {
     @Autowired
     UsersRepository usersRepository;
 
-    public List<UserObject> addNewUser(List<UserObject> request) {
-        for (int i = 0; i < request.size(); i++) {
+    public String addNewUser(CreateUser request) {
+        for (int i = 0; i < request.getGuests().size(); i++) {
             Users savedUsers = new Users();
-            savedUsers.setUserId(request.get(i).getUserId());
-            savedUsers.setGuestName(request.get(i).getGuestName());
-            savedUsers.setUsername(request.get(i).getUsername());
-            savedUsers.setPassword(request.get(i).getPassword());
-            savedUsers.setFirstName(request.get(i).getFirstName());
-            savedUsers.setLastName(request.get(i).getLastName());
-            savedUsers.setEmail(request.get(i).getEmail());
+            savedUsers.setUserId(request.getGuests().get(i).getUserId());
+            savedUsers.setGuestName(request.getGuests().get(i).getGuestName());
+            savedUsers.setUsername(request.getGuests().get(i).getUsername());
+            savedUsers.setPassword(request.getGuests().get(i).getPassword());
+            savedUsers.setFirstName(request.getGuests().get(i).getFirstName());
+            savedUsers.setLastName(request.getGuests().get(i).getLastName());
+            savedUsers.setEmail(request.getGuests().get(i).getEmail());
             usersRepository.save(savedUsers);
             LOG.info(savedUsers + " successfully saved user into DB");
-            com.example.demo.model.SendGmail.sendGmail(request.get(i).getGuestName(), request.get(i).getEmail());
+            com.example.demo.model.SendGmail.sendGmail(request.getGuests().get(i).getGuestName(), request.getGuests().get(i).getEmail(), request.getMessage());
         }
-        return request;
+        return "Guests added to the db and email sent.";
     }
 
     public List<GiftObject> addNewGiftList(List<GiftObject> request) {
