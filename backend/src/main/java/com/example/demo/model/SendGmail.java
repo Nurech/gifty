@@ -12,7 +12,7 @@ public class SendGmail {
      * Use Authentication: Yes
      * Port for TLS/STARTTLS: 587
      */
-    public static void sendGmail(String gName, String toEmail) {
+    public static void sendGmail(String gName, String toEmail, String message) {
         final String fromEmail = "gifter4you@gmail.com"; //requires valid gmail id
         final String password = "Gifter1234you"; // correct password for gmail id
 
@@ -32,6 +32,6 @@ public class SendGmail {
         };
         Session session = Session.getInstance(props, auth);
 
-        com.example.demo.model.EmailUtil.sendEmail(session, toEmail, "Kiri Gifter´ilt!", "Tere, see on e-mail Gifter´ilt! " + gName);
+        com.example.demo.model.EmailUtil.sendEmail(session, toEmail, "Kiri Gifter´ilt!", "Tere, see on e-mail Gifter´ilt! " + gName + "\n" + message);
     }
 }

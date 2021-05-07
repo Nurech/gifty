@@ -18,7 +18,7 @@ public class BackendController {
     @ResponseBody
     @RequestMapping(path = "api/user/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public List<UserObject> addNewUser(@RequestBody List<UserObject> request) {
+    public String addNewUser(@RequestBody CreateUser request) {
         return giftService.addNewUser(request);
     }
 
