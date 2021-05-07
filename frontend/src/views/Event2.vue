@@ -77,6 +77,19 @@
     <br>
     <button @click='addUserTableRow()'>Add New Row</button>
 
+    <div class="wrapper">
+      <h3>Message to be sent by e-mail:</h3>
+      <ResizeAuto>
+        <template v-slot:default="{resize}">
+        <textarea
+            class="textarea"
+            @input="resize"
+            placeholder="Please insert Your message to the gift choosers"
+            v-model="event.messageEmail"
+        ></textarea>
+        </template>
+      </ResizeAuto>
+    </div>
 
   </div>
 </template>
@@ -84,9 +97,11 @@
 <script>
 
 import {post} from "axios";
+import ResizeAuto from "@/components/ResizeAuto";
 
 export default {
   name: "Event2",
+  components: {ResizeAuto},
 
   data: function () {
 
@@ -94,6 +109,7 @@ export default {
       showResponse: false,
       'userRows': [{userId: getRandom(6), role1: "owner"}],
       'giftRows': [{nr: getOne(1)}],
+      'messageEmail': "",
 
       CreateEvent: {
         eventId: '',
@@ -139,7 +155,8 @@ export default {
           eventName: this.event.eventName,
           eventDescription: this.event.eventDescription,
           eventDate: this.event.eventDate,
-          eventAuthor: this.event.eventAuthor
+          eventAuthor: this.event.eventAuthor,
+          messageEmail: this.event.messageEmail,
         },
         gifts: this.giftRows,
 

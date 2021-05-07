@@ -7,6 +7,15 @@ public class EventRequest {
     private String eventDate;
     private String eventAuthor;
     private String giftId;
+    private String messageEmail;
+
+    public String getMessageEmail() {
+        return messageEmail;
+    }
+
+    public void setMessageEmail(String messageEmail) {
+        this.messageEmail = messageEmail;
+    }
 
     public long getEventId() {
         return eventId;

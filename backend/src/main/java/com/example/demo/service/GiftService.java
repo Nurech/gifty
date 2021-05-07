@@ -71,7 +71,7 @@ public class GiftService {
         return request;
     }
 
-    public RoleRequest addNewRoles(RoleRequest request) {
+    public List<RoleRequest> addNewRoles(List<RoleRequest> request) {
 //        for (RolesObject userObject : request) {
 //        }
         return request;
@@ -108,14 +108,16 @@ public class GiftService {
             user.setEmail(request.getUsers().get(i).getEmail());
             usersRepository.save(user);
 
-            // sends all info to sendGemail class on each loop
+            // sends all info to sendGmail class on each loop
             SendGmail.sendGmail(
                     request.getUsers().get(i).getUserId(),
                     request.getUsers().get(i).getGuestName(),
                     request.getEvent().getEventId(),
                     request.getEvent().getEventName(),
-                    request.getUsers().get(i).getEmail());
+                    request.getUsers().get(i).getEmail(),
+                    request.getEvent().getMessageEmail());
         }
+
         //ROLES
 //        Role role = new Role();
 //        role.setUserId(request.getRole().getUserId());

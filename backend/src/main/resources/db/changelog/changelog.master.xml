@@ -28,6 +28,7 @@
             <column name="event_date" type="text"/>
             <column name="event_author" type="text"/>
             <column name="gift_id" type="text"/>
+            <column name="message_email" type="text"/>
         </createTable>
 
         <createTable tableName="roles">

@@ -16,9 +16,7 @@ public class Event {
     private String eventDate;
     private String eventAuthor;
     private String giftId;
-
-    public Event() {
-    }
+    private String messageEmail;
 
     @Override
     public String toString() {
@@ -29,6 +27,7 @@ public class Event {
                 ", eventDate='" + eventDate + '\'' +
                 ", eventAuthor='" + eventAuthor + '\'' +
                 ", giftId='" + giftId + '\'' +
+                ", messageEmail='" + messageEmail + '\'' +
                 '}';
     }
 
@@ -80,12 +79,24 @@ public class Event {
         this.giftId = giftId;
     }
 
-    public Event(long eventId, String eventName, String eventDescription, String eventDate, String eventAuthor, String giftId) {
+    public String getMessageEmail() {
+        return messageEmail;
+    }
+
+    public void setMessageEmail(String messageEmail) {
+        this.messageEmail = messageEmail;
+    }
+
+    public Event(long eventId, String eventName, String eventDescription, String eventDate, String eventAuthor, String giftId, String messageEmail) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.eventDescription = eventDescription;
         this.eventDate = eventDate;
         this.eventAuthor = eventAuthor;
         this.giftId = giftId;
+        this.messageEmail = messageEmail;
+    }
+
+    public Event() {
     }
 }

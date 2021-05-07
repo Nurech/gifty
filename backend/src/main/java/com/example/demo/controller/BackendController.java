@@ -46,7 +46,7 @@ public class BackendController {
     @ResponseBody
     @RequestMapping(path = "api/role/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public RoleRequest addNewRole(@RequestBody RoleRequest request) {
+    public List<RoleRequest> addNewRole(@RequestBody List<RoleRequest> request) {
         return giftService.addNewRoles(request);
     }
 
