@@ -40,7 +40,7 @@
       </tbody>
     </table>
     <br>
-    {{ infoks }}
+    <!--    {{ infoks }}-->
     <br>
     <button @click='addTableRow()'>Add New Row</button>
 
@@ -73,7 +73,7 @@
       </tbody>
     </table>
     <br>
-    {{ infoks1 }}
+    <!--    {{ infoks1 }}-->
     <br>
     <button @click='addUserTableRow()'>Add New Row</button>
 
@@ -125,6 +125,7 @@ export default {
         eventAuthor: '',
       },
 
+
     }
   },
 
@@ -133,24 +134,22 @@ export default {
 
     'eventCreator': function () {
       post('/api/creator/', {
-        data: {
-          event: {
-            eventId: getRandom(6),
-            eventName: this.event.eventName,
-            eventDescription: this.event.eventDescription,
-            eventDate: this.event.eventDate,
-            eventAuthor: this.event.eventAuthor
-          },
-          roles: {
-            userId: this.userId,
-            eventId: this.eventId,
-            role: this.role
-          },
-          gifts: this.tableRows,
+        event: {
+          eventId: getRandom(6),
+          eventName: this.event.eventName,
+          eventDescription: this.event.eventDescription,
+          eventDate: this.event.eventDate,
+          eventAuthor: this.event.eventAuthor
+        },
+        gifts: this.tableRows,
 
-          users: this.tableRows1,
+        users: this.tableRows1,
 
-          }
+        roles: {
+          userId: this.userId,
+          eventId: this.eventId,
+          role: this.role
+        }
       })
     },
 
@@ -198,15 +197,16 @@ export default {
 }
 
 function getRandom(length) {
-  var random = '0123456789';
-  var result = "";
-  for (var i = 0; i < length; i++) {
+  let random = '0123456789';
+  let result = "";
+  for (let i = 0; i < length; i++) {
     result += random.charAt(Math.floor(Math.random() * random.length));
   }
   return result;
 }
 
 let i = 0;
+
 function getOne(number) {
   let result = i + number;
   i++;

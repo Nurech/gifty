@@ -18,35 +18,35 @@ public class BackendController {
     @ResponseBody
     @RequestMapping(path = "api/user/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public List<UserObject> addNewUser(@RequestBody List<UserObject> request) {
+    public List<UserRequest> addNewUser(@RequestBody List<UserRequest> request) {
         return giftService.addNewUser(request);
     }
 
     @ResponseBody
     @RequestMapping(path = "api/gift/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public List<GiftObject> addNewGift(@RequestBody List<GiftObject> request) {
+    public List<GiftRequest> addNewGift(@RequestBody List<GiftRequest> request) {
         return giftService.addNewGiftList(request);
     }
 
     @ResponseBody
     @RequestMapping(path = "api/event/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public EventObject addNewEvent(@RequestBody EventObject request) {
+    public EventRequest addNewEvent(@RequestBody EventRequest request) {
         return giftService.addNewEvent(request);
     }
 
     @ResponseBody
     @RequestMapping(path = "api/creator/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public List<CreatorObject> addNewEvent(@RequestBody List<CreatorObject> request) {
+    public EventDataRequest addNewEvent(@RequestBody EventDataRequest request) {
        return giftService.createNewEvent(request);
     }
 
     @ResponseBody
     @RequestMapping(path = "api/role/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public List<RolesObject> addNewRole(@RequestBody List<RolesObject> request) {
+    public RoleRequest addNewRole(@RequestBody RoleRequest request) {
         return giftService.addNewRoles(request);
     }
 

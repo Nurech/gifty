@@ -1,16 +1,7 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
+public class UserRequest {
 
-
-@Entity
-@Table(name="users")
-public class Users {
-
-    // PrimaryKey
-   @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
-   // @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long userId;
     private String guestName;
     private String username;
@@ -18,23 +9,6 @@ public class Users {
     private String firstName;
     private String lastName;
     private String email;
-
-    public Users() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Users{" +
-                "userId=" + userId +
-                ", guestName='" + guestName + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 
     public long getUserId() {
         return userId;
@@ -89,16 +63,6 @@ public class Users {
     }
 
     public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Users(long userId, String guestName, String username, String password, String firstName, String lastName, String email) {
-        this.userId = userId;
-        this.guestName = guestName;
-        this.username = username;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.email = email;
     }
 }

@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="events")
-public class Events {
+public class Event {
 
     // PrimaryKey
     @Id
@@ -17,12 +17,12 @@ public class Events {
     private String eventAuthor;
     private String giftId;
 
-    public Events() {
+    public Event() {
     }
 
     @Override
     public String toString() {
-        return "Events{" +
+        return "Event{" +
                 "eventId=" + eventId +
                 ", eventName='" + eventName + '\'' +
                 ", eventDescription='" + eventDescription + '\'' +
@@ -80,7 +80,7 @@ public class Events {
         this.giftId = giftId;
     }
 
-    public Events(long eventId, String eventName, String eventDescription, String eventDate, String eventAuthor, String giftId) {
+    public Event(long eventId, String eventName, String eventDescription, String eventDate, String eventAuthor, String giftId) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.eventDescription = eventDescription;

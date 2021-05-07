@@ -2,32 +2,29 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name="roles")
-public class Roles {
+public class Role {
 
     // PrimaryKey
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long roleId;
-    private String guestName;
-    private String username;
-    private long eventId;
+    private long userId;
+    private String eventId;
     private String role;
 
-    public Roles() {
+    public Role() {
 
     }
 
     @Override
     public String toString() {
-        return "Roles{" +
+        return "Role{" +
                 "roleId=" + roleId +
-                ", guestName='" + guestName + '\'' +
-                ", username='" + username + '\'' +
-                ", eventId=" + eventId +
+                ", userId='" + userId + '\'' +
+                ", eventId='" + eventId + '\'' +
                 ", role='" + role + '\'' +
                 '}';
     }
@@ -40,27 +37,19 @@ public class Roles {
         this.roleId = roleId;
     }
 
-    public String getGuestName() {
-        return guestName;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setGuestName(String guestName) {
-        this.guestName = guestName;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public long getEventId() {
+    public String getEventId() {
         return eventId;
     }
 
-    public void setEventId(long eventId) {
+    public void setEventId(String eventId) {
         this.eventId = eventId;
     }
 
@@ -72,10 +61,9 @@ public class Roles {
         this.role = role;
     }
 
-    public Roles(long roleId, String guestName, String username, long eventId, String role) {
+    public Role(long roleId, long userId, String eventId, String role) {
         this.roleId = roleId;
-        this.guestName = guestName;
-        this.username = username;
+        this.userId = userId;
         this.eventId = eventId;
         this.role = role;
     }

@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-public class GiftObject {
+public class GiftRequest {
 
     private long giftId;
     private String giftTitle;
@@ -47,4 +47,5 @@ public class GiftObject {
     public void setEventId(String eventId) {
         this.eventId = eventId;
     }
+
 }

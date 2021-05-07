@@ -29,24 +29,24 @@ public class GiftService {
     @Autowired
     UsersRepository usersRepository;
 
-    public List<UserObject> addNewUser(List<UserObject> request) {
+    public List<UserRequest> addNewUser(List<UserRequest> request) {
         for (int i = 0; i < request.size(); i++) {
-            Users savedUsers = new Users();
-            savedUsers.setUserId(request.get(i).getUserId());
-            savedUsers.setGuestName(request.get(i).getGuestName());
-            savedUsers.setUsername(request.get(i).getUsername());
-            savedUsers.setPassword(request.get(i).getPassword());
-            savedUsers.setFirstName(request.get(i).getFirstName());
-            savedUsers.setLastName(request.get(i).getLastName());
-            savedUsers.setEmail(request.get(i).getEmail());
-            usersRepository.save(savedUsers);
-            LOG.info(savedUsers + " successfully saved user into DB");
+            User savedUser = new User();
+            savedUser.setUserId(request.get(i).getUserId());
+            savedUser.setGuestName(request.get(i).getGuestName());
+            savedUser.setUsername(request.get(i).getUsername());
+            savedUser.setPassword(request.get(i).getPassword());
+            savedUser.setFirstName(request.get(i).getFirstName());
+            savedUser.setLastName(request.get(i).getLastName());
+            savedUser.setEmail(request.get(i).getEmail());
+            usersRepository.save(savedUser);
+            LOG.info(savedUser + " successfully saved user into DB");
             com.example.demo.model.SendGmail.sendGmail(request.get(i).getGuestName(), request.get(i).getEmail());
         }
         return request;
     }
 
-    public List<GiftObject> addNewGiftList(List<GiftObject> request) {
+    public List<GiftRequest> addNewGiftList(List<GiftRequest> request) {
         for (int i = 0; i < request.size(); i++) {
             Gift savedGift = new Gift();
             savedGift.setGiftTitle(request.get(i).getGiftTitle());
@@ -58,8 +58,8 @@ public class GiftService {
         return request;
     }
 
-    public EventObject addNewEvent(EventObject request) {
-        Events savedEvent = new Events();
+    public EventRequest addNewEvent(EventRequest request) {
+        Event savedEvent = new Event();
         savedEvent.setEventId(request.getEventId());
         savedEvent.setEventName(request.getEventName());
         savedEvent.setEventDescription(request.getEventDescription());
@@ -71,29 +71,50 @@ public class GiftService {
         return request;
     }
 
-    public List<RolesObject> addNewRoles(List<RolesObject> request) {
-        for (RolesObject userObject : request) {
-
-        }
+    public RoleRequest addNewRoles(RoleRequest request) {
+//        for (RolesObject userObject : request) {
+//        }
         return request;
     }
 
-    public List<CreatorObject> createNewEvent(List<CreatorObject> request){
-        for (int i = 0; i < request.size(); i++) {
-            //EVENT
-            Events event = new Events();
-            event.setEventAuthor(request.get(i).getEventAuthor());
-            event.setEventDate(request.get(i).getEventDate());
-            event.setEventName(request.get(i).getEventName());
-            eventsRepository.save(event);
-            //GIFT
-            Gift gift = new Gift();
-            gift.setEventId(request.get(i).getEventId());
-            giftsRepository.save(gift);
-            //USERS
+    public EventDataRequest createNewEvent(EventDataRequest request) {
 
-            //ROLES
+        //EVENT
+        Event event = new Event();
+        event.setEventId(request.getEvent().getEventId());
+        event.setEventName(request.getEvent().getEventName());
+        event.setEventDescription(request.getEvent().getEventDescription());
+        event.setEventDate(request.getEvent().getEventDate());
+        event.setEventAuthor(request.getEvent().getEventAuthor());
+        event.setGiftId(request.getEvent().getGiftId());
+        eventsRepository.save(event);
+
+        //GIFT LIST
+        for (int i = 0; i < request.getGifts().size(); i++) {
+            Gift gift = new Gift();
+            gift.setGiftTitle(request.getGifts().get(i).getGiftTitle());
+            gift.setGiftAmount(request.getGifts().get(i).getGiftAmount());
+            gift.setGiftDescription(request.getGifts().get(i).getGiftDescription());
+            gift.setGiftId(request.getGifts().get(i).getGiftId());
+            giftsRepository.save(gift);
         }
+        //USERS
+        for (int i = 0; i < request.getUsers().size(); i++) {
+            User user = new User();
+            user.setUserId(request.getUsers().get(i).getUserId());
+            user.setGuestName(request.getUsers().get(i).getGuestName());
+            user.setPassword(request.getUsers().get(i).getPassword());
+            user.setFirstName(request.getUsers().get(i).getFirstName());
+            user.setEmail(request.getUsers().get(i).getEmail());
+            usersRepository.save(user);
+        }
+        //ROLES
+//        Role role = new Role();
+//        role.setUserId(request.getRole().getUserId());
+//        role.setEventId(request.getRole().getEventId());
+//        role.setRole(request.getRole().getRole());
+//        eventsRepository.save(event);
+
         return request;
     }
 

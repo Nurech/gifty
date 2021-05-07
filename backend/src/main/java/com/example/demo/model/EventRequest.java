@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
-public class EventObject {
-
+public class EventRequest {
     private long eventId;
     private String eventName;
     private String eventDescription;

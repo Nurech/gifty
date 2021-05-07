@@ -2,10 +2,10 @@ package com.example.demo.repository;
 
 
 
-import com.example.demo.model.Events;
+import com.example.demo.model.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EventsRepository extends JpaRepository<Events, Long> {
+public interface EventsRepository extends JpaRepository<Event, Long> {
 
 
 }
