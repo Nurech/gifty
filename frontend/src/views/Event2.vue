@@ -28,13 +28,13 @@
       <th></th>
       </thead>
       <tbody>
-      <tr v-for="(item, index) in tableRows" :item="item">
+      <tr v-for="(item, gift_index) in giftRows" :item="item">
         <td>{{ item.nr }}</td>
         <td><input v-model="item.giftTitle" placeholder="Gift Title"/></td>
         <td><input v-model="item.giftAmount" placeholder="Amount"/></td>
         <td><input v-model="item.giftDescription" placeholder="Gift Description"/></td>
         <td>
-          <button @click='delTableRow(index)'>Remove</button>
+          <button @click='delTableRow(gift_index)'>Remove</button>
         </td>
       </tr>
       </tbody>
@@ -60,14 +60,14 @@
       <th></th>
       </thead>
       <tbody>
-      <tr v-for="(item, index1) in tableRows1" :item="item">
+      <tr v-for="(item, user_index) in userRows" :item="item">
         <td>{{ item.userId }}</td>
         <td><input v-model="item.guestName" placeholder="Guest name"/></td>
-        <td>{{ item.role1 }}</td>
-        <td><input v-model="item.email1" placeholder="E-mail"/></td>
-        <td>{{ item.generateLink1 }}</td>
+        <td>{{ item.role }}</td>
+        <td><input v-model="item.email" placeholder="E-mail"/></td>
+        <td>{{ item.generateLink }}</td>
         <td>
-          <button @click='delUserTableRow(index1)'>Remove</button>
+          <button @click='delUserTableRow(user_index)'>Remove</button>
         </td>
       </tr>
       </tbody>
@@ -92,8 +92,8 @@ export default {
 
     return {
       showResponse: false,
-      'tableRows1': [{userId: getRandom(6), role1: "owner"}],
-      'tableRows': [{nr: getOne(1)}],
+      'userRows': [{userId: getRandom(6), role1: "owner"}],
+      'giftRows': [{nr: getOne(1)}],
 
       CreateEvent: {
         eventId: '',
@@ -141,9 +141,9 @@ export default {
           eventDate: this.event.eventDate,
           eventAuthor: this.event.eventAuthor
         },
-        gifts: this.tableRows,
+        gifts: this.giftRows,
 
-        users: this.tableRows1,
+        users: this.userRows,
 
         roles: {
           userId: this.userId,
@@ -159,39 +159,40 @@ export default {
       this.giftTitle = "";
       this.giftAmount = "";
       this.giftDescription = "";
-      let my_objects = {
+      let my_giftObjects = {
         nr: this.nr,
         giftTitle: this.giftTitle,
         giftAmount: this.giftAmount,
         giftDescription: this.giftDescription
       };
-      this.tableRows.push(my_objects);
+      this.giftRows.push(my_giftObjects);
     },
     delTableRow: function (id) {
-      this.tableRows.splice(id, 1);
+      this.giftRows.splice(id, 1);
     },
 
+    
     // USER
     addUserTableRow: function () {
       this.userId = getRandom(6);
       this.guestName = "";
-      this.role1 = "user";
-      this.email1 = "";
-      this.generateLink1 = "";
-      this.deleteButton1 = "";
-      let my_objects1 = {
+      this.role = "user";
+      this.email = "";
+      this.generateLink = "";
+      this.deleteButton = "";
+      let my_userObjects = {
         userId: this.userId,
         guestName: this.guestName,
-        role1: this.role1,
-        email1: this.email1,
-        generateLink1: this.generateLink1,
-        deleteButton1: this.deleteButton1
+        role: this.role,
+        email: this.email,
+        generateLink: this.generateLink,
+        deleteButton: this.deleteButton
       };
-      this.tableRows1.push(my_objects1);
+      this.userRows.push(my_userObjects);
     },
 
     delUserTableRow: function (id) {
-      this.tableRows1.splice(id, 1);
+      this.userRows.splice(id, 1);
     }
   }
 }

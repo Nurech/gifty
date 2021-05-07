@@ -1,9 +1,9 @@
-package com.example.demo.model;
+package com.example.demo.service;
 
-import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import java.util.Properties;
 
 public class SendGmail {
     /**
@@ -12,7 +12,7 @@ public class SendGmail {
      * Use Authentication: Yes
      * Port for TLS/STARTTLS: 587
      */
-    public static void sendGmail(String gName, String toEmail, String message) {
+    public static void sendGmail(long userId, String guestName, long eventId, String eventName, String email) {
         final String fromEmail = "gifter4you@gmail.com"; //requires valid gmail id
         final String password = "Gifter1234you"; // correct password for gmail id
 
@@ -30,8 +30,14 @@ public class SendGmail {
                 return new PasswordAuthentication(fromEmail, password);
             }
         };
-        Session session = Session.getInstance(props, auth);
 
-        com.example.demo.model.EmailUtil.sendEmail(session, toEmail, "Kiri Gifter´ilt!", "Tere, see on e-mail Gifter´ilt! " + gName + "\n" + message);
+        //TODO generatedlink
+
+        //static info
+        String subject = "Kiri Gifter´ilt! Tere, see on e-mail Gifter´ilt!";
+        String message = "Hello +" + guestName+userId + " you have been invited to "+ eventName+eventId + " your personal link is = ";
+
+        Session session = Session.getInstance(props, auth);
+        com.example.demo.model.EmailUtil.sendEmail(session, email, subject, message);
     }
 }

@@ -1,23 +1,22 @@
 package com.example.demo.model;
 
-import java.util.Date;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.Date;
 
 public class EmailUtil {
 
     /**
      * Utility method to send simple HTML email
-     *
      * @param session
-     * @param toEmail
+     * @param email
      * @param subject
-     * @param body
+     * @param message
      */
-    public static void sendEmail(Session session, String toEmail, String subject, String body) {
+    public static void sendEmail(Session session, String email, String subject, String message) {
         try {
             MimeMessage msg = new MimeMessage(session);
             //set message headers
@@ -31,11 +30,15 @@ public class EmailUtil {
 
             msg.setSubject(subject, "UTF-8");
 
-            msg.setText(body, "UTF-8");
+            msg.setText(message, "UTF-8");
 
             msg.setSentDate(new Date());
 
-            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email, false));
+            System.out.println(session);
+            System.out.println(email);
+            System.out.println(subject);
+            System.out.println(message);
             System.out.println("Message is ready");
             Transport.send(msg);
 
@@ -44,4 +47,5 @@ public class EmailUtil {
             e.printStackTrace();
         }
     }
+
 }

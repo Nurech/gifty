@@ -30,6 +30,7 @@ public class GiftService {
     UsersRepository usersRepository;
 
     public List<UserRequest> addNewUser(List<UserRequest> request) {
+
         for (int i = 0; i < request.size(); i++) {
             User savedUser = new User();
             savedUser.setUserId(request.get(i).getUserId());
@@ -41,7 +42,6 @@ public class GiftService {
             savedUser.setEmail(request.get(i).getEmail());
             usersRepository.save(savedUser);
             LOG.info(savedUser + " successfully saved user into DB");
-            com.example.demo.model.SendGmail.sendGmail(request.get(i).getGuestName(), request.get(i).getEmail());
         }
         return request;
     }
@@ -107,6 +107,14 @@ public class GiftService {
             user.setFirstName(request.getUsers().get(i).getFirstName());
             user.setEmail(request.getUsers().get(i).getEmail());
             usersRepository.save(user);
+
+            // sends all info to sendGemail class on each loop
+            SendGmail.sendGmail(
+                    request.getUsers().get(i).getUserId(),
+                    request.getUsers().get(i).getGuestName(),
+                    request.getEvent().getEventId(),
+                    request.getEvent().getEventName(),
+                    request.getUsers().get(i).getEmail());
         }
         //ROLES
 //        Role role = new Role();
