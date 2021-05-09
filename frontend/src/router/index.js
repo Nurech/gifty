@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import ChooseGift from "@/views/ChooseGift";
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     path: '/event2',
     name: 'Event2',
     component: () => import(/* webpackChunkName: "about" */ '../views/Event2.vue')
+  },
+  {
+    path: '/chooseGift',
+    name: 'ChooseGift',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ChooseGift.vue')
   }
 
 ]
