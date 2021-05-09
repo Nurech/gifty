@@ -21,9 +21,8 @@
       </tr>
       </tbody>
     </table>
-
     <br>
-    {{ infoks }}
+<!--    {{ infoks }}-->
       <br>
     <br>
     {{ infoks2 }}
