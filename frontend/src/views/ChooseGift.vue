@@ -25,7 +25,6 @@
     <br>
     {{ infoks }}
       <br>
-       <button @click='dataToTable'>Täida tabel</button>
     <br>
     {{ infoks2 }}
     <br>
@@ -36,7 +35,6 @@ import {get, post} from "axios";
 
 export default {
   data: function () {
-
     return {
       'nr': "",
       'gift_title': "",
@@ -47,20 +45,8 @@ export default {
       'infoks2': ""
     }
   },
-  methods: {
-    async dataToTable () {
-     /* get('/api/gift/', this.tableRows
-      )
-          .then((response) => {
-            this.user.id = response.data;
-            console.log('Gift has chosen ' + response.data);
-            this.showResponse = true
-          }).catch((error) => {
-        this.errors = error.response.data.message;
-      });*/
-      this.tableRows = this.infoks.gifts;
-           },
 
+  methods: {
     selTableRow: function (id) {
       let result = {
         'gift_id':id
@@ -69,6 +55,18 @@ export default {
       this.infoks2 = "Valiti kingitus, mille ID on " + id;
 
     }
+  },
+mounted () {
+    /* get('/api/gift/', this.tableRows
+     )
+         .then((response) => {
+           this.user.id = response.data;
+           console.log('Gift has chosen ' + response.data);
+           this.showResponse = true
+         }).catch((error) => {
+       this.errors = error.response.data.message;
+     });*/
+    this.tableRows = this.infoks.gifts;
   }
 };
 
