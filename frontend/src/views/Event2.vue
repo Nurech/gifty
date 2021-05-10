@@ -1,5 +1,5 @@
 <template>
-
+  <div class="container">
   <div class="event" align="center">
 
     <div class="shadow p-3 mb-5 bg-white rounded"><h1>Create event</h1></div>
@@ -55,7 +55,7 @@
     </divtable>
     <br>
     <!--    {{ infoks1 }}-->
-
+    <br>
     <button @click='addUserTableRow()' class="btn btn-success">Add guest</button>
 
     <!--//giftList-->
@@ -87,7 +87,7 @@
     </divtable>
     <br>
     <!--    {{ infoks }}-->
-
+    <br>
     <button @click='addTableRow()' class="btn btn-success">Add gift</button>
 
 
@@ -122,6 +122,9 @@
     <br>
     <br>
     <br>
+
+
+  </div>
 
 
   </div>
