@@ -1,7 +1,11 @@
 <template>
   <div align="center" class="table">
     <br>
-    <h3>Choose gift to make</h3>
+    <h1> {{ eventInfo }}</h1>
+    <br>
+    <i> {{ eventDescription }}</i>
+    <br>
+    <h3>Please choose a gift to make</h3>
     <br>
     <table>
       <thead>
@@ -22,8 +26,9 @@
       </tbody>
     </table>
     <br>
-<!--    {{ infoks }}-->
-      <br>
+    <!--    {{ infoks }}-->
+    <br>
+    <br>
     <br>
     {{ infoks2 }}
     <br>
@@ -38,24 +43,42 @@ export default {
       'nr': "",
       'gift_title': "",
       'gift_description': "",
-      'infoks': { "gifts": [ { "gift_id": "1", "gift_title": "Suur punane auto", "gift_amount": "2", "gift_description": "See kingitus on väga äge kingitus" },
-          { "gift_id": "5", "gift_title": "Väike roosa maja", "gift_amount": "1", "gift_description": "See kingitus on veel ägedam kingitus" }] },
+      'infoks': {
+        "gifts": [{
+          "gift_id": "1",
+          "gift_title": "Suur punane auto",
+          "gift_amount": "2",
+          "gift_description": "See kingitus on väga äge kingitus"
+        },
+          {
+            "gift_id": "5",
+            "gift_title": "Väike roosa maja",
+            "gift_amount": "1",
+            "gift_description": "See kingitus on veel ägedam kingitus"
+          }]
+      },
       'tableRows': [],
-      'infoks2': ""
+      'infoks2': "",
+      'event_author': "Merlyn",
+      'event_name': "birthday",
+      'event_date': "12.12.2021",
+      'eventInfo': "",
+      'event_description': "12.12.2021 is my birthday party & I have listed some of my gift wishes. " +
+          "Please choose gift to make and come to my birthday party. " +
+          "My birthday will be awwsome!"
     }
   },
 
   methods: {
     selTableRow: function (id) {
       let result = {
-        'gift_id':id
-         }
+        'gift_id': id
+      }
       post('/api/gift_was_chosen/', result);
       this.infoks2 = "Valiti kingitus, mille ID on " + id;
-
     }
   },
-mounted () {
+  mounted() {
     /* get('/api/gift/', this.tableRows
      )
          .then((response) => {
@@ -66,10 +89,13 @@ mounted () {
        this.errors = error.response.data.message;
      });*/
     this.tableRows = this.infoks.gifts;
+    this.eventInfo = "Welcome to choose gift for " + this.event_author + "´s " + this.event_date + " " + this.event_name;
+    this.eventDescription = this.event_description;
   }
 };
 
 let i = 0;
+
 function getOne(number) {
   let result = i + number;
   i++;
@@ -83,6 +109,7 @@ function getOne(number) {
 body {
   background: lightpink; /* fallback for old browsers */
 }
+
 h3 {
   margin: 40px 0 0;
 }
@@ -104,10 +131,11 @@ a {
 table, th, td {
   border: 1px solid black;
 }
+
 table {
   border-collapse: collapse;
   margin: auto;
-  width: 50%;
+  width: 40%;
   border: 3px solid black;
   padding: 50px;
 }
