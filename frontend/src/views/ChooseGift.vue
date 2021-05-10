@@ -1,7 +1,7 @@
 <template>
   <div align="center" class="table">
     <br>
-    <h1> {{ eventInfo }}</h1>
+    <h1> {{ testInfo }}</h1>
     <br>
     <i> {{ eventDescription }}</i>
     <br>
@@ -40,36 +40,26 @@ import {get, post} from "axios";
 export default {
   data: function () {
     return {
-      'nr': "",
-      'gift_title': "",
-      'gift_description': "",
-      'infoks': {
-        "gifts": [{
-          "gift_id": "1",
-          "gift_title": "Suur punane auto",
-          "gift_amount": "2",
-          "gift_description": "See kingitus on väga äge kingitus"
-        },
-          {
-            "gift_id": "5",
-            "gift_title": "Väike roosa maja",
-            "gift_amount": "1",
-            "gift_description": "See kingitus on veel ägedam kingitus"
-          }]
+      event: {
+        eventId: '',
+        eventName: '',
+        eventDescription: '',
+        eventDate: '',
+        eventAuthor: '',
+        messageEmail: '',
       },
-      'tableRows': [],
-      'infoks2': "",
-      'event_author': "Merlyn",
-      'event_name': "birthday",
-      'event_date': "12.12.2021",
-      'eventInfo': "",
-      'event_description': "12.12.2021 is my birthday party & I have listed some of my gift wishes. " +
-          "Please choose gift to make and come to my birthday party. " +
-          "My birthday will be awwsome!"
+      gifts: [{
+        giftId:'',
+        giftTitle: '',
+        giftAmount:'',
+        giftDescription: '',
+        eventId:''
+      }]
     }
   },
 
   methods: {
+
     selTableRow: function (id) {
       let result = {
         'gift_id': id
@@ -78,24 +68,36 @@ export default {
       this.infoks2 = "Valiti kingitus, mille ID on " + id;
     }
   },
+
   mounted() {
-     get('/api/gift/', this.tableRows
-     )
+
+    // get url, insert two variables this.$route. (pathvariable)
+
+    //TODO
+     get('api/event/'+{})
          .then((response) => {
-           this.user.id = response.data;
-           console.log('Gift has chosen ' + response.data);
+           this.testInfo = response.data;
            this.showResponse = true
          }).catch((error) => {
        this.errors = error.response.data.message;
      });
+
     this.tableRows = this.infoks.gifts;
     this.eventInfo = "Welcome to choose gift for " + this.event_author + "´s " + this.event_date + " " + this.event_name;
     this.eventDescription = this.event_description;
   }
 };
 
-let i = 0;
+let pathArray = window.location.pathname.split('/');
+let secondLevelLocation = pathArray[4];
+let newPathname = "";
+for (i = 0; i < pathArray.length; i++) {
+  newPathname += "/";
+  newPathname += pathArray[i];
+}
 
+
+let i = 0;
 function getOne(number) {
   let result = i + number;
   i++;

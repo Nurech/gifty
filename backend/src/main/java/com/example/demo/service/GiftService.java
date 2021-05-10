@@ -148,9 +148,9 @@ public class GiftService {
         roleRequest.setEventId(roleEntity.getEventId());
         roleRequest.setRole(roleEntity.getRole());
         role.add(roleRequest);
-
-        // check if user exists at said event
         info.setRole(role);
+        // check if user exists at said event
+
 
 
         return info;

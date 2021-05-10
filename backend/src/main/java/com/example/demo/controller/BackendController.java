@@ -50,10 +50,10 @@ public class BackendController {
         return giftService.addNewRoles(request);
     }
 
-
+    @ResponseBody
     @RequestMapping(path = "api/event/{eventId}/user/{userId}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public CreateEvent pullEventInfo(@RequestParam("eventId") long eventId, @RequestParam("userId") long userId) {
+    public CreateEvent pullEventInfo(@PathVariable("eventId") long eventId, @PathVariable("userId") long userId) {
         return giftService.getEventData(eventId, userId);
     }
 
