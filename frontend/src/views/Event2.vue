@@ -150,7 +150,6 @@
 </template>
 
 <script>
-
 import {post} from "axios";
 import ResizeAuto from "@/components/ResizeAuto";
 
@@ -164,15 +163,11 @@ export default {
   data: function () {
 
     return {
-
-      data: {},
-
       showResponse: false,
       'userRows': [{userId, role: "owner", generateLink: "/event/" + eventId + "/user/" + userId}],
       'giftRows': [{nr: getOne(1)}],
+      'roleRows': [{userId, role: "owner", eventId}],
       'messageEmail': "",
-
-      users: {},
 
       event: {
         id: eventId,
@@ -181,19 +176,10 @@ export default {
         eventDate: '',
         eventAuthor: '',
       },
-
-      roles: {
-        userId: this.userId,
-        eventId: this.eventId,
-        role: this.role
-      }
-
     }
   },
 
-
   methods: {
-
     'eventCreator': function () {
       post('/api/creator/', {
         event: {
@@ -205,14 +191,8 @@ export default {
           messageEmail: this.event.messageEmail,
         },
         gifts: this.giftRows,
-
         users: this.userRows,
-
-        roles: {
-          userId: this.userId,
-          eventId: eventId,
-          role: this.role
-        }
+        role: this.roleRows
       })
     },
 
@@ -230,11 +210,11 @@ export default {
       };
       this.giftRows.push(my_giftObjects);
     },
+
     delTableRow: function (id) {
       this.giftRows.splice(id, 1);
     },
-
-
+    
     // USER
     addUserTableRow: function () {
       this.userId = getRandom(6);
@@ -243,6 +223,7 @@ export default {
       this.email = "";
       this.generateLink = "/event/" + eventId + "/user/" + this.userId;
       this.deleteButton = "";
+
       let my_userObjects = {
         userId: this.userId,
         guestName: this.guestName,
@@ -251,7 +232,15 @@ export default {
         generateLink: this.generateLink,
         deleteButton: this.deleteButton
       };
+      let my_rowObjects = {
+        userId: this.userId,
+        role: this.role,
+        eventId: eventId,
+      };
+
       this.userRows.push(my_userObjects);
+      this.roleRows.push(my_rowObjects);
+
     },
 
     delUserTableRow: function (id) {
@@ -270,7 +259,6 @@ function getRandom(length) {
 }
 
 let i = 0;
-
 function getOne(number) {
   let result = i + number;
   i++;

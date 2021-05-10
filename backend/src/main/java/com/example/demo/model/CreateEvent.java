@@ -9,14 +9,6 @@ public class CreateEvent {
     private List<RoleRequest> role;
     private List<UserRequest> users;
 
-    public EventRequest getEvent() {
-        return event;
-    }
-
-    public void setEvent(EventRequest event) {
-        this.event = event;
-    }
-
     public List<GiftRequest> getGifts() {
         return gifts;
     }
@@ -39,5 +31,13 @@ public class CreateEvent {
 
     public void setUsers(List<UserRequest> users) {
         this.users = users;
+    }
+
+    public EventRequest getEvent() {
+        return event;
+    }
+
+    public void setEvent(EventRequest event) {
+        this.event = event;
     }
 }

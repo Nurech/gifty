@@ -19,22 +19,6 @@ public class Role {
 
     }
 
-    @Override
-    public String toString() {
-        return "Role{" +
-                "roleId=" + roleId +
-                ", userId=" + userId +
-                ", eventId=" + eventId +
-                ", role='" + role + '\'' +
-                '}';
-    }
-
-    public Role(long roleId, long userId, long eventId, String role) {
-        this.roleId = roleId;
-        this.userId = userId;
-        this.eventId = eventId;
-        this.role = role;
-    }
 
     public long getRoleId() {
         return roleId;
@@ -65,6 +49,13 @@ public class Role {
     }
 
     public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Role(long roleId, long userId, long eventId, String role) {
+        this.roleId = roleId;
+        this.userId = userId;
+        this.eventId = eventId;
         this.role = role;
     }
 }
