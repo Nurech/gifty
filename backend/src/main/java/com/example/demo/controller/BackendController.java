@@ -39,7 +39,7 @@ public class BackendController {
     @ResponseBody
     @RequestMapping(path = "api/creator/", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public EventDataRequest addNewEvent(@RequestBody EventDataRequest request) {
+    public CreateEvent addNewEvent(@RequestBody CreateEvent request) {
        return giftService.createNewEvent(request);
     }
 
@@ -51,11 +51,11 @@ public class BackendController {
     }
 
 
-//    @RequestMapping(path = "api/event/{eventId}/user/{userId}", method = RequestMethod.POST)
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public  pullEventInfo(@RequestParam("eventId") String eventId, @RequestParam("userId") String userId) {
-//        return null;
-//    }
+    @RequestMapping(path = "api/event/{eventId}/user/{userId}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public CreateEvent pullEventInfo(@RequestParam("eventId") long eventId, @RequestParam("userId") long userId) {
+        return giftService.getEventData(eventId, userId);
+    }
 
 
 

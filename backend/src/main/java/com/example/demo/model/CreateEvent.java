@@ -2,11 +2,11 @@ package com.example.demo.model;
 
 import java.util.List;
 
-public class EventDataRequest {
+public class CreateEvent {
 
     private EventRequest event;
-    private List<> gifts;
-    private RoleRequest role;
+    private List<GiftRequest> gifts;
+    private List<RoleRequest> role;
     private List<UserRequest> users;
 
     public EventRequest getEvent() {
@@ -25,11 +25,11 @@ public class EventDataRequest {
         this.gifts = gifts;
     }
 
-    public RoleRequest getRole() {
+    public List<RoleRequest> getRole() {
         return role;
     }
 
-    public void setRole(RoleRequest role) {
+    public void setRole(List<RoleRequest> role) {
         this.role = role;
     }
 

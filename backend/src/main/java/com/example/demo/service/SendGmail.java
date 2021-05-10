@@ -39,6 +39,6 @@ public class SendGmail {
                 messageEmail;
 
         Session session = Session.getInstance(props, auth);
-        com.example.demo.model.EmailUtil.sendEmail(session, email, subject, message);
+        EmailUtil.sendEmail(session, email, subject, message);
     }
 }

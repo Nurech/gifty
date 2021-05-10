@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.service;
 
 import javax.mail.Message;
 import javax.mail.Session;

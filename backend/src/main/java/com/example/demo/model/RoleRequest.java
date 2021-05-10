@@ -1,9 +1,18 @@
 package com.example.demo.model;
 
 public class RoleRequest {
+    private long roleId;
     private long userId;
-    private String eventId;
+    private long eventId;
     private String role;
+
+    public long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
+    }
 
     public long getUserId() {
         return userId;
@@ -13,11 +22,11 @@ public class RoleRequest {
         this.userId = userId;
     }
 
-    public String getEventId() {
+    public long getEventId() {
         return eventId;
     }
 
-    public void setEventId(String eventId) {
+    public void setEventId(long eventId) {
         this.eventId = eventId;
     }
 

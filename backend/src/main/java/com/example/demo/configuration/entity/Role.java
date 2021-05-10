@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.configuration.entity;
 
 import javax.persistence.*;
 
@@ -12,7 +12,7 @@ public class Role {
    // @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long roleId;
     private long userId;
-    private String eventId;
+    private long eventId;
     private String role;
 
     public Role() {
@@ -23,10 +23,17 @@ public class Role {
     public String toString() {
         return "Role{" +
                 "roleId=" + roleId +
-                ", userId='" + userId + '\'' +
-                ", eventId='" + eventId + '\'' +
+                ", userId=" + userId +
+                ", eventId=" + eventId +
                 ", role='" + role + '\'' +
                 '}';
+    }
+
+    public Role(long roleId, long userId, long eventId, String role) {
+        this.roleId = roleId;
+        this.userId = userId;
+        this.eventId = eventId;
+        this.role = role;
     }
 
     public long getRoleId() {
@@ -45,11 +52,11 @@ public class Role {
         this.userId = userId;
     }
 
-    public String getEventId() {
+    public long getEventId() {
         return eventId;
     }
 
-    public void setEventId(String eventId) {
+    public void setEventId(long eventId) {
         this.eventId = eventId;
     }
 
@@ -58,13 +65,6 @@ public class Role {
     }
 
     public void setRole(String role) {
-        this.role = role;
-    }
-
-    public Role(long roleId, long userId, String eventId, String role) {
-        this.roleId = roleId;
-        this.userId = userId;
-        this.eventId = eventId;
         this.role = role;
     }
 }

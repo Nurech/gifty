@@ -1,5 +1,9 @@
 package com.example.demo.service;
 
+import com.example.demo.configuration.entity.Event;
+import com.example.demo.configuration.entity.Gift;
+import com.example.demo.configuration.entity.Role;
+import com.example.demo.configuration.entity.User;
 import com.example.demo.controller.BackendController;
 import com.example.demo.model.*;
 import com.example.demo.repository.EventsRepository;
@@ -10,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
@@ -77,7 +82,7 @@ public class GiftService {
         return request;
     }
 
-    public EventDataRequest createNewEvent(EventDataRequest request) {
+    public CreateEvent createNewEvent(CreateEvent request) {
 
         //EVENT
         Event event = new Event();
@@ -119,13 +124,45 @@ public class GiftService {
         }
 
         //ROLES
-//        Role role = new Role();
-//        role.setUserId(request.getRole().getUserId());
-//        role.setEventId(request.getRole().getEventId());
-//        role.setRole(request.getRole().getRole());
-//        eventsRepository.save(event);
-
+        for (int i = 0; i < request.getRole().size(); i++) {
+            Role role = new Role();
+            role.setUserId(request.getRole().get(i).getUserId());
+            role.setEventId(request.getRole().get(i).getEventId());
+            role.setRole(request.getRole().get(i).getRole());
+            rolesRepository.save(role);
+        }
         return request;
     }
 
+    public CreateEvent getEventData(Long eventId, Long userId) {
+
+        // return info obj
+        CreateEvent info = new CreateEvent();
+        List<RoleRequest> role = new ArrayList<>();
+        Role roleEntity = rolesRepository.findAllByUserId(userId);
+
+        // role info
+        RoleRequest roleRequest = new RoleRequest();
+        roleRequest.setRoleId(roleEntity.getRoleId());
+        roleRequest.setUserId(roleEntity.getUserId());
+        roleRequest.setEventId(roleEntity.getEventId());
+        roleRequest.setRole(roleEntity.getRole());
+        role.add(roleRequest);
+
+        // check if user exists at said event
+
+
+        info.setRole(role);
+
+
+        return info;
+        // if exists
+
+
+        // check what role user has
+
+        // if user exists and has role, return event info and gift list
+
+
+    }
 }
