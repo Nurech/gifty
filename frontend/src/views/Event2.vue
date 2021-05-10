@@ -34,7 +34,7 @@
         <td><input v-model="item.giftAmount" placeholder="Amount"/></td>
         <td><input v-model="item.giftDescription" placeholder="Gift Description"/></td>
         <td>
-          <button @click='delTableRow(gift_index)'>Remove</button>
+          <button class="btn btn-primary" @click='delTableRow(gift_index)'>Remove</button>
         </td>
       </tr>
       </tbody>
@@ -45,9 +45,16 @@
     <button @click='addTableRow()'>Add New Row</button>
 
 
+
     <!--    //Invite-->
     <br>
     <h3>Add your participants</h3>
+    <br>
+    <p>Options:</p>
+    <input type="checkbox" id="trust" value="1">
+    <label for="trust">Generate unique values rights now</label>
+    <br>
+
     <br>
     <br>
     <table border="1">
@@ -73,7 +80,6 @@
       </tbody>
     </table>
     <br>
-    <!--    {{ infoks1 }}-->
     <br>
     <button @click='addUserTableRow()'>Add New Row</button>
 
@@ -98,6 +104,8 @@
 
 import {post} from "axios";
 import ResizeAuto from "@/components/ResizeAuto";
+let eventId = getRandom(6);
+let userId = getRandom(6);
 
 export default {
   name: "Event2",
@@ -106,44 +114,36 @@ export default {
   data: function () {
 
     return {
+
+      data: {
+      },
+
       showResponse: false,
-      'userRows': [{userId: getRandom(6), role1: "owner"}],
+      'userRows': [{userId, role: "owner", generateLink:"/event/"+eventId+"/user/"+userId}],
       'giftRows': [{nr: getOne(1)}],
       'messageEmail': "",
 
-      CreateEvent: {
-        eventId: '',
-        eventName: '',
-        eventDescription: '',
-        eventDate: '',
-        eventAuthor: '',
-
-        giftId: '',
-        giftTitle: '',
-        giftAmount: '',
-        giftDescription: '',
-
-        userId: '',
-        guestName: '',
-        username: '',
-        password: '',
-        firstName: '',
-        lastName: '',
-        email: '',
+      users: {
 
       },
 
       event: {
-        id: '',
+        id: eventId,
         eventName: '',
         eventDescription: '',
         eventDate: '',
         eventAuthor: '',
       },
 
+      roles: {
+        userId: this.userId,
+        eventId: this.eventId,
+        role: this.role
+      }
 
     }
   },
+
 
 
   methods: {
@@ -164,7 +164,7 @@ export default {
 
         roles: {
           userId: this.userId,
-          eventId: this.eventId,
+          eventId: eventId,
           role: this.role
         }
       })
@@ -195,7 +195,7 @@ export default {
       this.guestName = "";
       this.role = "user";
       this.email = "";
-      this.generateLink = "";
+      this.generateLink = "/event/"+eventId+"/user/"+this.userId;
       this.deleteButton = "";
       let my_userObjects = {
         userId: this.userId,
@@ -213,6 +213,7 @@ export default {
     }
   }
 }
+
 
 function getRandom(length) {
   let random = '0123456789';

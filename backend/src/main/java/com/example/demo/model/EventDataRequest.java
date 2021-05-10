@@ -5,7 +5,7 @@ import java.util.List;
 public class EventDataRequest {
 
     private EventRequest event;
-    private List<GiftRequest> gifts;
+    private List<> gifts;
     private RoleRequest role;
     private List<UserRequest> users;
 
