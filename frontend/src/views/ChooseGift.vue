@@ -79,7 +79,7 @@ export default {
     }
   },
   mounted() {
-    /* get('/api/gift/', this.tableRows
+     get('/api/gift/', this.tableRows
      )
          .then((response) => {
            this.user.id = response.data;
@@ -87,7 +87,7 @@ export default {
            this.showResponse = true
          }).catch((error) => {
        this.errors = error.response.data.message;
-     });*/
+     });
     this.tableRows = this.infoks.gifts;
     this.eventInfo = "Welcome to choose gift for " + this.event_author + "´s " + this.event_date + " " + this.event_name;
     this.eventDescription = this.event_description;

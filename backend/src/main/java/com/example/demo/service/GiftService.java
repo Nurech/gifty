@@ -150,8 +150,6 @@ public class GiftService {
         role.add(roleRequest);
 
         // check if user exists at said event
-
-
         info.setRole(role);
 
 
