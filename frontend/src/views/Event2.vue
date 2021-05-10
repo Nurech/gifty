@@ -1,11 +1,14 @@
 <template>
-  <div class="container">
+
+
   <div class="event" align="center">
 
-    <div class="shadow p-3 mb-5 bg-white rounded"><h1>Create event</h1></div>
-    <!--    design test end -->
+    <div class="container">
+      <div class="shadow-lg p-3 mb-5 bg-body rounded"><h1>Create event</h1></div>
 
-    <divtable class="table table-bordered table-dark" >
+    </div>
+
+    <divtable class="table table-bordered table-dark">
 
       <thead>
       <th>Event name</th>
@@ -17,8 +20,8 @@
       <tbody>
 
       <tr>
-        <td><input v-model="event.eventName" placeholder="Event name"class="font-weight-bold"/></td>
-        <td> <input v-model="event.eventDescription" placeholder="Description"/></td>
+        <td><input v-model="event.eventName" placeholder="Event name" class="font-weight-bold"/></td>
+        <td><input v-model="event.eventDescription" placeholder="Description"/></td>
         <td><input v-model="event.eventDate" placeholder="Event date"/></td>
         <td><input v-model="event.eventAuthor" placeholder="Event author"/></td>
 
@@ -90,29 +93,47 @@
     <br>
     <button @click='addTableRow()' class="btn btn-success">Add gift</button>
 
-
-
     <div class="wrapper">
-      <h3>Message to be sent by e-mail:</h3>
-      <br>
-      <ResizeAuto>
-        <template v-slot:default="{resize}">
+      <div class="container">
+        <h3>Message to be sent by e-mail:</h3>
+        <br>
+        <ResizeAuto>
+          <template v-slot:default="{resize}">
+            <div class="mb-3">
         <textarea
-            class="textarea"
+            class="form-control" id="exampleFormControlTextarea1" rows="5"
             @input="resize"
-            placeholder="Please insert Your message to the gift choosers"
+            placeholder="Please insert your message to the gift choosers"
             v-model="event.messageEmail"
         ></textarea>
-        </template>
-      </ResizeAuto>
+            </div>
+
+          </template>
+        </ResizeAuto>
+      </div>
     </div>
-<!--    <input v-model="event.eventName" placeholder="Event name"/>-->
-<!--    <input v-model="event.eventDescription" placeholder="Description"/>-->
-<!--    <input v-model="event.eventDate" placeholder="Event date"/>-->
-<!--    <input v-model="event.eventAuthor" placeholder="Event author"/>-->
-<!--    <br>-->
-<!--    <br>-->
-<!--    <br>-->
+
+    <!--    <div class="wrapper">-->
+    <!--      <h3>Message to be sent by e-mail:</h3>-->
+    <!--      <br>-->
+    <!--      <ResizeAuto>-->
+    <!--        <template v-slot:default="{resize}">-->
+    <!--        <textarea-->
+    <!--            class="textarea"-->
+    <!--            @input="resize"-->
+    <!--            placeholder="Please insert Your message to the gift choosers"-->
+    <!--            v-model="event.messageEmail"-->
+    <!--        ></textarea>-->
+    <!--        </template>-->
+    <!--      </ResizeAuto>-->
+    <!--    </div>-->
+    <!--    <input v-model="event.eventName" placeholder="Event name"/>-->
+    <!--    <input v-model="event.eventDescription" placeholder="Description"/>-->
+    <!--    <input v-model="event.eventDate" placeholder="Event date"/>-->
+    <!--    <input v-model="event.eventAuthor" placeholder="Event author"/>-->
+    <!--    <br>-->
+    <!--    <br>-->
+    <!--    <br>-->
     <br>
     <br>
     <button v-on:click="eventCreator()" class="btn btn-primary">Create Event</button>
@@ -123,17 +144,16 @@
     <br>
     <br>
 
-
   </div>
 
 
-  </div>
 </template>
 
 <script>
 
 import {post} from "axios";
 import ResizeAuto from "@/components/ResizeAuto";
+
 let eventId = getRandom(6);
 let userId = getRandom(6);
 
@@ -145,17 +165,14 @@ export default {
 
     return {
 
-      data: {
-      },
+      data: {},
 
       showResponse: false,
-      'userRows': [{userId, role: "owner", generateLink:"/event/"+eventId+"/user/"+userId}],
+      'userRows': [{userId, role: "owner", generateLink: "/event/" + eventId + "/user/" + userId}],
       'giftRows': [{nr: getOne(1)}],
       'messageEmail': "",
 
-      users: {
-
-      },
+      users: {},
 
       event: {
         id: eventId,
@@ -173,7 +190,6 @@ export default {
 
     }
   },
-
 
 
   methods: {
@@ -225,7 +241,7 @@ export default {
       this.guestName = "";
       this.role = "user";
       this.email = "";
-      this.generateLink = "/event/"+eventId+"/user/"+this.userId;
+      this.generateLink = "/event/" + eventId + "/user/" + this.userId;
       this.deleteButton = "";
       let my_userObjects = {
         userId: this.userId,
@@ -264,6 +280,7 @@ function getOne(number) {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+
 /*// button design proovisin kujundust muutke kui tahate*/
 /*button {*/
 /*  width: 200px;*/
@@ -301,6 +318,8 @@ body {
   background: linear-gradient(to right, #76b1e7, #e2794d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+
+
 h3 {
   margin: 40px 0 0;
 }
@@ -316,7 +335,7 @@ li {
 }
 
 a {
-  color: #42b983;
+  color: #163427;
 }
 </style>
 
