@@ -1,36 +1,39 @@
 <template>
   <div align="center" class="table">
     <br>
-    <h1> {{ serverGet }}</h1>
+    <h1> {{ testInfo }}</h1>
     <br>
     <i> {{ eventDescription }}</i>
     <br>
     <h3>Please choose a gift to make</h3>
     <br>
-    <table>
-      <thead>
+    <v-table
+        class="table-hover"
+        :data="tableRows"
+        selection-mode="single"
+        selectedClass="table-info"
+        @selectionChanged="selectedRow = $event"
+    >
+      <thead slot="head">
       <th>Nr</th>
       <th>Gift title</th>
       <th>Description</th>
-      <th></th>
       </thead>
-      <tbody>
-      <tr v-for="(item, index) in serverGet.gifts" :item="item.gift_id">
-        <td>{{ item.giftId }}</td>
-        <td>{{ item.giftTitle }}</td>
-        <td>{{ item.giftDescription }}</td>
-        <td>
-          <button @click='selTableRow(item.gift_id)'>Select</button>
-        </td>
-      </tr>
+      <tbody slot="body" slot-scope="{displayData}">
+      <v-tr v-for="row in displayData" :key="row.giftId" :row="row">
+        <td>{{ row.giftId }}</td>
+        <td>{{ row.giftTitle }}</td>
+        <td>{{ row.giftDescription }}</td>
+      </v-tr>
       </tbody>
-    </table>
+    </v-table>
     <br>
-    <!--    {{ infoks }}-->
     <br>
     <br>
     <br>
     {{ infoks2 }}
+    <br>
+    {{ selectedRow }}
     <br>
   </div>
 </template>
@@ -40,10 +43,13 @@ import {get, post} from "axios";
 export default {
   data: function () {
     return {
-      serverGet: {}
+      testInfo: {},
+      tableRows: [],
+      infoks2: "",
+      selectedRow: "",
+      eventDescription: ""
     }
   },
-
   methods: {
     selTableRow: function (id) {
       let result = {
@@ -51,35 +57,28 @@ export default {
       }
       post('/api/gift_was_chosen/', result);
       this.infoks2 = "Valiti kingitus, mille ID on " + id;
-    },
-
-    userChooseGift: function () {
-      post('/api/chooseGift/', {
-        chooseGiftRequest: {
-          userId: this.serverGet.userId,
-          eventId: this.serverGet.eventId,
-          itemNr: this.itemNr
-        }
-      })
-    },
-    mounted() {
-
-      // get url, insert two variables this.$route. (pathvariable)
-
-      //TODO
-      get('api/event/163357/user/072064')
-          .then((response) => {
-            this.serverGet = response.data;
-            this.event = response.data;
-            this.showResponse = true
-          }).catch((error) => {
-        this.errors = error.response.data.message;
-      });
-
-      this.tableRows = response.gifts;
-      this.eventInfo = "Welcome to choose gift for " + this.event_author + "´s " + this.event_date + " " + this.event_name;
-      this.eventDescription = this.event_description;
+      this.selectedRow = id;
     }
+  },
+
+  mounted() {
+
+    // get url, insert two variables this.$route. (pathvariable)
+
+    //TODO
+    get('api/event/670142/user/934043')
+        .then((response) => {
+              this.testInfo = response.data.gifts;
+              this.tableRows = response.data.gifts;
+              this.selectedRow = this.tableRows.length;
+            }
+        ).catch((error) => {
+      this.errors = error.response.data.message;
+    });
+
+
+    /* this.eventInfo = "Welcome to choose gift for " + this.event_author + "´s " + this.event_date + " " + this.event_name;
+     this.eventDescription = this.event_description;*/
   }
 };
 
@@ -130,6 +129,10 @@ table, th, td {
   border: 1px solid black;
 }
 
+/*table, tr:hover td {
+  background-color: lightseagreen !important;
+}*/
+
 table {
   border-collapse: collapse;
   margin: auto;
@@ -137,4 +140,5 @@ table {
   border: 3px solid black;
   padding: 50px;
 }
+
 </style>
