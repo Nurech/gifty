@@ -101,6 +101,7 @@ public class GiftService {
             gift.setGiftAmount(request.getGifts().get(i).getGiftAmount());
             gift.setGiftDescription(request.getGifts().get(i).getGiftDescription());
             gift.setGiftId(request.getGifts().get(i).getGiftId());
+            gift.setEventId(request.getGifts().get(i).getEventId());
             giftsRepository.save(gift);
         }
         //USERS
@@ -138,6 +139,11 @@ public class GiftService {
 
         // return info obj
         CreateEvent info = new CreateEvent();
+
+        // event
+
+
+
         List<RoleRequest> role = new ArrayList<>();
         Role roleEntity = rolesRepository.findAllByUserId(userId);
 
@@ -149,9 +155,31 @@ public class GiftService {
         roleRequest.setRole(roleEntity.getRole());
         role.add(roleRequest);
         info.setRole(role);
+
         // check if user exists at said event
 
 
+        // return info obj
+        List<GiftRequest> gift = new ArrayList<>();
+
+
+
+        // role info
+        GiftRequest giftRequest = new GiftRequest();
+
+        // how many gifts event has?
+        List<Gift> giftEntity = giftsRepository.findAllByEventId(eventId);
+        giftRequest.setEventId(giftEntity.get(1).getEventId());
+
+        for (int i = 0; i < giftEntity.size();i++) {
+            giftRequest.setGiftId(giftEntity.get(i).getGiftId());
+            giftRequest.setGiftAmount(giftEntity.get(i).getGiftAmount());
+            giftRequest.setGiftTitle(giftEntity.get(i).getGiftTitle());
+            giftRequest.setGiftDescription(giftEntity.get(i).getGiftDescription());
+            giftRequest.setEventId(giftEntity.get(i).getEventId());
+            gift.add(giftRequest);
+            info.setGifts(gift);
+        }
 
         return info;
         // if exists

@@ -15,10 +15,10 @@
       <th></th>
       </thead>
       <tbody>
-      <tr v-for="(item, index) in tableRows" :item="item.gift_id">
-        <td>{{ item.nr }}</td>
-        <td>{{ item.gift_title }}</td>
-        <td>{{ item.gift_description }}</td>
+      <tr v-for="(item, index) in testInfo.gifts" :item="item.gift_id">
+        <td>{{ item.giftId }}</td>
+        <td>{{ item.giftTitle }}</td>
+        <td>{{ item.giftDescription }}</td>
         <td>
           <button @click='selTableRow(item.gift_id)'>Select</button>
         </td>
@@ -40,26 +40,11 @@ import {get, post} from "axios";
 export default {
   data: function () {
     return {
-      event: {
-        eventId: '',
-        eventName: '',
-        eventDescription: '',
-        eventDate: '',
-        eventAuthor: '',
-        messageEmail: '',
-      },
-      gifts: [{
-        giftId:'',
-        giftTitle: '',
-        giftAmount:'',
-        giftDescription: '',
-        eventId:''
-      }]
+      testInfo: {}
     }
   },
 
   methods: {
-
     selTableRow: function (id) {
       let result = {
         'gift_id': id
@@ -74,15 +59,16 @@ export default {
     // get url, insert two variables this.$route. (pathvariable)
 
     //TODO
-     get('api/event/'+{})
+     get('api/event/225767/user/453645')
          .then((response) => {
            this.testInfo = response.data;
+           this.event = response.data;
            this.showResponse = true
          }).catch((error) => {
        this.errors = error.response.data.message;
      });
 
-    this.tableRows = this.infoks.gifts;
+    this.tableRows = response.gifts;
     this.eventInfo = "Welcome to choose gift for " + this.event_author + "´s " + this.event_date + " " + this.event_name;
     this.eventDescription = this.event_description;
   }

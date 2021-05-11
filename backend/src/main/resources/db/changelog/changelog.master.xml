@@ -35,7 +35,9 @@
             <column name="role_id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="user_id" type="int"/>
+            <column name="user_id" type="int">
+                <constraints unique="true"/>
+            </column>
             <column name="event_id" type="int"/>
             <column name="role" type="text"/>
         </createTable>
@@ -47,7 +49,7 @@
             <column name="gift_title" type="text"/>
             <column name="gift_amount" type="text"/>
             <column name="gift_description" type="text"/>
-            <column name="event_id" type="text"/>
+            <column name="event_id" type="int"/>
         </createTable>
     </changeSet>
 

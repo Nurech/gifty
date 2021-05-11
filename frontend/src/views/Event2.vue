@@ -165,7 +165,7 @@ export default {
     return {
       showResponse: false,
       'userRows': [{userId, role: "owner", generateLink: "/event/" + eventId + "/user/" + userId}],
-      'giftRows': [{nr: getOne(1)}],
+      'giftRows': [{nr: getOne(1), eventId}],
       'roleRows': [{userId, role: "owner", eventId}],
       'messageEmail': "",
 
@@ -206,7 +206,8 @@ export default {
         nr: this.nr,
         giftTitle: this.giftTitle,
         giftAmount: this.giftAmount,
-        giftDescription: this.giftDescription
+        giftDescription: this.giftDescription,
+        eventId: eventId
       };
       this.giftRows.push(my_giftObjects);
     },
