@@ -1,10 +1,11 @@
 <template>
   <div align="center" class="table">
     <br>
-    <h1> {{ testInfo }}</h1>
+    <h1> {{ eventInfo }}</h1>
     <br>
     <i> {{ eventDescription }}</i>
     <br>
+    {{testInfo}}
     <h3>Please choose a gift to make</h3>
     <br>
     <v-table
@@ -47,7 +48,8 @@ export default {
       tableRows: [],
       infoks2: "",
       selectedRow: "",
-      eventDescription: ""
+      eventDescription: "",
+      eventInfo: ""
     }
   },
   methods: {
@@ -66,9 +68,9 @@ export default {
     // get url, insert two variables this.$route. (pathvariable)
 
     //TODO
-    get('api/event/670142/user/934043')
+    get('api/event/406583/user/109777')
         .then((response) => {
-              this.testInfo = response.data.gifts;
+              this.testInfo = response.data;
               this.tableRows = response.data.gifts;
               this.selectedRow = this.tableRows.length;
             }
@@ -77,8 +79,8 @@ export default {
     });
 
 
-    /* this.eventInfo = "Welcome to choose gift for " + this.event_author + "´s " + this.event_date + " " + this.event_name;
-     this.eventDescription = this.event_description;*/
+    this.eventInfo = "Welcome to choose gift for " + this.event_author + "´s " + this.event_date + " " + this.event_name;
+    this.eventDescription = this.event_description;
   }
 };
 
