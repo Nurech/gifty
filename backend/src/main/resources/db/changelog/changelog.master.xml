@@ -51,6 +51,17 @@
             <column name="gift_description" type="text"/>
             <column name="event_id" type="int"/>
         </createTable>
+
+        <createTable tableName="choose_gift">
+            <column name="choose_gift_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="bigint"/>
+            <column name="event_id" type="bigint"/>
+            <column name="item_nr" type="bigint"/>
+
+        </createTable>
+
     </changeSet>
 
 </databaseChangeLog>
