@@ -169,7 +169,6 @@ public class GiftService {
 
         // how many gifts event has?
         List<Gift> giftEntity = giftsRepository.findAllByEventId(eventId);
-        giftRequest.setEventId(giftEntity.get(1).getEventId());
 
         for (int i = 0; i < giftEntity.size();i++) {
             giftRequest.setGiftId(giftEntity.get(i).getGiftId());
