@@ -1,7 +1,7 @@
 <template>
 
 
-  <div class="event" align="center">
+  <div class="event" align="center" :style="{ backgroundImage: 'url(' + image + ')' }">
 
     <div class="container">
       <div class="shadow-lg p-3 mb-5 bg-body rounded"><h1>Create event</h1></div>
@@ -18,7 +18,6 @@
       <th></th>
       </thead>
       <tbody>
-
       <tr>
         <td><input v-model="event.eventName" placeholder="Event name" class="font-weight-bold"/></td>
         <td><input v-model="event.eventDescription" placeholder="Description"/></td>
@@ -143,7 +142,9 @@
     <br>
     <br>
     <br>
-
+    <br>
+    <br>
+    <br>
   </div>
 
 
@@ -162,12 +163,15 @@ export default {
 
   data: function () {
 
+
+
     return {
       showResponse: false,
       'userRows': [{userId, role: "owner", generateLink: "/event/" + eventId + "/user/" + userId}],
       'giftRows': [{nr: getOne(1)}],
       'roleRows': [{userId, role: "owner", eventId}],
       'messageEmail': "",
+      image: "https://static-cdn.drawnames.com/Content/Assets/deco-sending.svg?nc=201910281040",
 
       event: {
         id: eventId,
@@ -302,8 +306,8 @@ function getOne(number) {
 
 body {
   background: #cd7557; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #77b4ea, #e27e47); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #76b1e7, #e2794d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, #619fd2, #c46c3c); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #558bbe, #dd6533); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 
