@@ -159,12 +159,7 @@ public class GiftService {
         // check if user exists at said event
 
 
-        // return info obj
         List<GiftRequest> gift = new ArrayList<>();
-
-
-
-        // role info
         GiftRequest giftRequest = new GiftRequest();
 
         // how many gifts event has?

@@ -59,7 +59,7 @@ export default {
     // get url, insert two variables this.$route. (pathvariable)
 
     //TODO
-     get('api/event/225767/user/453645')
+     get('api/event/335115/user/805863')
          .then((response) => {
            this.testInfo = response.data;
            this.event = response.data;
