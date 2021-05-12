@@ -143,6 +143,7 @@ public class GiftService {
 
         // role info
         RoleRequest roleRequest = new RoleRequest();
+
         roleRequest.setRoleId(roleEntity.getRoleId());
         roleRequest.setUserId(roleEntity.getUserId());
         roleRequest.setEventId(roleEntity.getEventId());

@@ -5,7 +5,7 @@
     <br>
     <i> {{ eventDescription }}</i>
     <br>
-    {{testInfo}}
+    {{ testInfo }}
     <h3>Please choose a gift to make</h3>
     <br>
     <v-table
@@ -25,6 +25,9 @@
         <td>{{ row.giftId }}</td>
         <td>{{ row.giftTitle }}</td>
         <td>{{ row.giftDescription }}</td>
+        <td>
+          <button type="button">Click Me!</button>
+        </td>
       </v-tr>
       </tbody>
     </v-table>
@@ -64,11 +67,8 @@ export default {
   },
 
   mounted() {
-
-    // get url, insert two variables this.$route. (pathvariable)
-
     //TODO
-    get('api/event/406583/user/109777')
+    get('api/event/' + this.$route.params.eventId + '/user/' + this.$route.params.userId)
         .then((response) => {
               this.testInfo = response.data;
               this.tableRows = response.data.gifts;

@@ -154,7 +154,7 @@
 import {post} from "axios";
 import ResizeAuto from "@/components/ResizeAuto";
 
-let eventId = getRandom(6);
+const eventId = getRandom(6);
 let userId = getRandom(6);
 
 export default {
@@ -162,8 +162,6 @@ export default {
   components: {ResizeAuto},
 
   data: function () {
-
-
 
     return {
       showResponse: false,
@@ -173,12 +171,16 @@ export default {
       'messageEmail': "",
       image: "https://static-cdn.drawnames.com/Content/Assets/deco-sending.svg?nc=201910281040",
 
-      event: {
-        id: eventId,
+      'event': {
+        eventId: eventId,
         eventName: '',
         eventDescription: '',
         eventDate: '',
         eventAuthor: '',
+        messageEmail: '',
+        // mis see on? pole vaja?
+        giftId: ''
+
       },
     }
   },
@@ -187,7 +189,7 @@ export default {
     'eventCreator': function () {
       post('/api/creator/', {
         event: {
-          eventId: getRandom(6),
+          eventId: eventId,
           eventName: this.event.eventName,
           eventDescription: this.event.eventDescription,
           eventDate: this.event.eventDate,

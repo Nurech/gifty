@@ -34,14 +34,24 @@ const routes = [
     path: '/chooseGift',
     name: 'ChooseGift',
     component: () => import(/* webpackChunkName: "about" */ '../views/ChooseGift.vue')
-  }
+  },
+  { path: 'api/event/:eventId/user/:userId',
+    name: 'ChooseGift', component: ChooseGift }
 
 ]
+
+
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+const serverData = new VueRouter({
+  routes: [
+    { path: 'api/event/:eventId/user/:userId', component: ChooseGift }
+  ]
 })
 
 export default router
