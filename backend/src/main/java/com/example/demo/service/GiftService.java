@@ -135,12 +135,9 @@ public class GiftService {
     public CreateEvent getEventData(Long eventId, Long userId) {
 
         // return info obj
-
-
         CreateEvent info = new CreateEvent();
 
         // event
-
         List<RoleRequest> role = new ArrayList<>();
         Role roleEntity = rolesRepository.findAllByUserId(userId);
 
@@ -157,12 +154,11 @@ public class GiftService {
 
 
         List<GiftRequest> gift = new ArrayList<>();
-        GiftRequest giftRequest = new GiftRequest();
-
         // how many gifts event has?
         List<Gift> giftEntity = giftsRepository.findAllByEventId(eventId);
 
         for (int i = 0; i < giftEntity.size();i++) {
+            GiftRequest giftRequest = new GiftRequest();
             giftRequest.setGiftId(giftEntity.get(i).getGiftId());
             giftRequest.setGiftAmount(giftEntity.get(i).getGiftAmount());
             giftRequest.setGiftTitle(giftEntity.get(i).getGiftTitle());
