@@ -1,36 +1,40 @@
 <template>
   <div align="center" class="table">
     <br>
-    <h1> {{ testInfo }}</h1>
+    <h1> {{ eventInfo }}</h1>
     <br>
     <i> {{ eventDescription }}</i>
     <br>
+    {{testInfo}}
     <h3>Please choose a gift to make</h3>
     <br>
-    <table>
-      <thead>
+    <v-table
+        class="table-hover"
+        :data="tableRows"
+        selection-mode="single"
+        selectedClass="table-info"
+        @selectionChanged="selectedRow = $event"
+    >
+      <thead slot="head">
       <th>Nr</th>
       <th>Gift title</th>
       <th>Description</th>
-      <th></th>
       </thead>
-      <tbody>
-      <tr v-for="(item, index) in testInfo.gifts" :item="item.gift_id">
-        <td>{{ item.giftId }}</td>
-        <td>{{ item.giftTitle }}</td>
-        <td>{{ item.giftDescription }}</td>
-        <td>
-          <button @click='selTableRow(item.gift_id)'>Select</button>
-        </td>
-      </tr>
+      <tbody slot="body" slot-scope="{displayData}">
+      <v-tr v-for="row in displayData" :key="row.giftId" :row="row">
+        <td>{{ row.giftId }}</td>
+        <td>{{ row.giftTitle }}</td>
+        <td>{{ row.giftDescription }}</td>
+      </v-tr>
       </tbody>
-    </table>
+    </v-table>
     <br>
-    <!--    {{ infoks }}-->
     <br>
     <br>
     <br>
     {{ infoks2 }}
+    <br>
+    {{ selectedRow }}
     <br>
   </div>
 </template>
@@ -40,10 +44,14 @@ import {get, post} from "axios";
 export default {
   data: function () {
     return {
-      testInfo: {}
+      testInfo: {},
+      tableRows: [],
+      infoks2: "",
+      selectedRow: "",
+      eventDescription: "",
+      eventInfo: ""
     }
   },
-
   methods: {
     selTableRow: function (id) {
       let result = {
@@ -51,6 +59,7 @@ export default {
       }
       post('/api/gift_was_chosen/', result);
       this.infoks2 = "Valiti kingitus, mille ID on " + id;
+      this.selectedRow = id;
     }
   },
 
@@ -59,16 +68,17 @@ export default {
     // get url, insert two variables this.$route. (pathvariable)
 
     //TODO
-     get('api/event/335115/user/805863')
-         .then((response) => {
-           this.testInfo = response.data;
-           this.event = response.data;
-           this.showResponse = true
-         }).catch((error) => {
-       this.errors = error.response.data.message;
-     });
+    get('api/event/406583/user/109777')
+        .then((response) => {
+              this.testInfo = response.data;
+              this.tableRows = response.data.gifts;
+              this.selectedRow = this.tableRows.length;
+            }
+        ).catch((error) => {
+      this.errors = error.response.data.message;
+    });
 
-    this.tableRows = response.gifts;
+
     this.eventInfo = "Welcome to choose gift for " + this.event_author + "´s " + this.event_date + " " + this.event_name;
     this.eventDescription = this.event_description;
   }
@@ -84,6 +94,7 @@ for (i = 0; i < pathArray.length; i++) {
 
 
 let i = 0;
+
 function getOne(number) {
   let result = i + number;
   i++;
@@ -120,6 +131,10 @@ table, th, td {
   border: 1px solid black;
 }
 
+/*table, tr:hover td {
+  background-color: lightseagreen !important;
+}*/
+
 table {
   border-collapse: collapse;
   margin: auto;
@@ -127,4 +142,5 @@ table {
   border: 3px solid black;
   padding: 50px;
 }
+
 </style>

@@ -1,15 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.configuration.entity.Event;
-import com.example.demo.configuration.entity.Gift;
-import com.example.demo.configuration.entity.Role;
-import com.example.demo.configuration.entity.User;
+import com.example.demo.configuration.entity.*;
 import com.example.demo.controller.BackendController;
 import com.example.demo.model.*;
-import com.example.demo.repository.EventsRepository;
-import com.example.demo.repository.GiftsRepository;
-import com.example.demo.repository.RolesRepository;
-import com.example.demo.repository.UsersRepository;
+import com.example.demo.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +27,9 @@ public class GiftService {
 
     @Autowired
     UsersRepository usersRepository;
+
+    @Autowired
+    ChooseRepository chooseRepository;
 
     public List<UserRequest> addNewUser(List<UserRequest> request) {
 
@@ -138,11 +135,11 @@ public class GiftService {
     public CreateEvent getEventData(Long eventId, Long userId) {
 
         // return info obj
+
+
         CreateEvent info = new CreateEvent();
 
         // event
-
-
 
         List<RoleRequest> role = new ArrayList<>();
         Role roleEntity = rolesRepository.findAllByUserId(userId);
@@ -164,7 +161,6 @@ public class GiftService {
 
         // how many gifts event has?
         List<Gift> giftEntity = giftsRepository.findAllByEventId(eventId);
-        giftRequest.setEventId(giftEntity.get(1).getEventId());
 
         for (int i = 0; i < giftEntity.size();i++) {
             giftRequest.setGiftId(giftEntity.get(i).getGiftId());
@@ -178,12 +174,19 @@ public class GiftService {
 
         return info;
         // if exists
-
-
         // check what role user has
 
         // if user exists and has role, return event info and gift list
 
+    }
 
+    public ChooseGiftRequest ChooseGiftRequest(ChooseGiftRequest request) {
+        Choose entity = new Choose();
+        entity.setChooseGiftId(request.getChooseGiftId());
+        entity.setUserId(request.getUserId());
+        entity.setEventId(request.getEventId());
+        entity.setItemNr(request.getItemNr());
+        chooseRepository.save(entity);
+        return null;
     }
 }

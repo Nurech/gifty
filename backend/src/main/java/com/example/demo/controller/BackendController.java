@@ -57,6 +57,13 @@ public class BackendController {
         return giftService.getEventData(eventId, userId);
     }
 
+    @ResponseBody
+    @RequestMapping(path = "api/chooseGift", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public ChooseGiftRequest userChooseGift(@RequestBody ChooseGiftRequest request) {
+        return giftService.ChooseGiftRequest(request);
+    }
+
 
 
 }
