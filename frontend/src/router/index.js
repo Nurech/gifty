@@ -35,7 +35,7 @@ const routes = [
     name: 'ChooseGift',
     component: () => import(/* webpackChunkName: "about" */ '../views/ChooseGift.vue')
   },
-  { path: 'api/event/:eventId/user/:userId',
+  { path: '/event/:eventId/user/:userId',
     name: 'ChooseGift', component: ChooseGift }
 
 ]
@@ -48,10 +48,5 @@ const router = new VueRouter({
   routes
 })
 
-const serverData = new VueRouter({
-  routes: [
-    { path: 'api/event/:eventId/user/:userId', component: ChooseGift }
-  ]
-})
 
 export default router

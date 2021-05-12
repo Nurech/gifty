@@ -68,7 +68,7 @@ export default {
 
   mounted() {
     //TODO
-    get('api/event/' + this.$route.params.eventId + '/user/' + this.$route.params.userId)
+    get('/api/event/' + this.$route.params.eventId + '/user/' + this.$route.params.userId)
         .then((response) => {
               this.testInfo = response.data;
               this.tableRows = response.data.gifts;
