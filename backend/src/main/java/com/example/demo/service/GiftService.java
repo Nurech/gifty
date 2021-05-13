@@ -168,7 +168,6 @@ public class GiftService {
             gift.add(giftRequest);
             info.setGifts(gift);
         }
-
         return info;
         // if exists
         // check what role user has

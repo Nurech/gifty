@@ -1,15 +1,9 @@
 <template>
-
-
   <div class="event" align="center" :style="{ backgroundImage: 'url(' + image + ')' }">
-
     <div class="container">
       <div class="shadow-lg p-3 mb-5 bg-body rounded"><h1>Create event</h1></div>
-
     </div>
-
     <divtable class="table table-bordered table-dark">
-
       <thead>
       <th>Event name</th>
       <th>Description</th>
@@ -21,14 +15,16 @@
       <tr>
         <td><input v-model="event.eventName" placeholder="Event name" class="font-weight-bold"/></td>
         <td><input v-model="event.eventDescription" placeholder="Description"/></td>
-        <td><input v-model="event.eventDate" placeholder="Event date"/></td>
+        <td>
+          <b-form-datepicker id="datepicker-sm" size="sm" v-model="event.eventDate" class="mb-2"
+                             :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }  "
+          ></b-form-datepicker>
+        </td>
         <td><input v-model="event.eventAuthor" placeholder="Event author"/></td>
-
       </tr>
       </tbody>
     </divtable>
     <br>
-
     <br>
     <h3>Add your participants</h3>
     <br>
@@ -59,14 +55,12 @@
     <!--    {{ infoks1 }}-->
     <br>
     <button @click='addUserTableRow()' class="btn btn-success">Add guest</button>
-
     <!--//giftList-->
     <br>
     <h3>Add your gifts</h3>
     <br>
     <br>
     <divtable class="table table-bordered table-dark">
-
       <thead>
       <th>#</th>
       <th>Gift title</th>
@@ -75,7 +69,6 @@
       <th></th>
       </thead>
       <tbody>
-
       <tr v-for="(item, gift_index) in giftRows" :item="item">
         <td>{{ item.nr }}</td>
         <td><input v-model="item.giftTitle" placeholder="Gift Title"/></td>
@@ -106,7 +99,6 @@
             v-model="event.messageEmail"
         ></textarea>
             </div>
-
           </template>
         </ResizeAuto>
       </div>
@@ -162,7 +154,6 @@ export default {
   components: {ResizeAuto},
 
   data: function () {
-
     return {
       showResponse: false,
       'userRows': [{userId, role: "owner", generateLink: "/event/" + eventId + "/user/" + userId}],
@@ -221,7 +212,7 @@ export default {
     delTableRow: function (id) {
       this.giftRows.splice(id, 1);
     },
-    
+
     // USER
     addUserTableRow: function () {
       this.userId = getRandom(6);
@@ -266,6 +257,7 @@ function getRandom(length) {
 }
 
 let i = 0;
+
 function getOne(number) {
   let result = i + number;
   i++;
@@ -308,11 +300,10 @@ function getOne(number) {
 /*}*/
 
 body {
-  background: #cd7557; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #619fd2, #c46c3c); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #558bbe, #dd6533); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: antiquewhite; /* fallback for old browsers */
+  background: navajowhite(to right, white, white); /* Chrome 10-25, Safari 5.1-6 */
+  background: navajowhite(to right, white, white); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
 
 
 h3 {
@@ -332,6 +323,16 @@ li {
 a {
   color: #163427;
 }
+
+.mb-2 {
+  width:200px
+}
+
+th {
+  background-color: black;
+  color: white;
+}
+
 </style>
 
 

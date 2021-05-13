@@ -67,8 +67,8 @@ export default {
   },
 
   mounted() {
-    //TODO
-    get('/api/event/' + this.$route.params.eventId + '/user/' + this.$route.params.userId)
+  get('/api/event/' + this.$route.params.eventId + '/user/' + this.$route.params.userId)
+
         .then((response) => {
               this.testInfo = response.data;
               this.tableRows = response.data.gifts;
@@ -106,7 +106,7 @@ function getOne(number) {
 <style>
 
 body {
-  background: lightpink; /* fallback for old browsers */
+  background: navajowhite; /* fallback for old browsers */
 }
 
 h3 {
@@ -124,7 +124,7 @@ li {
 }
 
 a {
-  color: #42b983;
+  color: darkseagreen;
 }
 
 table, th, td {
@@ -141,6 +141,10 @@ table {
   width: 40%;
   border: 3px solid black;
   padding: 50px;
+}
+
+th {
+  color: black;
 }
 
 </style>

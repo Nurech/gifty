@@ -11,11 +11,13 @@
     "@syncfusion/ej2-base": "^19.1.57",
     "@syncfusion/ej2-vue-inputs": "^19.1.59",
     "axios": "^0.21.1",
-    "babel-preset-es2015": "^6.24.1",
+    "bootstrap": "^4.6.0",
+    "bootstrap-vue": "^2.21.2",
     "vue": "^2.6.12",
     "vue-axios": "^3.2.4",
-    "vue-router": "^3.2.0",
-    "vuejs-smart-table": "0.0.8"
+    "vue-router": "^3.5.1",
+    "vuejs-smart-table": "^0.0.8"
+    "babel-preset-es2015": "^6.24.1",
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
