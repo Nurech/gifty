@@ -1,7 +1,7 @@
 <template>
   <div class="event" align="center" :style="{ backgroundImage: 'url(' + image + ')' }">
     <div class="container">
-      <div class="shadow-lg p-3 mb-5 bg-body rounded"><h1>Create event</h1></div>
+      <div class="shadow-lg p-3 mb-5 bg-body rounded"><h1>Create Your Gifter event</h1></div>
     </div>
     <divtable class="table table-bordered table-dark">
       <thead>
@@ -300,8 +300,8 @@ function getOne(number) {
 
 body {
   background: antiquewhite; /* fallback for old browsers */
-  background: navajowhite(to right, white, white); /* Chrome 10-25, Safari 5.1-6 */
-  background: navajowhite(to right, white, white); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: white(to right, white, white); /* Chrome 10-25, Safari 5.1-6 */
+  background: white(to right, white, white); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 
