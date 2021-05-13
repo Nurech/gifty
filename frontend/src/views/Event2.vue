@@ -326,6 +326,10 @@ a {
   width:200px
 }
 
+th {
+  background-color: black;
+  color: white;
+}
 
 </style>
 

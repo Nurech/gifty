@@ -140,4 +140,8 @@ table {
   padding: 50px;
 }
 
+th {
+  color: black;
+}
+
 </style>
