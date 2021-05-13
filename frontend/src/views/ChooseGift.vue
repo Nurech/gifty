@@ -65,10 +65,7 @@ export default {
 
   mounted() {
 
-    // get url, insert two variables this.$route. (pathvariable)
-
-    //TODO
-    get('api/event/406583/user/109777')
+    get('api/event/032860/user/682679')
         .then((response) => {
               this.testInfo = response.data;
               this.tableRows = response.data.gifts;
@@ -106,7 +103,7 @@ function getOne(number) {
 <style>
 
 body {
-  background: lightpink; /* fallback for old browsers */
+  background: navajowhite; /* fallback for old browsers */
 }
 
 h3 {
@@ -124,7 +121,7 @@ li {
 }
 
 a {
-  color: #42b983;
+  color: darkseagreen;
 }
 
 table, th, td {
