@@ -5,7 +5,7 @@
     <br>
     <i> {{ eventDescription }}</i>
     <br>
-    {{testInfo}}
+    {{ testInfo }}
     <h3>Please choose a gift to make</h3>
     <br>
     <v-table
@@ -25,6 +25,9 @@
         <td>{{ row.giftId }}</td>
         <td>{{ row.giftTitle }}</td>
         <td>{{ row.giftDescription }}</td>
+        <td>
+          <button type="button">Click Me!</button>
+        </td>
       </v-tr>
       </tbody>
     </v-table>
@@ -64,8 +67,8 @@ export default {
   },
 
   mounted() {
+  get('/api/event/' + this.$route.params.eventId + '/user/' + this.$route.params.userId)
 
-    get('api/event/032860/user/682679')
         .then((response) => {
               this.testInfo = response.data;
               this.tableRows = response.data.gifts;
