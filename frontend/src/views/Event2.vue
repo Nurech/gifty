@@ -9,7 +9,6 @@
       <th>Description</th>
       <th>Event date</th>
       <th>Event author</th>
-      <th></th>
       </thead>
       <tbody>
       <tr>
