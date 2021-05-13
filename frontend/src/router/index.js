@@ -35,6 +35,7 @@ const routes = [
     name: 'ChooseGift',
     component: () => import(/* webpackChunkName: "about" */ '../views/ChooseGift.vue')
   },
+
   { path: '/event/:eventId/user/:userId',
     name: 'ChooseGift', component: ChooseGift }
 
