@@ -1,10 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>|
-      <router-link to="/event">Event</router-link>|
-      <router-link to="/event2">Event2</router-link>|
+      <router-link to="/about">About Gifter</router-link>|
+      <router-link to="/event2">Create Gifter event</router-link>|
       <router-link to="/chooseGift">ChooseGift</router-link>
     </div>
     <router-view/>
