@@ -3,7 +3,7 @@
 ### Users can setup birthday events and invite users to organize (choose) gifts. Users can access events via unique url ID to edit or via login.
 
 ### Live: http://gifty-env.eba-hqhkmjk7.us-east-2.elasticbeanstalk.com/event
-
+Done!
 ## TODO's
 ```
 Joosep
