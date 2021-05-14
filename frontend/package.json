@@ -6,7 +6,6 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
-
   "dependencies": {
     "@popperjs/core": "^2.9.2",
     "@syncfusion/ej2-base": "^19.1.63",
@@ -22,7 +21,6 @@
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2"
   },
-
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-router": "^4.5.13",
