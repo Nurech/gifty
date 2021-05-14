@@ -111,17 +111,18 @@ public class GiftService {
             user.setEmail(request.getUsers().get(i).getEmail());
             usersRepository.save(user);
 
-                // sends all info to sendGmail class on each loop
-                SendGmail.sendGmail(
-                        request.getUsers().get(i).getUserId(),
-                        request.getUsers().get(i).getGuestName(),
-                        request.getEvent().getEventId(),
-                        request.getEvent().getEventName(),
-                        request.getUsers().get(i).getEmail(),
-                        request.getEvent().getMessageEmail(),
-                        request.getEvent().getEventAuthor(),
-                        request.getEvent().getEventDate());
-            }
+            // sends all info to sendGmail class on each loop
+            SendGmail.sendGmail(
+                    request.getUsers().get(i).getUserId(),
+                    request.getUsers().get(i).getGuestName(),
+                    request.getEvent().getEventId(),
+                    request.getEvent().getEventName(),
+                    request.getUsers().get(i).getEmail(),
+                    request.getEvent().getMessageEmail(),
+                    request.getEvent().getEventAuthor(),
+                    request.getEvent().getEventDate(),
+                    request.getUsers().get(i).getGenerateLink());
+        }
 
         //ROLES
         for (int i = 0; i < request.getRole().size(); i++) {

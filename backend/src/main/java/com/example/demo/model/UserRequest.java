@@ -9,7 +9,14 @@ public class UserRequest {
     private String firstName;
     private String lastName;
     private String email;
+    private String generateLink;
 
+    public String getGenerateLink() {
+        return generateLink;
+    }
+    public void setGenerateLink(String generateLink) {
+        this.generateLink = generateLink;
+    }
     public long getUserId() {
         return userId;
     }
