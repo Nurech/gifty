@@ -3,7 +3,6 @@
     <div class="container" style="opacity: 0.88">
       <div class="shadow-lg p-3 mb-5 bg-body rounded"><h1>Create Your Gifter event</h1>
         <br>
-        <br>
         <span class="table_heading">Add your event info</span>
         <br><br>
         <table class="table table-bordered">
@@ -261,6 +260,9 @@ function getRandom(length) {
 </script>
 <style>
 
+h1 {
+  font-weight: bold;
+}
 </style>
 
 

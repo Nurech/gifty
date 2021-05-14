@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/createEvent">Create Gifter event</router-link> |
+      <router-link to="/createEvent">Create Gifter event</router-link>
     </div>
     <router-view></router-view>
   </div>
@@ -23,10 +23,11 @@
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #42b983;
 }
 
 #nav a.router-link-exact-active {
+  font-weight: bold;
   color: #42b983;
 }
 </style>
