@@ -260,53 +260,6 @@ function getRandom(length) {
 </script>
 <style>
 
-body {
-  background: antiquewhite; /* fallback for old browsers */
-  background: white(to right, white, white); /* Chrome 10-25, Safari 5.1-6 */
-  background: white(to right, white, white); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  font-family: "Comic Sans MS", "Courier New", monospace;
-}
-
-h1 {
-  font-weight: bold;
-  font-family: "Comic Sans MS", "Courier New", monospace;
-  font-size: 40px;
-  color: hotpink;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #163427;
-}
-
-.mb-2 {
-  width: 200px;
-}
-
-th, td {
-  background-color: white;
-  color: black;
-  text-align: center;
-  padding: 0px;
-
-}
-
-.table_heading {
-  font-weight: bold;
-  color: black;
-  font-size: 25px;
-  font-style: normal;
-  font-family: "Comic Sans MS", "Courier New", monospace;
-}
 </style>
 
 
