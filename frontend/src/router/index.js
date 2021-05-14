@@ -6,11 +6,6 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/about',
-    name: 'About Gifter',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
     path: '/createEvent',
     name: 'Create Gifter event',
     component: () => import(/* webpackChunkName: "Create Event" */ '../views/Event2.vue')

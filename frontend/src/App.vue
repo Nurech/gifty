@@ -2,7 +2,6 @@
   <div id="app">
     <div id="nav">
       <router-link to="/createEvent">Create Gifter event</router-link> |
-      <router-link to="/about">About Gifter</router-link>
     </div>
     <router-view></router-view>
   </div>
