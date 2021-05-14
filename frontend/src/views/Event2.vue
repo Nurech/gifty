@@ -147,7 +147,7 @@ export default {
   data: function () {
     return {
       showResponse: false,
-      'userRows': [{userId, role: "user", generateLink: "http://localhost:8081/e/" + eventId + "/u/" + userId}],
+      'userRows': [{userId, role: "user", generateLink: 'http://'+window.location.hostname+'/e/' + eventId + '/u/' + userId}],
       'giftRows': [{nr: 1, eventId}],
       'roleRows': [{userId, role: "user", eventId}],
       'messageEmail': "",
@@ -162,12 +162,13 @@ export default {
         messageEmail: '',
         giftId: '',
         email: '',
-        generateLink: 'http://localhost:8081/e/' + eventId + '/u/' + ownerId,
+        generateLink: 'http://'+window.location.hostname+'/e/' + eventId + '/u/' + ownerId,
       }
     }
   },
 
   methods: {
+
     eventCreator: function () {
       let userObjects = {
         userId: ownerId,
