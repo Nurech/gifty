@@ -48,7 +48,7 @@
               <p>You have chosen gift {{ selectedRow[0].giftTitle }}!</p></h4>
           </div>
         </div>
-<!--        {{ infoks2 }}
+      <!--        {{ infoks2 }}
         <br>
         {{ selectedRow }}<br>
         <br>
@@ -75,10 +75,11 @@ export default {
   },
   methods: {
     confirmButton: function () {
-      post('api/chooseGift', {
-        userId: this.userId,
-        eventId: this.eventId,
-        itemNr: this.itemNr,
+        post('../../../api/chooseGift', {
+        giftId: this.selectedRow[0].giftId,
+        userId: this.$route.params.userId,
+        eventId: this.$route.params.eventId,
+        itemNr: this.selectedRow[0].giftId
       });
       this.showResponse = true;
     },
