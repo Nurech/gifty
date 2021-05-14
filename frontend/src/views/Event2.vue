@@ -147,7 +147,7 @@ export default {
   data: function () {
     return {
       showResponse: false,
-      'userRows': [{userId, role: "user", generateLink: 'http://'+window.location.hostname+'/e/' + eventId + '/u/' + userId}],
+      'userRows': [{userId, role: "user", generateLink: 'http://'+window.location.hostname+'/e/' + eventId + '/u/' + ownerId}],
       'giftRows': [{nr: 1, eventId}],
       'roleRows': [{userId, role: "user", eventId}],
       'messageEmail': "",
@@ -162,7 +162,7 @@ export default {
         messageEmail: '',
         giftId: '',
         email: '',
-        generateLink: 'http://'+window.location.hostname+'/e/' + eventId + '/u/' + ownerId,
+        generateLink: 'http://'+window.location.hostname+'/e/' + eventId + '/u/' + userId,
       }
     }
   },
@@ -224,7 +224,7 @@ export default {
       this.guestName = "";
       this.role = "user";
       this.email = "";
-      this.generateLink = "http://localhost:8081/e/" + eventId + "/u/" + this.userId;
+      this.generateLink = 'http://'+window.location.hostname+'/e/' + eventId + '/u/' + userId;
 
       let my_userObjects = {
         userId: this.userId,
