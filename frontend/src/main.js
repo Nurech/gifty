@@ -5,7 +5,16 @@ import serverData from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import SmartTable from 'vuejs-smart-table'
+import { FormDatepickerPlugin } from 'bootstrap-vue'
+import VueRouter from 'vue-router'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+Vue.use(VueRouter)
+Vue.use(FormDatepickerPlugin)
 Vue.use(SmartTable)
 Vue.use(VueAxios,axios)
 Vue.config.productionTip = false

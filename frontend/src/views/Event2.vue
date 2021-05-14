@@ -1,153 +1,136 @@
-<template>
-
-
+<template xmlns="http://www.w3.org/1999/html">
   <div class="event" align="center" :style="{ backgroundImage: 'url(' + image + ')' }">
-
-    <div class="container">
-      <div class="shadow-lg p-3 mb-5 bg-body rounded"><h1>Create event</h1></div>
-
-    </div>
-
-    <divtable class="table table-bordered table-dark">
-
-      <thead>
-      <th>Event name</th>
-      <th>Description</th>
-      <th>Event date</th>
-      <th>Event author</th>
-      <th></th>
-      </thead>
-      <tbody>
-      <tr>
-        <td><input v-model="event.eventName" placeholder="Event name" class="font-weight-bold"/></td>
-        <td><input v-model="event.eventDescription" placeholder="Description"/></td>
-        <td><input v-model="event.eventDate" placeholder="Event date"/></td>
-        <td><input v-model="event.eventAuthor" placeholder="Event author"/></td>
-
-      </tr>
-      </tbody>
-    </divtable>
-    <br>
-
-    <br>
-    <h3>Add your participants</h3>
-    <br>
-    <br>
-    <divtable class="table table-bordered table-dark">
-      <thead>
-      <th>Guest id</th>
-      <th>Guest name</th>
-      <th>Role</th>
-      <th>E-mail</th>
-      <th>Link</th>
-      <th></th>
-      </thead>
-      <tbody>
-      <tr v-for="(item, user_index) in userRows" :item="item">
-        <td>{{ item.userId }}</td>
-        <td><input v-model="item.guestName" placeholder="Guest name"/></td>
-        <td>{{ item.role }}</td>
-        <td><input v-model="item.email" placeholder="E-mail"/></td>
-        <td>{{ item.generateLink }}</td>
-        <td>
-          <button @click='delUserTableRow(user_index)' class="btn btn-danger">Remove</button>
-        </td>
-      </tr>
-      </tbody>
-    </divtable>
-    <br>
-    <!--    {{ infoks1 }}-->
-    <br>
-    <button @click='addUserTableRow()' class="btn btn-success">Add guest</button>
-
-    <!--//giftList-->
-    <br>
-    <h3>Add your gifts</h3>
-    <br>
-    <br>
-    <divtable class="table table-bordered table-dark">
-
-      <thead>
-      <th>#</th>
-      <th>Gift title</th>
-      <th>How many</th>
-      <th>Description</th>
-      <th></th>
-      </thead>
-      <tbody>
-
-      <tr v-for="(item, gift_index) in giftRows" :item="item">
-        <td>{{ item.nr }}</td>
-        <td><input v-model="item.giftTitle" placeholder="Gift Title"/></td>
-        <td><input v-model="item.giftAmount" placeholder="Amount"/></td>
-        <td><input v-model="item.giftDescription" placeholder="Gift Description"/></td>
-        <td>
-          <button @click='delTableRow(gift_index)' class="btn btn-danger">Remove</button>
-        </td>
-      </tr>
-      </tbody>
-    </divtable>
-    <br>
-    <!--    {{ infoks }}-->
-    <br>
-    <button @click='addTableRow()' class="btn btn-success">Add gift</button>
-
-    <div class="wrapper">
-      <div class="container">
-        <h3>Message to be sent by e-mail:</h3>
+    <div class="container" style="opacity: 0.88">
+      <div class="shadow-lg p-3 mb-5 bg-body rounded"><h1>Create Your Gifter event</h1>
         <br>
-        <ResizeAuto>
-          <template v-slot:default="{resize}">
-            <div class="mb-3">
+        <br>
+        <span class="table_heading">Add your event info</span>
+        <br><br>
+        <table class="table table-bordered">
+          <thead>
+          <th>Event name</th>
+          <th>Description</th>
+          <th width="22%">Event date</th>
+          <th width="23%">Event author</th>
+          </thead>
+          <tbody>
+          <tr>
+            <td><input v-model="event.eventName" placeholder="Event name"></td>
+            <td><input v-model="event.eventDescription" placeholder="Description"/></td>
+            <td>
+              <b-form-datepicker id="datepicker-sm" size="sm" v-model="event.eventDate" class="mb-2" start-weekday="1"
+                                 :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }"
+              ></b-form-datepicker>
+            </td>
+            <td><input v-model="event.eventAuthor" placeholder="Event author"/></td>
+          </tr>
+          </tbody>
+        </table>
+        <br>
+        <span class="table_heading">Add your guests</span>
+        <br>
+        <br>
+        <table class="table table-bordered">
+          <thead>
+          <th>#</th>
+          <th>Host name</th>
+          <th>E-mail</th>
+          <th width="45%">Link for the Host</th>
+          </thead>
+          <tbody>
+          <tr>
+            <td>0</td>
+            <td><input v-model="event.eventAuthor" placeholder="Host name"/></td>
+            <td><input v-model="event.email" placeholder="E-mail"/></td>
+            <td>{{ event.generateLink }}</td>
+          </tr>
+          </tbody>
+        </table>
+        <table class="table table-bordered">
+          <thead>
+          <th>#</th>
+          <th>Guest name</th>
+          <th>E-mail</th>
+          <th width="31%">Link for the Guest</th>
+          <th width="14%"></th>
+          </thead>
+          <tbody>
+          <tr v-for="(item, user_index) in userRows" :item="item">
+            <td>{{ user_index + 1 }}</td>
+            <td><input v-model="item.guestName" placeholder="Guest name"/></td>
+            <td><input v-model="item.email" placeholder="E-mail"/></td>
+            <td>{{ item.generateLink }}</td>
+            <td>
+              <button @click='delUserTableRow(user_index)' class="btn btn-danger">Remove</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <span style="float: left; width: 25%;">
+          <button @click='addUserTableRow()' class="btn btn-success">Add one more guest</button></span>
+        <br><br>
+        <span class="table_heading">Add your gifts</span>
+        <br>
+        <br>
+        <table class="table table-bordered">
+          <thead>
+          <th>#</th>
+          <th>Gift name</th>
+          <th>Gifts available</th>
+          <th>Description</th>
+          <th></th>
+          </thead>
+          <tbody>
+          <tr v-for="(item, gift_index) in giftRows" :item="item">
+            <td>{{ gift_index + 1 }}</td>
+            <td><input v-model="item.giftTitle" placeholder="Gift name"/></td>
+            <td><input v-model="item.giftAmount" placeholder="Gifts available"/></td>
+            <td><input v-model="item.giftDescription" placeholder="Description"/></td>
+            <td>
+              <button @click='delTableRow(gift_index)' class="btn btn-danger">Remove</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <span style="float: left; width: 23%;">
+       <button @click='addTableRow()' class="btn btn-success">Add one more gift</button>
+        </span>
+        <br>
+        <br>
+        <br>
+        <div class="wrapper">
+          <div class="container" style="width: 90%">
+            <span class="table_heading">Message to be sent by e-mail:</span>
+            <br><br>
+            <ResizeAuto>
+              <template v-slot:default="{resize}">
+                <div class="mb-3">
         <textarea
             class="form-control" id="exampleFormControlTextarea1" rows="5"
             @input="resize"
             placeholder="Please insert your message to the gift choosers"
             v-model="event.messageEmail"
         ></textarea>
+                </div>
+              </template>
+            </ResizeAuto>
+            <br>
+            <button v-on:click="eventCreator()" class="btn btn-outline-success btn-lg btn-block"
+                    :disabled="showResponse">Create Event
+            </button>
+            <br>
+            <div v-if="showResponse">
+              <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Well done!<p>
+                  <p>Aww yeah, you successfully created an event!</p></h4>
+              </div>
             </div>
-
-          </template>
-        </ResizeAuto>
+          </div>
+        </div>
+        <br>
       </div>
     </div>
-
-    <!--    <div class="wrapper">-->
-    <!--      <h3>Message to be sent by e-mail:</h3>-->
-    <!--      <br>-->
-    <!--      <ResizeAuto>-->
-    <!--        <template v-slot:default="{resize}">-->
-    <!--        <textarea-->
-    <!--            class="textarea"-->
-    <!--            @input="resize"-->
-    <!--            placeholder="Please insert Your message to the gift choosers"-->
-    <!--            v-model="event.messageEmail"-->
-    <!--        ></textarea>-->
-    <!--        </template>-->
-    <!--      </ResizeAuto>-->
-    <!--    </div>-->
-    <!--    <input v-model="event.eventName" placeholder="Event name"/>-->
-    <!--    <input v-model="event.eventDescription" placeholder="Description"/>-->
-    <!--    <input v-model="event.eventDate" placeholder="Event date"/>-->
-    <!--    <input v-model="event.eventAuthor" placeholder="Event author"/>-->
-    <!--    <br>-->
-    <!--    <br>-->
-    <!--    <br>-->
-    <br>
-    <br>
-    <button v-on:click="eventCreator()" class="btn btn-primary">Create Event</button>
-    <div v-if="showResponse"><h6>You created new event with Id: {{ event.id }}</h6></div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
   </div>
-
-
 </template>
 
 <script>
@@ -156,18 +139,17 @@ import ResizeAuto from "@/components/ResizeAuto";
 
 const eventId = getRandom(6);
 let userId = getRandom(6);
-
+let ownerId = getRandom(6);
 export default {
   name: "Event2",
   components: {ResizeAuto},
 
   data: function () {
-
     return {
       showResponse: false,
-      'userRows': [{userId, role: "owner", generateLink: "/event/" + eventId + "/user/" + userId}],
-      'giftRows': [{nr: getOne(1), eventId}],
-      'roleRows': [{userId, role: "owner", eventId}],
+      'userRows': [{userId, role: "user", generateLink: "http://localhost:8081/e/" + eventId + "/u/" + userId}],
+      'giftRows': [{nr: 1, eventId}],
+      'roleRows': [{userId, role: "user", eventId}],
       'messageEmail': "",
       image: "https://static-cdn.drawnames.com/Content/Assets/deco-sending.svg?nc=201910281040",
 
@@ -178,15 +160,29 @@ export default {
         eventDate: '',
         eventAuthor: '',
         messageEmail: '',
-        // mis see on? pole vaja?
-        giftId: ''
-
-      },
+        giftId: '',
+        email: '',
+        generateLink: 'http://localhost:8081/e/' + eventId + '/u/' + ownerId,
+      }
     }
   },
 
   methods: {
-    'eventCreator': function () {
+    eventCreator: function () {
+      let userObjects = {
+        userId: ownerId,
+        guestName: this.event.eventAuthor,
+        role: 'owner',
+        email: this.event.email,
+        generateLink: this.event.generateLink
+      };
+      let rowObjects = {
+        userId: ownerId,
+        role: 'owner',
+        eventId: eventId,
+      };
+      this.userRows.push(userObjects);
+      this.roleRows.push(rowObjects);
       post('/api/creator/', {
         event: {
           eventId: eventId,
@@ -199,17 +195,16 @@ export default {
         gifts: this.giftRows,
         users: this.userRows,
         role: this.roleRows
-      })
+      });
+      this.showResponse = true;
+      this.userRows.splice(this.userRows.length-1, 1);
     },
-
     // GIFT
     addTableRow: function () {
-      this.nr = getOne(1);
       this.giftTitle = "";
       this.giftAmount = "";
       this.giftDescription = "";
       let my_giftObjects = {
-        nr: this.nr,
         giftTitle: this.giftTitle,
         giftAmount: this.giftAmount,
         giftDescription: this.giftDescription,
@@ -221,39 +216,36 @@ export default {
     delTableRow: function (id) {
       this.giftRows.splice(id, 1);
     },
-    
+
     // USER
     addUserTableRow: function () {
       this.userId = getRandom(6);
       this.guestName = "";
       this.role = "user";
       this.email = "";
-      this.generateLink = "/event/" + eventId + "/user/" + this.userId;
-      this.deleteButton = "";
+      this.generateLink = "http://localhost:8081/e/" + eventId + "/u/" + this.userId;
 
       let my_userObjects = {
         userId: this.userId,
         guestName: this.guestName,
         role: this.role,
         email: this.email,
-        generateLink: this.generateLink,
-        deleteButton: this.deleteButton
+        generateLink: this.generateLink
       };
       let my_rowObjects = {
         userId: this.userId,
         role: this.role,
         eventId: eventId,
       };
-
       this.userRows.push(my_userObjects);
       this.roleRows.push(my_rowObjects);
-
     },
 
     delUserTableRow: function (id) {
       this.userRows.splice(id, 1);
     }
-  }
+  },
+
 }
 
 function getRandom(length) {
@@ -265,58 +257,21 @@ function getRandom(length) {
   return result;
 }
 
-let i = 0;
-function getOne(number) {
-  let result = i + number;
-  i++;
-  return result;
-}
-
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 
-/*// button design proovisin kujundust muutke kui tahate*/
-/*button {*/
-/*  width: 200px;*/
-/*  height: 50px;*/
-/*  padding: 10px 0;*/
-/*  text-align: center;*/
-/*  margin: 10px 20px;*/
-/*  border-radius: 50px;*/
-/*  font-weight: bold;*/
-/*  border: 3px solid #113270;*/
-/*  background: #eea15e;*/
-/*  color: #000099;*/
-/*  cursor: pointer;*/
-/*  position: relative;*/
-/*}*/
-/*button:hover {*/
-/*  color: #ffffff;*/
-/*}*/
-
-/*table{*/
-/*  font-family: 'Times New Roman'*/
-/*  , Times*/
-/*  , serif;*/
-/*  -webkit-font-smoothing: antialiased;*/
-/*  -moz-osx-font-smoothing: grayscale;*/
-/*  color: #0d0b0c;*/
-/*  margin: 25px auto 0;*/
-/*  width: 500px;*/
-/*  background-color: #5490d1*/
-/*}*/
-
 body {
-  background: #cd7557; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #619fd2, #c46c3c); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #558bbe, #dd6533); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: antiquewhite; /* fallback for old browsers */
+  background: white(to right, white, white); /* Chrome 10-25, Safari 5.1-6 */
+  background: white(to right, white, white); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: "Comic Sans MS", "Courier New", monospace;
 }
 
-
-
-h3 {
-  margin: 40px 0 0;
+h1 {
+  font-weight: bold;
+  font-family: "Comic Sans MS", "Courier New", monospace;
+  font-size: 40px;
+  color: hotpink;
 }
 
 ul {
@@ -331,6 +286,26 @@ li {
 
 a {
   color: #163427;
+}
+
+.mb-2 {
+  width: 200px;
+}
+
+th, td {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 0px;
+
+}
+
+.table_heading {
+  font-weight: bold;
+  color: black;
+  font-size: 25px;
+  font-style: normal;
+  font-family: "Comic Sans MS", "Courier New", monospace;
 }
 </style>
 
