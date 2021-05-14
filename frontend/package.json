@@ -6,19 +6,23 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
+
   "dependencies": {
     "@popperjs/core": "^2.9.2",
     "@syncfusion/ej2-base": "^19.1.63",
     "@syncfusion/ej2-vue-inputs": "^19.1.63",
     "axios": "^0.21.1",
     "babel-preset-es2015": "^6.24.1",
-    "bootstrap": "^4.6.0",
-    "bootstrap-vue": "^2.21.2",
     "vue": "^2.6.12",
     "vue-axios": "^3.2.4",
-    "vue-router": "^3.5.1",
-    "vuejs-smart-table": "^0.0.8"
+    "vue-router": "^3.2.0",
+    "vuejs-smart-table": "0.0.8",
+    "node-sass": "^6.0.0",
+    "sass-loader": "^11.1.1",
+    "bootstrap": "^4.6.0",
+    "bootstrap-vue": "^2.21.2"
   },
+
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-router": "^4.5.13",
