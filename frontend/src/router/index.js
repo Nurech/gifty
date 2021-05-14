@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ChooseGift from "@/views/ChooseGift";
+import ChooseGift from "@/views/ChooseGift.vue";
 
 Vue.use(VueRouter)
 
@@ -8,28 +8,23 @@ const routes = [
   {
     path: '/about',
     name: 'About Gifter',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/event2',
+    path: '/createEvent',
     name: 'Create Gifter event',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Event2.vue')
+    component: () => import(/* webpackChunkName: "Create Event" */ '../views/Event2.vue')
   },
-  {
-    path: '/chooseGift',
+/*  {
+    path: '/e',
     name: 'ChooseGift',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ChooseGift.vue')
-  },
+    component: () => import(/!* webpackChunkName: "Choose Gift" *!/ '../views/ChooseGift.vue')
+  },*/
 
-  { path: '/event/:eventId/user/:userId',
-    name: 'ChooseGift', component: ChooseGift }
+  { path: '/e/:eventId/u/:userId',
+    name: 'ChooseGiftU', component: ChooseGift }
 
 ]
-
-
 
 const router = new VueRouter({
   mode: 'history',

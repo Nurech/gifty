@@ -111,15 +111,17 @@ public class GiftService {
             user.setEmail(request.getUsers().get(i).getEmail());
             usersRepository.save(user);
 
-            // sends all info to sendGmail class on each loop
-            SendGmail.sendGmail(
-                    request.getUsers().get(i).getUserId(),
-                    request.getUsers().get(i).getGuestName(),
-                    request.getEvent().getEventId(),
-                    request.getEvent().getEventName(),
-                    request.getUsers().get(i).getEmail(),
-                    request.getEvent().getMessageEmail());
-        }
+                // sends all info to sendGmail class on each loop
+                SendGmail.sendGmail(
+                        request.getUsers().get(i).getUserId(),
+                        request.getUsers().get(i).getGuestName(),
+                        request.getEvent().getEventId(),
+                        request.getEvent().getEventName(),
+                        request.getUsers().get(i).getEmail(),
+                        request.getEvent().getMessageEmail(),
+                        request.getEvent().getEventAuthor(),
+                        request.getEvent().getEventDate());
+            }
 
         //ROLES
         for (int i = 0; i < request.getRole().size(); i++) {
@@ -137,11 +139,19 @@ public class GiftService {
         // return info obj
         CreateEvent info = new CreateEvent();
 
+/*         EventRequest event = new Event();
+        Event eventEntity = eventsRepository.findByEventId(eventId);
+        EventRequest eventRequest = new EventRequest();
+        eventRequest.setEventName(eventEntity.getEventName());
+        eventRequest.setEventAuthor(eventEntity.getEventAuthor());
+        eventRequest.setEventDescription(eventEntity.getEventDescription());
+        eventRequest.setEventDate(eventEntity.getEventDate());
+        event.add(eventRequest);
+        info.setEvent(event);*/
+
         // event
         List<RoleRequest> role = new ArrayList<>();
         Role roleEntity = rolesRepository.findAllByUserId(userId);
-
-        // role info
         RoleRequest roleRequest = new RoleRequest();
 
         roleRequest.setRoleId(roleEntity.getRoleId());
@@ -158,7 +168,7 @@ public class GiftService {
         // how many gifts event has?
         List<Gift> giftEntity = giftsRepository.findAllByEventId(eventId);
 
-        for (int i = 0; i < giftEntity.size();i++) {
+        for (int i = 0; i < giftEntity.size(); i++) {
             GiftRequest giftRequest = new GiftRequest();
             giftRequest.setGiftId(giftEntity.get(i).getGiftId());
             giftRequest.setGiftAmount(giftEntity.get(i).getGiftAmount());
